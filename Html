@@ -1,0 +1,1929 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Chakib Belghait — Portfolio</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --accent:#ff4e00;  /* hot orange */
+  --accent2:#ff9900; /* gradient highlight */
+  --accent3:#ff6a00; /* middle gradient */
+  --bg:#0f1720;
+  --card:#0b1220;
+  --muted:#9aa6b2;
+  --Link:#2893f7;
+  --space-blue:#0a1120;
+  --space-purple:#1a0f2e;
+  --star-color:#ffffff;
+  --nebula-pink:#ff4d6d;
+  --nebula-blue:#4361ee;
+  --iss-module-color: rgba(220, 220, 225, 0.95);
+  --iss-solar-orange: rgba(160, 100, 40, 0.8);
+  --iss-solar-blue: rgba(20, 35, 80, 0.9);
+  --iss-truss-color: rgba(230, 230, 235, 0.95);
+  --iss-radiator-color: rgba(230, 230, 235, 0.9);
+  --iss-structure-color: rgba(180, 180, 190, 0.8);
+}
+
+*{box-sizing:border-box;scroll-behavior:smooth}
+
+body {
+  margin:0;
+  font-family:Inter,system-ui,Segoe UI,Roboto,Arial;
+  color:#e6eef6;
+  background:var(--space-blue);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Space Background */
+.space-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(180deg, #071426 0%, #0a1120 30%, #1a0f2e 100%);
+  overflow: hidden;
+}
+
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, var(--star-color), transparent),
+    radial-gradient(2px 2px at 40px 70px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 90px 40px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 130px 80px, var(--star-color), transparent),
+    radial-gradient(2px 2px at 160px 30px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 200px 120px, var(--star-color), transparent),
+    radial-gradient(2px 2px at 250px 80px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 300px 40px, var(--star-color), transparent),
+    radial-gradient(2px 2px at 340px 130px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 380px 70px, var(--star-color), transparent),
+    radial-gradient(2px 2px at 420px 30px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 460px 90px, var(--star-color), transparent),
+    radial-gradient(2px 2px at 500px 60px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 540px 120px, var(--star-color), transparent),
+    radial-gradient(2px 2px at 580px 40px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 620px 80px, var(--star-color), transparent),
+    radial-gradient(2px 2px at 660px 30px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 700px 110px, var(--star-color), transparent),
+    radial-gradient(2px 2px at 740px 70px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 780px 50px, var(--star-color), transparent);
+  background-repeat: repeat;
+  background-size: 800px 600px;
+  animation: stars-animation 120s linear infinite;
+}
+
+.stars::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(1px 1px at 50px 160px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 90px 200px, var(--star-color), transparent),
+    radial-gradient(2px 2px at 140px 180px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 190px 220px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 230px 160px, var(--star-color), transparent),
+    radial-gradient(2px 2px at 280px 200px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 330px 180px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 370px 220px, var(--star-color), transparent),
+    radial-gradient(2px 2px at 420px 160px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 470px 200px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 520px 180px, var(--star-color), transparent),
+    radial-gradient(2px 2px at 570px 220px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 620px 160px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 670px 200px, var(--star-color), transparent),
+    radial-gradient(2px 2px at 720px 180px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 770px 220px, var(--star-color), transparent);
+  background-repeat: repeat;
+  background-size: 800px 600px;
+  animation: stars-animation 100s linear infinite reverse;
+}
+
+@keyframes stars-animation {
+  from { transform: translateY(0); }
+  to { transform: translateY(600px); }
+}
+
+.nebula {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.4;
+  animation: nebula-pulse 20s ease-in-out infinite alternate;
+}
+
+.nebula-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--nebula-pink), transparent 70%);
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.nebula-2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--nebula-blue), transparent 70%);
+  top: 60%;
+  right: 10%;
+  animation-delay: 5s;
+}
+
+.nebula-3 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--accent), transparent 70%);
+  bottom: 20%;
+  left: 20%;
+  animation-delay: 10s;
+}
+
+@keyframes nebula-pulse {
+  0% { transform: scale(1); opacity: 0.3; }
+  100% { transform: scale(1.2); opacity: 0.5; }
+}
+
+.shooting-star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 2px white;
+  opacity: 0;
+}
+
+@keyframes shoot {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(500px) translateY(250px);
+    opacity: 0;
+  }
+}
+
+/* ISS Animation Styles - Smaller and Bottom Right */
+#iss-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#iss-svg {
+  width: 200px;
+  height: 150px;
+  opacity: 0.7;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+}
+
+/* ISS Element Styles */
+.iss-truss {
+  fill: var(--iss-truss-color);
+  stroke: var(--iss-structure-color);
+  stroke-width: 1;
+}
+
+.iss-module {
+  fill: var(--iss-module-color);
+  stroke: var(--iss-structure-color);
+  stroke-width: 0.5;
+}
+
+.iss-module-end {
+  fill: var(--iss-module-color);
+  stroke: var(--iss-structure-color);
+  stroke-width: 0.5;
+}
+
+.iss-solar-orange {
+  fill: var(--iss-solar-orange);
+  stroke: rgba(100, 80, 60, 0.6);
+  stroke-width: 0.3;
+}
+
+.iss-solar-blue {
+  fill: var(--iss-solar-blue);
+  stroke: rgba(180, 150, 100, 0.6);
+  stroke-width: 0.3;
+}
+
+.iss-radiator {
+  fill: var(--iss-radiator-color);
+  stroke: var(--iss-structure-color);
+  stroke-width: 0.5;
+}
+
+.iss-structure {
+  stroke: var(--iss-structure-color);
+  stroke-width: 1.5;
+  fill: none;
+}
+
+.iss-solar-grid {
+  stroke: rgba(0, 0, 0, 0.3);
+  stroke-width: 0.2;
+  fill: none;
+}
+
+.iss-radiator-grid {
+  stroke: var(--iss-structure-color);
+  stroke-width: 0.5;
+  fill: none;
+}
+
+.iss-antenna {
+  stroke: var(--iss-structure-color);
+  stroke-width: 1;
+  fill: none;
+}
+
+.iss-central-cylinder {
+  fill: var(--iss-truss-color);
+  stroke: var(--iss-structure-color);
+  stroke-width: 1;
+}
+
+/* ISS Animation */
+@keyframes iss-float {
+  0%, 100% { 
+    transform: rotate(-0.5deg) translateY(-3px); 
+  }
+  25% { 
+    transform: rotate(0.3deg) translateY(0px); 
+  }
+  50% { 
+    transform: rotate(0.5deg) translateY(3px); 
+  }
+  75% { 
+    transform: rotate(-0.3deg) translateY(0px); 
+  }
+}
+
+@keyframes iss-solar-twinkle {
+  0%, 100% { opacity: 0.95; }
+  50% { opacity: 1; }
+}
+
+#iss-svg {
+  animation: iss-float 15s ease-in-out infinite;
+}
+
+.iss-solar-orange, .iss-solar-blue {
+  animation: iss-solar-twinkle 8s ease-in-out infinite;
+}
+
+.iss-solar-orange {
+  animation-delay: 0.5s;
+}
+
+.iss-solar-blue {
+  animation-delay: 1s;
+}
+
+
+/* Satellite Animation Styles */
+.satellite {
+  position: absolute;
+  z-index: 0;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.7));
+}
+
+.satellite-1 {
+  width: 80px;
+  height: 40px;
+  top: 25%;
+  animation: satellite-orbit-1 140s linear infinite;
+}
+
+.satellite-body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.satellite-core {
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(135deg, #a0a0a0, #e0e0e0);
+  border-radius: 8px;
+  position: absolute;
+  left: 0;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.satellite-solar-panel {
+  position: absolute;
+  background: linear-gradient(135deg, #2a4b8d, #3a6fd9);
+  border-radius: 2px;
+  box-shadow: 0 0 5px rgba(58, 111, 217, 0.7);
+}
+
+.satellite-1 .satellite-solar-panel {
+  width: 90%;
+  height: 10px;
+  top: 50%;
+  left: 60%;
+  transform: translateY(-50%);
+}
+
+.satellite-antenna {
+  position: absolute;
+  background: #c0c0c0;
+  border-radius: 1px;
+}
+
+.satellite-1 .satellite-antenna {
+  width: 20px;
+  height: 3px;
+  top: 30%;
+  left: 95%;
+}
+
+.satellite-dish {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: linear-gradient(135deg, #c0c0c0, #e0e0e0);
+  border-radius: 50%;
+  top: 60%;
+  left: 90%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.iss {
+  position: absolute;
+  width: 160px;
+  height: 80px;
+  top: 65%;
+  animation: iss-orbit 280s linear infinite;
+  z-index: 0;
+}
+
+.iss-structure {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.iss-module {
+  position: absolute;
+  background: linear-gradient(135deg, #606060, #a0a0a0);
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.iss-module-1 {
+  width: 35%;
+  height: 70%;
+  top: 15%;
+  left: 0;
+}
+
+.iss-module-2 {
+  width: 25%;
+  height: 60%;
+  top: 20%;
+  left: 40%;
+}
+
+.iss-module-3 {
+  width: 20%;
+  height: 50%;
+  top: 25%;
+  left: 70%;
+}
+
+.iss-module-4 {
+  width: 15%;
+  height: 40%;
+  top: 30%;
+  left: 95%;
+}
+
+.iss-solar-panel {
+  position: absolute;
+  background: linear-gradient(135deg, #2a4b8d, #3a6fd9);
+  border-radius: 3px;
+  box-shadow: 0 0 8px rgba(58, 111, 217, 0.7);
+}
+
+.iss-solar-panel-1 {
+  width: 80%;
+  height: 12px;
+  top: 0;
+  left: 10%;
+}
+
+.iss-solar-panel-2 {
+  width: 80%;
+  height: 12px;
+  bottom: 0;
+  left: 10%;
+}
+
+.iss-radiator {
+  position: absolute;
+  width: 10px;
+  height: 30px;
+  background: linear-gradient(135deg, #808080, #b0b0b0);
+  border-radius: 2px;
+  top: 35%;
+  left: 105%;
+}
+
+@keyframes satellite-orbit-1 {
+  0% {
+    left: -100px;
+    transform: translateY(0) rotate(0deg);
+  }
+  10% {
+    transform: translateY(-40px) rotate(8deg);
+  }
+  20% {
+    transform: translateY(20px) rotate(-5deg);
+  }
+  30% {
+    transform: translateY(-30px) rotate(6deg);
+  }
+  40% {
+    transform: translateY(10px) rotate(-3deg);
+  }
+  50% {
+    left: 100%;
+    transform: translateY(0) rotate(0deg);
+  }
+  60% {
+    transform: translateY(25px) rotate(4deg);
+  }
+  70% {
+    transform: translateY(-15px) rotate(-7deg);
+  }
+  80% {
+    transform: translateY(30px) rotate(5deg);
+  }
+  90% {
+    transform: translateY(-20px) rotate(-4deg);
+  }
+  100% {
+    left: -100px;
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes iss-orbit {
+  0% {
+    left: -200px;
+    transform: translateY(0) rotate(0deg);
+  }
+  15% {
+    transform: translateY(-50px) rotate(3deg);
+  }
+  25% {
+    transform: translateY(30px) rotate(-2deg);
+  }
+  35% {
+    transform: translateY(-40px) rotate(4deg);
+  }
+  45% {
+    transform: translateY(20px) rotate(-3deg);
+  }
+  50% {
+    left: 100%;
+    transform: translateY(0) rotate(0deg);
+  }
+  65% {
+    transform: translateY(40px) rotate(2deg);
+  }
+  75% {
+    transform: translateY(-30px) rotate(-4deg);
+  }
+  85% {
+    transform: translateY(50px) rotate(3deg);
+  }
+  95% {
+    transform: translateY(-20px) rotate(-2deg);
+  }
+  100% {
+    left: -200px;
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* Satellite Canvas Background */
+#satellite-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.7;
+}
+
+html{
+  scroll-padding-top: 50px;
+}
+/* Header */
+header{
+  padding:20px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:fixed;
+  top:0;left:0;width:100%;
+  background:rgba(15,23,32,0.85);
+  backdrop-filter:blur(10px);
+  z-index:100;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.brand{
+  display:flex;gap:12px;align-items:center;
+  font-weight:600;
+}
+.logo {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  box-shadow: 0 0 15px rgba(255, 78, 0, 0.5);
+}
+nav a{
+  color:var(--muted);
+  margin-left:18px;
+  font-weight:500;
+  transition:0.3s;
+  position: relative;
+}
+nav a:hover{
+  color:var(--accent);
+}
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transition: width 0.3s ease;
+}
+nav a:hover::after {
+  width: 100%;
+}
+
+/* Home Section */
+#home{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  height:100vh;
+  text-align:center;
+  position: relative;
+  z-index: 1;
+}
+#home h1{
+  font-size:4rem;
+  background:linear-gradient(90deg, var(--accent), var(--accent3), var(--accent2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:fadeInText 2s ease forwards;
+  margin-bottom: 20px;
+  text-shadow: 0 0 30px rgba(255, 78, 0, 0.3);
+}
+#home p{
+  margin-top:20px;
+  font-size:1.5rem;
+  color:var(--muted);
+  animation:fadeInText 2s 1s ease forwards;
+  background: rgba(15, 23, 32, 0.7);
+  padding: 15px 30px;
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+@keyframes fadeInText{
+  0%{opacity:0;transform:translateY(20px);}
+  100%{opacity:1;transform:translateY(0);}
+}
+
+.home-rocket {
+  margin-top: 30px;
+  animation: float 6s ease-in-out infinite;
+  filter: drop-shadow(0 0 15px rgba(255, 78, 0, 0.5));
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
+
+/* Hero / About */
+section.card{
+  max-width:1000px;
+  margin:100px auto 40px;
+  padding:28px;
+  background:linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  border-radius:16px;
+  box-shadow:0 8px 32px rgba(2,6,23,0.4);
+  position:relative;
+  z-index: 1;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+section.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(2,6,23,0.6);
+}
+.skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.skill{
+  background:linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  padding:8px 16px;
+  border-radius:999px;
+  font-size:13px;
+  color:var(--muted);
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: all 0.3s ease;
+}
+.skill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  background: linear-gradient(135deg, rgba(255,78,0,0.2), rgba(255,105,0,0.1));
+  color: var(--accent);
+}
+.btn{
+  display:inline-block;
+  padding:12px 24px;
+  border-radius:10px;
+  background:linear-gradient(135deg, var(--accent), var(--accent2));
+  color:white;
+  text-decoration:none;
+  cursor:pointer;
+  transition:0.3s;
+  margin-top:10px;
+  font-weight:600;
+  border: none;
+  box-shadow: 0 4px 15px rgba(255, 78, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+.btn:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 78, 0, 0.4);
+  background: linear-gradient(135deg, var(--accent2), var(--accent));
+}
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+.btn:hover::after {
+  left: 100%;
+}
+
+/* Projects */
+.projects{max-width:1000px;margin:20px auto;display:flex;flex-direction:column;gap:24px;padding:0 20px 60px}
+.proj-card{
+  padding:24px;
+  border-radius:16px;
+  background:linear-gradient(135deg, rgba(0,0,0,0.25), rgba(255,255,255,0.03));
+  cursor:pointer;
+  transition:0.3s;
+  position:relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.proj-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 15px 30px rgba(0,0,0,0.4);
+  background:linear-gradient(135deg, rgba(0,0,0,0.3), rgba(255,255,255,0.05));
+}
+.proj-card h3{
+  margin-bottom:8px; 
+  color:var(--accent);
+  font-size: 1.5rem;
+}
+.proj-card p{
+  margin-bottom:8px;
+  color:var(--muted);
+  line-height: 1.6;
+}
+
+/* Hover effect for project cards */
+.proj-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,78,0,0.1), rgba(255,153,0,0.05));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+  border-radius: 16px;
+}
+
+.proj-card:hover::before {
+  opacity: 1;
+}
+
+.proj-card .details-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.proj-card:hover .details-btn {
+  opacity: 1;
+}
+
+.proj-card .card-content {
+  position: relative;
+  z-index: 2;
+}
+
+.proj-card img {
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+.proj-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Footer */
+footer{
+  max-width:1000px;
+  margin:0 auto;
+  padding:28px 20px;
+  color:var(--muted);
+  text-align:center;
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Project Page Styles */
+.project-page {
+  display: none;
+  max-width: 1000px;
+  margin: 100px auto 40px;
+  padding: 28px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(2,6,23,0.4);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.project-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.project-overview {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 40px;
+  align-items: flex-start;
+}
+
+.overview-image {
+  flex: 1;
+}
+
+.overview-image img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.overview-content {
+  flex: 1;
+}
+
+.overview-box {
+  background: rgba(255,255,255,0.05);
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.project-section {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 40px;
+  align-items: flex-start;
+}
+
+.section-image {
+  flex: 1;
+}
+
+.section-image img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.section-content {
+  flex: 1;
+}
+
+.back-btn {
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #4361ee, #3a0ca3);
+}
+
+.back-btn:hover {
+  background: linear-gradient(135deg, #3a0ca3, #4361ee);
+}
+
+@media(max-width:880px){
+  #home h1{font-size:3rem;}
+  #home p{font-size:1.2rem;}
+  .project-overview, .project-section {
+    flex-direction: column;
+  }
+  header {
+    padding: 15px 20px;
+  }
+  nav a {
+    margin-left: 12px;
+    font-size: 0.9rem;
+  }
+  
+  /* Adjust ISS for mobile */
+  #iss-container {
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  #iss-svg {
+    width: 150px;
+    height: 112px;
+    opacity: 0.6;
+  }
+}
+
+@media(max-width:480px){
+  #iss-container {
+    bottom: 5px;
+    right: 5px;
+  }
+  
+  #iss-svg {
+    width: 120px;
+    height: 90px;
+    opacity: 0.5;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Space Background with ISS and Satellite Canvas -->
+<div class="space-background">
+  <div class="stars"></div>
+  <div class="nebula nebula-1"></div>
+  <div class="nebula nebula-2"></div>
+  <div class="nebula nebula-3"></div>
+  
+  <!-- ISS Animation Container - Bottom Right -->
+  <div id="iss-container">
+    <svg id="iss-svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid meet">
+      <!-- Solar Arrays -->
+      <g id="solar-arrays">
+        <title>Solar Array Wings</title>
+        <!-- Left side - upper wing -->
+        <g>
+          <rect class="iss-solar-orange" x="50" y="50" width="150" height="50" rx="1"/>
+          <rect class="iss-solar-orange" x="50" y="105" width="150" height="50" rx="1"/>
+          <rect class="iss-solar-orange" x="50" y="160" width="150" height="50" rx="1"/>
+          <rect class="iss-solar-orange" x="50" y="215" width="150" height="50" rx="1"/>
+          <rect class="iss-solar-orange" x="50" y="270" width="150" height="50" rx="1"/>
+          
+          <!-- Solar cell grid -->
+          <g class="iss-solar-grid">
+            <!-- Vertical lines -->
+            <line x1="65" y1="50" x2="65" y2="320"/>
+            <line x1="85" y1="50" x2="85" y2="320"/>
+            <line x1="105" y1="50" x2="105" y2="320"/>
+            <line x1="125" y1="50" x2="125" y2="320"/>
+            <line x1="145" y1="50" x2="145" y2="320"/>
+            <line x1="165" y1="50" x2="165" y2="320"/>
+            <line x1="185" y1="50" x2="185" y2="320"/>
+            
+            <!-- Horizontal lines -->
+            <line x1="50" y1="65" x2="200" y2="65"/>
+            <line x1="50" y1="80" x2="200" y2="80"/>
+            <line x1="50" y1="95" x2="200" y2="95"/>
+            <line x1="50" y1="110" x2="200" y2="110"/>
+            <line x1="50" y1="125" x2="200" y2="125"/>
+            <line x1="50" y1="140" x2="200" y2="140"/>
+            <line x1="50" y1="155" x2="200" y2="155"/>
+            <line x1="50" y1="170" x2="200" y2="170"/>
+            <line x1="50" y1="185" x2="200" y2="185"/>
+            <line x1="50" y1="200" x2="200" y2="200"/>
+            <line x1="50" y1="215" x2="200" y2="215"/>
+            <line x1="50" y1="230" x2="200" y2="230"/>
+            <line x1="50" y1="245" x2="200" y2="245"/>
+            <line x1="50" y1="260" x2="200" y2="260"/>
+            <line x1="50" y1="275" x2="200" y2="275"/>
+            <line x1="50" y1="290" x2="200" y2="290"/>
+            <line x1="50" y1="305" x2="200" y2="305"/>
+          </g>
+        </g>
+        
+        <!-- Left side - lower wing -->
+        <g>
+          <rect class="iss-solar-blue" x="50" y="480" width="150" height="50" rx="1"/>
+          <rect class="iss-solar-blue" x="50" y="535" width="150" height="50" rx="1"/>
+          <rect class="iss-solar-blue" x="50" y="590" width="150" height="50" rx="1"/>
+          <rect class="iss-solar-blue" x="50" y="645" width="150" height="50" rx="1"/>
+          <rect class="iss-solar-blue" x="50" y="700" width="150" height="50" rx="1"/>
+          
+          <!-- Solar cell grid -->
+          <g class="iss-solar-grid">
+            <!-- Vertical lines -->
+            <line x1="65" y1="480" x2="65" y2="750"/>
+            <line x1="85" y1="480" x2="85" y2="750"/>
+            <line x1="105" y1="480" x2="105" y2="750"/>
+            <line x1="125" y1="480" x2="125" y2="750"/>
+            <line x1="145" y1="480" x2="145" y2="750"/>
+            <line x1="165" y1="480" x2="165" y2="750"/>
+            <line x1="185" y1="480" x2="185" y2="750"/>
+            
+            <!-- Horizontal lines -->
+            <line x1="50" y1="495" x2="200" y2="495"/>
+            <line x1="50" y1="510" x2="200" y2="510"/>
+            <line x1="50" y1="525" x2="200" y2="525"/>
+            <line x1="50" y1="540" x2="200" y2="540"/>
+            <line x1="50" y1="555" x2="200" y2="555"/>
+            <line x1="50" y1="570" x2="200" y2="570"/>
+            <line x1="50" y1="585" x2="200" y2="585"/>
+            <line x1="50" y1="600" x2="200" y2="600"/>
+            <line x1="50" y1="615" x2="200" y2="615"/>
+            <line x1="50" y1="630" x2="200" y2="630"/>
+            <line x1="50" y1="645" x2="200" y2="645"/>
+            <line x1="50" y1="660" x2="200" y2="660"/>
+            <line x1="50" y1="675" x2="200" y2="675"/>
+            <line x1="50" y1="690" x2="200" y2="690"/>
+            <line x1="50" y1="705" x2="200" y2="705"/>
+            <line x1="50" y1="720" x2="200" y2="720"/>
+            <line x1="50" y1="735" x2="200" y2="735"/>
+          </g>
+        </g>
+        
+        <!-- Right side - upper wing -->
+        <g>
+          <rect class="iss-solar-blue" x="1000" y="50" width="150" height="50" rx="1"/>
+          <rect class="iss-solar-blue" x="1000" y="105" width="150" height="50" rx="1"/>
+          <rect class="iss-solar-blue" x="1000" y="160" width="150" height="50" rx="1"/>
+          <rect class="iss-solar-blue" x="1000" y="215" width="150" height="50" rx="1"/>
+          <rect class="iss-solar-blue" x="1000" y="270" width="150" height="50" rx="1"/>
+          
+          <!-- Solar cell grid -->
+          <g class="iss-solar-grid">
+            <!-- Vertical lines -->
+            <line x1="1015" y1="50" x2="1015" y2="320"/>
+            <line x1="1035" y1="50" x2="1035" y2="320"/>
+            <line x1="1055" y1="50" x2="1055" y2="320"/>
+            <line x1="1075" y1="50" x2="1075" y2="320"/>
+            <line x1="1095" y1="50" x2="1095" y2="320"/>
+            <line x1="1115" y1="50" x2="1115" y2="320"/>
+            <line x1="1135" y1="50" x2="1135" y2="320"/>
+            
+            <!-- Horizontal lines -->
+            <line x1="1000" y1="65" x2="1150" y2="65"/>
+            <line x1="1000" y1="80" x2="1150" y2="80"/>
+            <line x1="1000" y1="95" x2="1150" y2="95"/>
+            <line x1="1000" y1="110" x2="1150" y2="110"/>
+            <line x1="1000" y1="125" x2="1150" y2="125"/>
+            <line x1="1000" y1="140" x2="1150" y2="140"/>
+            <line x1="1000" y1="155" x2="1150" y2="155"/>
+            <line x1="1000" y1="170" x2="1150" y2="170"/>
+            <line x1="1000" y1="185" x2="1150" y2="185"/>
+            <line x1="1000" y1="200" x2="1150" y2="200"/>
+            <line x1="1000" y1="215" x2="1150" y2="215"/>
+            <line x1="1000" y1="230" x2="1150" y2="230"/>
+            <line x1="1000" y1="245" x2="1150" y2="245"/>
+            <line x1="1000" y1="260" x2="1150" y2="260"/>
+            <line x1="1000" y1="275" x2="1150" y2="275"/>
+            <line x1="1000" y1="290" x2="1150" y2="290"/>
+            <line x1="1000" y1="305" x2="1150" y2="305"/>
+          </g>
+        </g>
+        
+        <!-- Right side - lower wing -->
+        <g>
+          <rect class="iss-solar-orange" x="1000" y="480" width="150" height="50" rx="1"/>
+          <rect class="iss-solar-orange" x="1000" y="535" width="150" height="50" rx="1"/>
+          <rect class="iss-solar-orange" x="1000" y="590" width="150" height="50" rx="1"/>
+          <rect class="iss-solar-orange" x="1000" y="645" width="150" height="50" rx="1"/>
+          <rect class="iss-solar-orange" x="1000" y="700" width="150" height="50" rx="1"/>
+          
+          <!-- Solar cell grid -->
+          <g class="iss-solar-grid">
+            <!-- Vertical lines -->
+            <line x1="1015" y1="480" x2="1015" y2="750"/>
+            <line x1="1035" y1="480" x2="1035" y2="750"/>
+            <line x1="1055" y1="480" x2="1055" y2="750"/>
+            <line x1="1075" y1="480" x2="1075" y2="750"/>
+            <line x1="1095" y1="480" x2="1095" y2="750"/>
+            <line x1="1115" y1="480" x2="1115" y2="750"/>
+            <line x1="1135" y1="480" x2="1135" y2="750"/>
+            
+            <!-- Horizontal lines -->
+            <line x1="1000" y1="495" x2="1150" y2="495"/>
+            <line x1="1000" y1="510" x2="1150" y2="510"/>
+            <line x1="1000" y1="525" x2="1150" y2="525"/>
+            <line x1="1000" y1="540" x2="1150" y2="540"/>
+            <line x1="1000" y1="555" x2="1150" y2="555"/>
+            <line x1="1000" y1="570" x2="1150" y2="570"/>
+            <line x1="1000" y1="585" x2="1150" y2="585"/>
+            <line x1="1000" y1="600" x2="1150" y2="600"/>
+            <line x1="1000" y1="615" x2="1150" y2="615"/>
+            <line x1="1000" y1="630" x2="1150" y2="630"/>
+            <line x1="1000" y1="645" x2="1150" y2="645"/>
+            <line x1="1000" y1="660" x2="1150" y2="660"/>
+            <line x1="1000" y1="675" x2="1150" y2="675"/>
+            <line x1="1000" y1="690" x2="1150" y2="690"/>
+            <line x1="1000" y1="705" x2="1150" y2="705"/>
+            <line x1="1000" y1="720" x2="1150" y2="720"/>
+            <line x1="1000" y1="735" x2="1150" y2="735"/>
+          </g>
+        </g>
+      </g>
+
+      <!-- Central Cylinder -->
+      <g id="central-cylinder">
+        <title>Central Support Cylinder</title>
+        <rect class="iss-central-cylinder" x="575" y="320" width="50" height="160" rx="25"/>
+        <ellipse class="iss-central-cylinder" cx="600" cy="320" rx="25" ry="10"/>
+        <ellipse class="iss-central-cylinder" cx="600" cy="480" rx="25" ry="10"/>
+      </g>
+      
+      <!-- Central Truss -->
+      <g id="truss">
+        <title>Central Truss Structure</title>
+        <!-- Main truss beam -->
+        <rect class="iss-truss" x="200" y="395" width="800" height="10" rx="2"/>
+        
+        <!-- Cross members -->
+        <g class="iss-structure">
+          <line x1="230" y1="395" x2="230" y2="405"/>
+          <line x1="270" y1="395" x2="270" y2="405"/>
+          <line x1="310" y1="395" x2="310" y2="405"/>
+          <line x1="350" y1="395" x2="350" y2="405"/>
+          <line x1="390" y1="395" x2="390" y2="405"/>
+          <line x1="430" y1="395" x2="430" y2="405"/>
+          <line x1="470" y1="395" x2="470" y2="405"/>
+          <line x1="510" y1="395" x2="510" y2="405"/>
+          <line x1="550" y1="395" x2="550" y2="405"/>
+          <line x1="590" y1="395" x2="590" y2="405"/>
+          <line x1="630" y1="395" x2="630" y2="405"/>
+          <line x1="670" y1="395" x2="670" y2="405"/>
+          <line x1="710" y1="395" x2="710" y2="405"/>
+          <line x1="750" y1="395" x2="750" y2="405"/>
+          <line x1="790" y1="395" x2="790" y2="405"/>
+          <line x1="830" y1="395" x2="830" y2="405"/>
+          <line x1="870" y1="395" x2="870" y2="405"/>
+          <line x1="910" y1="395" x2="910" y2="405"/>
+          <line x1="950" y1="395" x2="950" y2="405"/>
+        </g>
+        
+        <!-- Connection nodes -->
+        <g>
+          <rect class="iss-truss" x="220" y="390" width="6" height="15" rx="1"/>
+          <rect class="iss-truss" x="260" y="390" width="6" height="15" rx="1"/>
+          <rect class="iss-truss" x="300" y="390" width="6" height="15" rx="1"/>
+          <rect class="iss-truss" x="340" y="390" width="6" height="15" rx="1"/>
+          <rect class="iss-truss" x="380" y="390" width="6" height="15" rx="1"/>
+          <rect class="iss-truss" x="420" y="390" width="6" height="15" rx="1"/>
+          <rect class="iss-truss" x="460" y="390" width="6" height="15" rx="1"/>
+          <rect class="iss-truss" x="500" y="390" width="6" height="15" rx="1"/>
+          <rect class="iss-truss" x="540" y="390" width="6" height="15" rx="1"/>
+          <rect class="iss-truss" x="580" y="390" width="6" height="15" rx="1"/>
+          <rect class="iss-truss" x="620" y="390" width="6" height="15" rx="1"/>
+          <rect class="iss-truss" x="660" y="390" width="6" height="15" rx="1"/>
+          <rect class="iss-truss" x="700" y="390" width="6" height="15" rx="1"/>
+          <rect class="iss-truss" x="740" y="390" width="6" height="15" rx="1"/>
+          <rect class="iss-truss" x="780" y="390" width="6" height="15" rx="1"/>
+          <rect class="iss-truss" x="820" y="390" width="6" height="15" rx="1"/>
+          <rect class="iss-truss" x="860" y="390" width="6" height="15" rx="1"/>
+          <rect class="iss-truss" x="900" y="390" width="6" height="15" rx="1"/>
+          <rect class="iss-truss" x="940" y="390" width="6" height="15" rx="1"/>
+        </g>
+      </g>
+      
+      <!-- Solar Array Support Structures -->
+      <g id="solar-supports">
+        <title>Solar Array Support Structures</title>
+        <!-- Left side supports -->
+        <line class="iss-structure" x1="200" y1="185" x2="250" y2="395"/>
+        <line class="iss-structure" x1="200" y1="235" x2="250" y2="395"/>
+        <line class="iss-structure" x1="200" y1="615" x2="250" y2="395"/>
+        <line class="iss-structure" x1="200" y1="665" x2="250" y2="395"/>
+        
+        <!-- Right side supports -->
+        <line class="iss-structure" x1="1000" y1="185" x2="950" y2="395"/>
+        <line class="iss-structure" x1="1000" y1="235" x2="950" y2="395"/>
+        <line class="iss-structure" x1="1000" y1="615" x2="950" y2="395"/>
+        <line class="iss-structure" x1="1000" y1="665" x2="950" y2="395"/>
+      </g>
+      
+      <!-- Pressurized Modules -->
+      <g id="modules">
+        <title>Pressurized Modules</title>
+        <!-- Zarya (Russian) -->
+        <g>
+          <rect class="iss-module" x="230" y="370" width="60" height="30" rx="5" ry="5"/>
+          <ellipse class="iss-module-end" cx="230" cy="385" rx="5" ry="15"/>
+          <ellipse class="iss-module-end" cx="290" cy="385" rx="5" ry="15"/>
+        </g>
+        
+        <!-- Unity (Node 1) -->
+        <g>
+          <rect class="iss-module" x="310" y="380" width="40" height="20" rx="4" ry="4"/>
+          <ellipse class="iss-module-end" cx="310" cy="390" rx="4" ry="10"/>
+          <ellipse class="iss-module-end" cx="350" cy="390" rx="4" ry="10"/>
+        </g>
+        
+        <!-- Destiny (US Lab) -->
+        <g>
+          <rect class="iss-module" x="370" y="365" width="80" height="40" rx="6" ry="6"/>
+          <ellipse class="iss-module-end" cx="370" cy="385" rx="6" ry="20"/>
+          <ellipse class="iss-module-end" cx="450" cy="385" rx="6" ry="20"/>
+        </g>
+        
+        <!-- Harmony (Node 2) -->
+        <g>
+          <rect class="iss-module" x="470" y="380" width="40" height="20" rx="4" ry="4"/>
+          <ellipse class="iss-module-end" cx="470" cy="390" rx="4" ry="10"/>
+          <ellipse class="iss-module-end" cx="510" cy="390" rx="4" ry="10"/>
+        </g>
+        
+        <!-- Columbus (European) -->
+        <g>
+          <rect class="iss-module" x="530" y="375" width="50" height="25" rx="5" ry="5"/>
+          <ellipse class="iss-module-end" cx="530" cy="387.5" rx="5" ry="12.5"/>
+          <ellipse class="iss-module-end" cx="580" cy="387.5" rx="5" ry="12.5"/>
+        </g>
+        
+        <!-- Kibo (Japanese) -->
+        <g>
+          <rect class="iss-module" x="600" y="370" width="70" height="30" rx="5" ry="5"/>
+          <ellipse class="iss-module-end" cx="600" cy="385" rx="5" ry="15"/>
+          <ellipse class="iss-module-end" cx="670" cy="385" rx="5" ry="15"/>
+        </g>
+        
+        <!-- Cupola -->
+        <g>
+          <rect class="iss-module" x="330" y="340" width="25" height="25" rx="12.5" ry="12.5"/>
+          <circle class="iss-module-end" cx="342.5" cy="352.5" r="10" fill="rgba(30, 40, 70, 0.9)"/>
+        </g>
+      </g>
+      
+      <!-- Radiators -->
+      <g id="radiators">
+        <title>Thermal Control Radiators</title>
+        <!-- Left side radiators -->
+        <g>
+          <rect class="iss-radiator" x="250" y="420" width="15" height="80" rx="2" transform="rotate(10 250 420)"/>
+          <g class="iss-radiator-grid">
+            <line x1="252" y1="422" x2="252" y2="495" transform="rotate(10 250 420)"/>
+            <line x1="256" y1="422" x2="256" y2="495" transform="rotate(10 250 420)"/>
+            <line x1="260" y1="422" x2="260" y2="495" transform="rotate(10 250 420)"/>
+            <line x1="264" y1="422" x2="264" y2="495" transform="rotate(10 250 420)"/>
+          </g>
+        </g>
+        
+        <g>
+          <rect class="iss-radiator" x="350" y="420" width="15" height="80" rx="2" transform="rotate(-5 350 420)"/>
+          <g class="iss-radiator-grid">
+            <line x1="352" y1="422" x2="352" y2="495" transform="rotate(-5 350 420)"/>
+            <line x1="356" y1="422" x2="356" y2="495" transform="rotate(-5 350 420)"/>
+            <line x1="360" y1="422" x2="360" y2="495" transform="rotate(-5 350 420)"/>
+            <line x1="364" y1="422" x2="364" y2="495" transform="rotate(-5 350 420)"/>
+          </g>
+        </g>
+        
+        <!-- Right side radiators -->
+        <g>
+          <rect class="iss-radiator" x="700" y="420" width="15" height="80" rx="2" transform="rotate(-10 700 420)"/>
+          <g class="iss-radiator-grid">
+            <line x1="702" y1="422" x2="702" y2="495" transform="rotate(-10 700 420)"/>
+            <line x1="706" y1="422" x2="706" y2="495" transform="rotate(-10 700 420)"/>
+            <line x1="710" y1="422" x2="710" y2="495" transform="rotate(-10 700 420)"/>
+            <line x1="714" y1="422" x2="714" y2="495" transform="rotate(-10 700 420)"/>
+          </g>
+        </g>
+        
+        <g>
+          <rect class="iss-radiator" x="800" y="420" width="15" height="80" rx="2" transform="rotate(5 800 420)"/>
+          <g class="iss-radiator-grid">
+            <line x1="802" y1="422" x2="802" y2="495" transform="rotate(5 800 420)"/>
+            <line x1="806" y1="422" x2="806" y2="495" transform="rotate(5 800 420)"/>
+            <line x1="810" y1="422" x2="810" y2="495" transform="rotate(5 800 420)"/>
+            <line x1="814" y1="422" x2="814" y2="495" transform="rotate(5 800 420)"/>
+          </g>
+        </g>
+      </g>
+      
+      <!-- Structural Details -->
+      <g id="details">
+        <title>Structural Details</title>
+        <!-- Antennas -->
+        <g class="iss-antenna">
+          <line x1="270" y1="370" x2="270" y2="340"/>
+          <line x1="430" y1="365" x2="430" y2="335"/>
+          <line x1="590" y1="370" x2="590" y2="340"/>
+          <line x1="750" y1="370" x2="750" y2="340"/>
+        </g>
+        
+        <!-- Robotic Arm (Canadarm2) -->
+        <g class="iss-structure">
+          <line x1="370" y1="405" x2="330" y2="440"/>
+          <line x1="330" y1="440" x2="300" y2="420"/>
+          <circle cx="370" cy="405" r="3" fill="var(--iss-structure-color)"/>
+          <circle cx="330" cy="440" r="3" fill="var(--iss-structure-color)"/>
+          <circle cx="300" cy="420" r="3" fill="var(--iss-structure-color)"/>
+        </g>
+        
+        <!-- Canadian Flag -->
+        <g id="canadian-flag">
+          <rect x="320" y="320" width="16" height="10" fill="rgba(200, 0, 0, 0.9)"/>
+          <rect x="326" y="320" width="4" height="10" fill="rgba(255, 255, 255, 0.9)"/>
+          <path d="M328 323 L329 324.5 L330.5 324.5 L329.5 325.5 L330.5 327 L328 326 L325.5 327 L326.5 325.5 L325.5 324.5 L327 324.5 Z" 
+                fill="rgba(200, 0, 0, 0.9)"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+  
+  <canvas id="satellite-canvas"></canvas>
+</div>
+
+<header>
+  <div class="brand">
+    <div class="logo">CB</div>
+      <div>
+        <div style="font-weight:600">Chakib Belghait</div>
+        <div style="font-size:13px;color:var(--muted)"> Portfolio</div>
+    </div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#resume">Resume</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- Home -->
+<section id="home">
+  <h1>Chakib Belghait</h1>
+  <p>438-503-0688  | <a href="mailto:chakib.belghait@uwaterloo.ca" style="color:var(--Link)">chakib.belghait@uwaterloo.ca</a> | <a style="color:var(--Link)" href="www.linkedin.com/in/chakib-belghait-a58932376">LinkedIn</a></p>
+  <i class="fa-solid fa-rocket fa-5x home-rocket" style="color:var(--accent)"></i>
+</section>
+
+<!-- About -->
+<section id="about" class="card">
+  <h2>About Me</h2>
+<div style="display: flex; align-items: flex-start; gap: 20px;">
+  <img src="Goat.jpg" alt="Profile" width="200" height="250" style="border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.3);">
+  
+  <div>
+    <p>
+      I am a Mechanical Engineering student at the University of Waterloo passionate about aerospace systems, thermal design, and applied research. Over the years, I have always stayed close to engineering. I participated multiple times in FIRST with my high-school robotics team. I also participated in a research project at Concordia University. I worked with mechanical, aerospace, electrical, and software systems during my projects. I love conceptualizing and realizing new things, whether it is through CAD, FEA simulations, or manufacturing and assembling.
+    </p>
+    
+    <p>
+      Beyond the classroom, I actively challenge myself in competitive arenas: I ranked 16th in Quebec in the U18 chess category in 2024, competed in over 10 provincial and national karate championships, and enjoy playing soccer and fishing. These experiences have sharpened my strategic thinking, discipline, and problem-solving skills, which I bring into every engineering project I tackle.
+    </p>
+  </div>
+</div>
+
+  <div class="skills">
+    <div class="skill"><i class="fa-solid fa-gears"></i> SolidWorks</div>
+    <div class="skill"><i class="fa-solid fa-cogs"></i> AutoCAD</div>
+    <div class="skill"><i class="fa-solid fa-cogs"></i> MATLAB</div>
+    <div class="skill"><i class="fa-solid fa-laptop"></i> Microsoft Office</div>
+    <div class="skill"><i class="fa-solid fa-microchip"></i> Arduino</div>
+    <div class="skill"><i class="fa-solid fa-ruler"></i> GD&T</div>
+    <div class="skill"><i class="fa-solid fa-hammer"></i> 3D Printing</div>
+    <div class="skill"><i class="fa-solid fa-hammer"></i> Manufacturing</div>
+    <div class="skill"><i class="fa-solid fa-hammer"></i> Assembly</div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects" class="projects">
+  <!-- Cryogenics -->
+  <article class="proj-card card" data-project="cryogenics">
+    <div class="card-content">
+      <h3>Closed-Cycle Cryogenic System (4 K)</h3>
+      <div style="display: flex; align-items: flex-start; gap: 20px;">
+        <div style="flex: 1;">
+          <p>Developed a helium-based cryocooler system reaching sub-4 K temperatures with custom thermal links, vibration isolation, and a vacuum-sealed optical chamber for spectroscopic research.</p>
+        </div>
+        <img src="IMG_1421.jpg" width="150" height="200" style="border-radius: 8px;">
+      </div>
+    </div>
+    <a class="btn details-btn" href="#" onclick="showProject('cryogenics'); return false;">View Details</a>
+  </article>
+
+ 
+  <!-- R&D -->
+  <article class="proj-card card" data-project="carbonfiber">
+    <div class="card-content">
+      <h3>R&D - Joining Methods</h3>
+      <div style="display: flex; align-items: flex-start; gap: 20px;">
+        <div style="flex: 1;">
+          <p>Researched and prototyped advanced techniques for bonding carbon fiber to metal components, using 3D-printed mock airfoils and composite layups to optimize aerodynamic assembly strength.</p>
+        </div>
+        <img src="Goat car.jpg" width="200" height="150" style="border-radius: 8px;">
+      </div>
+    </div>
+    <a class="btn details-btn" href="#" onclick="showProject('carbonfiber'); return false;">View Details</a>
+  </article>
+
+  <!-- Finsight -->
+  <article class="proj-card card" data-project="finsight">
+    <div class="card-content">
+      <h3>Finsight - Financial Analytics Platform</h3>
+      <div style="display: flex; align-items: flex-start; gap: 20px;">
+        <div style="flex: 1;">
+          <p>Developed an innovative financial analytics platform that provides real-time insights and predictive modeling for investment decisions using machine learning algorithms and financial data APIs as part of the 2025 Datathon.</p>
+        </div>
+        <img src="Screenshot 2025-11-07 213508.png" width="175" height="250" style="border-radius: 8px;">
+      </div>
+    </div>
+    <a class="btn details-btn" href="#" onclick="showProject('finsight'); return false;">View Details</a>
+  </article>
+</section>
+
+<!-- Project Detail Pages -->
+<!-- Cryogenics Project Page -->
+<div id="project-cryogenics" class="project-page">
+  <a href="#" class="btn back-btn" onclick="hideAllProjects(); return false;">← Back to Portfolio</a>
+  
+  <div class="project-header">
+    <h1>Closed-Cycle Cryogenic System (4 K)</h1>
+  </div>
+
+  <!-- Overview Section -->
+  <div class="project-overview">
+    <div class="overview-image">
+      <img src="IMG_1421.jpg" width="150" height="480" style="border-radius: 8px;" alt="Cryogenic System">
+    </div>
+    <div class="overview-content">
+      <div class="overview-box">
+        <h3>Project Overview</h3>
+        <p> This research project was conducted at Concordia University, under the supervision of the physics department chair: Valter Zazubovits. The goal was to design an devlopp a system that could reach 4K for long time ranges as an alternative for liquid helium. This project was part of a bigger research on Light-Harvesting complexes and their application in bio-solar technologies. The cryogenic system involved a Sumitomo RDK-415D cryocooler with gold-coated copper links, vacuum-sealed aluminum chambers, and G10 supports for stability.
+        <h3>Skills Used</h3>
+        <p>Material structures, Material Analysis, Thermodynamics, Machining, Gold plating, Wiring, Vacuum systems, Assembly, Documentation, Heat transfer, Schematic reading, Teamwork</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="project-section">
+    <div class="section-content">
+      <h2>System Design & Architecture</h2>
+      <p>The system architecture was developed around a modular closed-cycle cryogenic configuration integrating mechanical, thermal, and optical subsystems. A Sumitomo RDK-415D cold head serves as the central cooling unit, connected to a CSW-71C helium compressor through high-pressure lines operating in a sealed loop. The cold stages are thermally linked to the optical sample chamber via gold-coated OFHC copper links. The assembly is enclosed within a vacuum-sealed aluminum housing fitted with a low-emissivity radiation shield extending from the first stage of the cryocooler. The sample chamber is linked at the end of the system. Also two stainless-steel bellows isolate the cryostat from external vibrations. All components are mounted on a rigid optical table.</p>
+    </div>
+    <div class="section-image">
+      <img src="Arch.png" width="150" height="335" style="border-radius: 8px;" alt="Thermal Design">
+    </div>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="project-section">
+    <div class="section-image">
+      <img src="opt.png" width="150" height="335" style="border-radius: 8px;" alt="Vibration Isolation">
+    </div>
+    <div class="section-content">
+      <h2>Improvements and Optimiziation</h2>
+      <p>Several upgrades were introduced to improve the system's performance, stability, and control. A radiation shield was added to reduce radiative heat transfer and keep the cold stages stable at cryogenic temperatures. The thermal links and contact surfaces were gold-coated to improve thermal conductivity and area of contact. The entire setup was sealed inside a vacuum chamber to eliminate convective losses and maintain uniform temperature over time. Dual bellows and a revised mounting structure helped reduce mechanical vibration, while an integrated heater and temperature sensors provided finer control during operation. Together, these improvements improved the cooling efficiency, reliability, and overall performance of the closed-cycle cryogenic system by 21%.</p>
+    </div>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="project-section">
+    <div class="section-content">
+      <h2>Material </h2>
+      <p>The system design relied on three main materials, each chosen for its specific thermal and mechanical properties at cryogenic temperatures. Gold-coated high-purity OFHC copper was used for the thermal links due to its excellent heat conductivity, allowing efficient transfer from the cold head to the sample chamber. G10 fiberglass epoxy was selected for the chamber supports because of its very low thermal conductivity and minimal contraction when cooled, ensuring mechanical stability without introducing heat leaks. Aluminum 6061-T6 was used for the vacuum housing while Aluminum 6063-T5 was used for the radiation shield. This choice offered the structural strength for the vacuum housing while allowing high thermal conductivity around 40–50 K for the radiation shield which helped distribute and dissipate intercepted heat evenly. Together, these materials provided an optimal balance between thermal management, insulation, and mechanical reliability in the 4 K operating range.</p>
+    </div>
+    <div class="section-image">
+      <img src="graph.png" width="200" height="435" style="border-radius: 8px;" alt="Experimental Results">
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Carbon Fiber Project Page -->
+<div id="project-carbonfiber" class="project-page">
+  <a href="#" class="btn back-btn" onclick="hideAllProjects(); return false;">← Back to Portfolio</a>
+  
+  <div class="project-header">
+    <h1>R&D - Joining Methods</h1>
+  </div>
+
+  <!-- Overview Section -->
+  <div class="project-overview">
+    <div class="overview-image">
+      <img src="IMG_3187.png" width="150" height="345" style="border-radius: 8px;" alt="Carbon Fiber Joining">
+    </div>
+    <div class="overview-content">
+      <div class="overview-box">
+        <h3>Project Overview</h3>
+        <p>Carbon Fiber is a unique material that is very hard to work with. Most of the parts of the Formula elctrcic car are recovered by this composite. This project aimed at finding new ways to optimise the joining methods between aluminium and Carbon Fiber mainly in the airfoil. This project was done with the aerodynamics sub-team.</p>
+        <h3>Skills Used</h3>
+        <p>Composite Manufacturing, Material Testing, SolidWorks, AutoCAD, Prototyping, 3D-printing, Structural Analysis</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="project-section">
+    <div class="section-content">
+      <h2>Prototype Development</h2>
+      <p> The mountings for the joining block (immitation of airfoils) were designed on solidworks and 3D printed using BambuLab. 1-1 replicas of these blocks were designed on AutoCAD and waterjetted. This was made to replicate 3 different joining options and perform strngth and structural tests.</p>
+    </div>
+    <div class="section-image">
+      <img src="Orientations.png"  style="border-radius: 8px; width: 500px; object-fit: cover;" alt="Prototype Development">
+    </div>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="project-section">
+    <div class="section-image">
+      <img src="IMG_1751.jpg" width="150" height="335" style="border-radius: 8px;; height: 250px; object-fit: cover;" alt="Joining Methods">
+      <img src="20251102_190453.jpg" width="150" height="330" style="border-radius: 8px;; height: 250px; object-fit: cover;" alt="Joining Methods">
+    </div>
+    <div class="section-content">
+      <h2>Manifacture and assemply</h2>
+      <p>For this project, a lot of manifacturing and assembling techniques and tools were used. We used 3D printing for the airfoil or aother car part replicas. These pieces were then recovered in resin and carbon fiber (vaccum at the end to dry and remove the extra resin). The blocks were made out of a 1/4" aluminium sheet that was waterjetted. </p>
+      <img src="image.jpg" width="450" height="410" style="border-radius: 8px;; height: 270px; object-fit: cover;" alt="Joining Methods">
+    </div>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="project-section">
+    <div class="section-content">
+      <h2>Testing & Results</h2>
+      <p>This part is still on-going so there are no current results. However, after assembling the prototypes, various strength, aerodynamics and structural tests will be conducted. We will then compare the result and take a desision of potential future applications and implementations.</p>
+    </div>
+    <div class="section-image">
+      <img src="llllllll.jpg" width="450" height="375" style="border-radius: 8px;" alt="Implementation">
+    </div>
+  </div>
+</div>
+
+<!-- Finsight Project Page -->
+<div id="project-finsight" class="project-page">
+  <a href="#" class="btn back-btn" onclick="hideAllProjects(); return false;">← Back to Portfolio</a>
+  
+  <div class="project-header">
+    <h1>FinSight - Financial Analytics Platform</h1>
+  </div>
+
+  <!-- Overview Section -->
+  <div class="project-overview">
+    <div class="overview-image">
+      <img src="Screenshot 2025-11-07 212536.png" alt="FinSight Platform - Dashboard" style="border-radius: 8px; height: 400px; object-fit: cover;">
+     
+    </div>
+    <div class="overview-content">
+      <div class="overview-box">
+        <h3>Project Overview</h3>
+        <p>This project was part of the 2025 Dathaton organised by Polythechnique Montréal and AWS. The goal was to create a platform that will aid investors to comprehend complex financial laws, texts and reports, and visualize the direct impacts on their Portfolio, using an AI agent. The software was expected to give simple and consise insight while also propsing forecasts and risk mitigation. The event lasted 36 hours in teams of 2-4. </p>
+        <h3>Skills Used</h3>
+        <p>HTML, Machine Learning, Data Analysis, API Integration, Python, Algorithm Development, Teamwork </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="project-section">
+    <div class="section-content">
+      <h2>Platform Architecture</h2>
+      <p>The platform architecture was designed around a scalable Python backend capable of integrating multiple financial data sources through RESTful APIs. This approach was selected as it allows seamless aggregation of heterogeneous market datasets while maintaining flexibility for future expansion. Data processing pipelines were implemented within this framework to automatically clean, normalize, and analyze real-time financial streams. This design enables the predictive modeling module to operate on consistent, high-quality inputs, ensuring reliable insights and faster adaptation to market fluctuations.</p>
+    </div>
+    <div class="section-image">
+      <img src="Screenshot 2025-11-07 223726.png" width="150" height="335" style="border-radius: 8px;" alt="Platform Architecture">
+    </div>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="project-section">
+    <div class="section-image">
+      <img src="Screenshot 2025-11-07 224613.png" width="150" height="335" style="border-radius: 8px;" alt="Machine Learning Models">
+    </div>
+    <div class="section-content">
+      <h2>AI and Python Implementation</h2>
+      <p>FinSight incorporates Google Gemini as the core of the Python backend. This AI agent was the best option for this project as compared to most other LLMs that primarily handle text, Gemini natively integrates multiple data types. Also, the FLASK library was improted to the python backend to create a direct connection with the user imputs conducted throught the HTML frontend. Finally, a memory system was added to the software, allowing th AI agent to keep long term memories of the document sent by the user and optimising the answers generated.</p>
+    </div>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="project-section">
+    <div class="section-content">
+      <h2>User Interface & Visualization</h2>
+      <p>The UI was made using a mix of HTML, CSS, and Java Script. The platform launches with a home page that includes the name of the software and some background animation followed by a smooth transition made with JS. This transition leads to another interface where the user can upload documents of any types which are sent to the python backend. Another interface with the AI analysis and a text box opens to the user allowing him to write his own prompts. The pages are linked in the HTML code allowing smmoth transitions to one another.</p>
+      <img src="Screenshot 2025-11-07 223122.png" width="500" height="225" style="border-radius: 8px;" alt="User Interface">
+    </div>
+    <div class="section-image">
+      <img src="Screenshot 2025-11-07 212536.png" width="150" height="335" style="border-radius: 8px; height: 250px; object-fit: cover;" alt="User Interface">
+      <img src="Screenshot 2025-11-07 222904.png" width="250" height="325" style="border-radius: 8px; height: 250px; object-fit: cover;" alt="User Interface"> 
+      
+    </div>
+  </div>
+</div>
+
+<!-- Resume -->
+<section id="resume" class="card">
+  <h2>Resume</h2>
+  <a class="btn" href="Resume ON.1.pdf" target="_blank">Download Resume (PDF)</a>
+  <iframe src="Resume ON.1.pdf" style="width:100%;height:600px;margin-top:20px;border-radius:8px;border:none"></iframe>
+</section>
+
+<!-- Contact -->
+<footer id="contact">
+  <h2>Contact Me</h2>
+  <p>Email: <a href="mailto:chakib.belghait@uwaterloo.ca" style="color:var(--accent)">chakib.belghait@uwaterloo.ca</a> | Phone: 438-503-0688</p>
+  <p>Connect with me on <a href="www.linkedin.com/in/chakib-belghait-a58932376" style="color:var(--Link)">LinkedIn</a></p>
+</footer>
+
+<script>
+// Project page navigation
+function showProject(projectId) {
+  // Hide all project pages and main content
+  document.querySelectorAll('.project-page').forEach(page => {
+    page.style.display = 'none';
+  });
+  document.querySelectorAll('section, footer').forEach(section => {
+    section.style.display = 'none';
+  });
+  
+  // Show the selected project page
+  document.getElementById('project-' + projectId).style.display = 'block';
+  
+  // Scroll to top
+  window.scrollTo(0, 0);
+}
+
+function hideAllProjects() {
+  // Hide all project pages
+  document.querySelectorAll('.project-page').forEach(page => {
+    page.style.display = 'none';
+  });
+  
+  // Show all main content
+  document.querySelectorAll('section, footer').forEach(section => {
+    section.style.display = 'block';
+  });
+  
+  // Scroll to projects section
+  document.getElementById('projects').scrollIntoView();
+}
+
+// Create shooting stars
+function createShootingStar() {
+  const star = document.createElement('div');
+  star.className = 'shooting-star';
+  star.style.left = Math.random() * 100 + 'vw';
+  star.style.top = Math.random() * 40 + 'vh';
+  star.style.animation = `shoot ${2 + Math.random() * 3}s linear forwards`;
+  document.querySelector('.space-background').appendChild(star);
+  
+  setTimeout(() => {
+    star.remove();
+  }, 5000);
+}
+
+// Generate shooting stars periodically
+setInterval(createShootingStar, 3000);
+
+// Generate some initial shooting stars
+for (let i = 0; i < 3; i++) {
+  setTimeout(createShootingStar, i * 1000);
+}
+
+// Satellite Canvas Animation
+const canvas = document.getElementById('satellite-canvas');
+const ctx = canvas.getContext('2d');
+
+// Set canvas dimensions
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+// Satellite properties with gold color and deep purple panels
+const satellite = {
+  x: canvas.width / 6.3,
+  y: canvas.height / 4.5,
+  z: 0,
+  rotation: {
+    x: -0.3,
+    y: 0.4,
+    z: 0.1
+  },
+  scale: 0.4, // Smaller scale for background
+  velocity: {
+    x: 0.1,
+    y: 0.05,
+    z: 0,
+    rotation: 0.002
+  },
+  rotating: true,
+  currentView: 'threeQuarter'
+};
+
+// Animation variables
+let stars = [];
+let animationId;
+let time = 0;
+
+// Initialize stars for background
+function initStars() {
+  stars = [];
+  for (let i = 0; i < 1500; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 2,
+      brightness: Math.random() * 0.8 + 0.2,
+      twinkleSpeed: Math.random() * 0.05
+    });
+  }
+}
+
+// Draw stars with twinkling effect
+function drawStars() {
+  for (let star of stars) {
+    const twinkle = Math.sin(time * star.twinkleSpeed) * 0.3 + 0.7;
+    ctx.globalAlpha = star.brightness * twinkle;
+    ctx.fillStyle = 'white';
+    ctx.beginPath();
+    ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+}
+
+// Draw the main satellite body with gold color
+function drawSatelliteBody() {
+  const width = 100 * satellite.scale;
+  const height = 70 * satellite.scale;
+  
+  // Calculate lighting for this component
+  const lightIntensity = 0.7;
+  
+  // Main bus structure - gold metallic
+  const gradient = ctx.createLinearGradient(
+    satellite.x - width/2, satellite.y - height/2,
+    satellite.x + width/2, satellite.y + height/2
+  );
+  gradient.addColorStop(0, `rgba(218, 165, 32, ${lightIntensity})`); // Golden
+  gradient.addColorStop(0.3, `rgba(255, 215, 0, ${lightIntensity})`); // Gold
+  gradient.addColorStop(0.7, `rgba(255, 215, 0, ${lightIntensity})`); // Gold
+  gradient.addColorStop(1, `rgba(218, 165, 32, ${lightIntensity})`); // Golden
+  
+  ctx.fillStyle = gradient;
+  ctx.strokeStyle = `rgba(184, 134, 11, ${lightIntensity * 0.7})`;
+  ctx.lineWidth = 1.5;
+  
+  // Main body
+  ctx.beginPath();
+  ctx.moveTo(satellite.x - width/2, satellite.y - height/2);
+  ctx.lineTo(satellite.x + width/2, satellite.y - height/2);
+  ctx.lineTo(satellite.x + width/2, satellite.y + height/2);
+  ctx.lineTo(satellite.x - width/2, satellite.y + height/2);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+  
+  // Side panels for 3D effect
+  ctx.fillStyle = `rgba(184, 134, 11, ${lightIntensity * 0.8})`;
+  ctx.beginPath();
+  ctx.moveTo(satellite.x + width/2, satellite.y - height/2);
+  ctx.lineTo(satellite.x + width/2 + 15, satellite.y - height/2 + 10);
+  ctx.lineTo(satellite.x + width/2 + 15, satellite.y + height/2 + 10);
+  ctx.lineTo(satellite.x + width/2, satellite.y + height/2);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+  
+  // Equipment panels
+  ctx.fillStyle = `rgba(60, 60, 70, ${lightIntensity})`;
+  for (let i = 0; i < 4; i++) {
+    ctx.fillRect(
+      satellite.x - width/2 + 12, 
+      satellite.y - height/2 + 12 + i * 15 * satellite.scale, 
+      width - 24, 
+      10 * satellite.scale
+    );
+  }
+  
+  // Communication dish
+  ctx.fillStyle = `rgba(180, 180, 190, ${lightIntensity})`;
+  ctx.beginPath();
+  ctx.arc(satellite.x, satellite.y - height/2 - 15, 12 * satellite.scale, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.stroke();
+  
+  // Dish support structure
+  ctx.fillStyle = `rgba(120, 120, 130, ${lightIntensity})`;
+  ctx.fillRect(satellite.x - 2, satellite.y - height/2, 4, 15 * satellite.scale);
+  
+  // Side antennas
+  ctx.fillStyle = `rgba(160, 160, 170, ${lightIntensity})`;
+  ctx.fillRect(satellite.x - width/2 - 10, satellite.y - 5, 8 * satellite.scale, 15 * satellite.scale);
+  ctx.fillRect(satellite.x + width/2 + 2, satellite.y - 5, 8 * satellite.scale, 15 * satellite.scale);
+}
+
+// Draw solar panels with deep purple color
+function drawSolarPanels() {
+  const panelWidth = 200 * satellite.scale;
+  const panelHeight = 50 * satellite.scale;
+  
+  // Deep purple solar panels
+  const leftGradient = ctx.createLinearGradient(
+    satellite.x - panelWidth - 40 * satellite.scale, satellite.y - panelHeight/2,
+    satellite.x - 40 * satellite.scale, satellite.y + panelHeight/2
+  );
+  leftGradient.addColorStop(0, `rgba(84, 104, 120, 0.8)`); // Deep Blue
+  leftGradient.addColorStop(0.3, `rgba(0, 91, 150, 0.8)`); // Blue 
+  leftGradient.addColorStop(0.7, `rgba(0, 91, 150, 0.8)`); // Blue 
+  leftGradient.addColorStop(1, `rgba(84, 104, 120, 0.8)`); // Deep Blue
+  
+  ctx.fillStyle = leftGradient;
+  ctx.strokeStyle = `rgba(190, 190, 210, 0.9)`;
+  ctx.lineWidth = 2;
+  
+  // Left panel
+  ctx.fillRect(
+    satellite.x - panelWidth - 40 * satellite.scale, 
+    satellite.y - panelHeight/2, 
+    panelWidth, 
+    panelHeight
+  );
+  ctx.strokeRect(
+    satellite.x - panelWidth - 40 * satellite.scale, 
+    satellite.y - panelHeight/2, 
+    panelWidth, 
+    panelHeight
+  );
+  
+  // Right panel
+  const rightGradient = ctx.createLinearGradient(
+    satellite.x + 40 * satellite.scale, satellite.y - panelHeight/2,
+    satellite.x + panelWidth + 40 * satellite.scale, satellite.y + panelHeight/2
+  );
+  rightGradient.addColorStop(0, `rgba(84, 104, 120, 0.8)`); // Deep Blue
+  rightGradient.addColorStop(0.3, `rgba(0, 91, 150, 0.8)`); // Blue 
+  rightGradient.addColorStop(0.7, `rgba(0, 91, 150, 0.8)`); // Blue 
+  rightGradient.addColorStop(1, `rgba(84, 104, 120, 0.8)`); // Deep Blue
+  
+  ctx.fillStyle = rightGradient;
+  ctx.fillRect(
+    satellite.x + 40 * satellite.scale, 
+    satellite.y - panelHeight/2, 
+    panelWidth, 
+    panelHeight
+  );
+  ctx.strokeRect(
+    satellite.x + 40 * satellite.scale, 
+    satellite.y - panelHeight/2, 
+    panelWidth, 
+    panelHeight
+  );
+  
+  // Panel support structures
+  ctx.fillStyle = `rgba(160, 160, 170, 0.7)`;
+  ctx.fillRect(satellite.x - 45 * satellite.scale, satellite.y - 10 * satellite.scale, 10 * satellite.scale, 20 * satellite.scale);
+  ctx.fillRect(satellite.x + 35 * satellite.scale, satellite.y - 10 * satellite.scale, 10 * satellite.scale, 20 * satellite.scale);
+}
+
+// Draw the complete satellite
+function drawSatellite() {
+  ctx.save();
+  
+  // Apply rotation
+  ctx.translate(satellite.x, satellite.y);
+  ctx.rotate(satellite.rotation.y);
+  ctx.rotate(satellite.rotation.x);
+  ctx.translate(-satellite.x, -satellite.y);
+  
+  // Draw satellite components
+  drawSolarPanels();
+  drawSatelliteBody();
+  
+  ctx.restore();
+}
+
+// Update satellite position with random motion
+function updateSatellite() {
+  time++;
+  
+  // Random floating motion
+  satellite.velocity.x = Math.sin(time * 0.01) * 0.1 + Math.sin(time * 0.005) * 0.05;
+  satellite.velocity.y = Math.cos(time * 0.015) * 0.08 + Math.cos(time * 0.007) * 0.03;
+  
+  // Update position
+  satellite.x += satellite.velocity.x;
+  satellite.y += satellite.velocity.y;
+  
+  // Apply boundary constraints with soft bounce
+  const margin = 200;
+  if (satellite.x < margin || satellite.x > canvas.width - margin) {
+    satellite.velocity.x *= -0.7;
+  }
+  if (satellite.y < margin || satellite.y > canvas.height - margin) {
+    satellite.velocity.y *= -0.7;
+  }
+  
+  // Apply rotation if enabled
+  if (satellite.rotating) {
+    satellite.rotation.y += satellite.velocity.rotation;
+  }
+}
+
+// Draw the complete scene
+function drawSatelliteScene() {
+  // Clear canvas with transparent background
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+  // Draw stars
+  drawStars();
+  
+  // Draw satellite
+  drawSatellite();
+  
+  // Update satellite position
+  updateSatellite();
+  
+  // Continue animation
+  animationId = requestAnimationFrame(drawSatelliteScene);
+}
+
+// Initialize the satellite animation
+function initSatellite() {
+  initStars();
+  drawSatelliteScene();
+}
+
+// Start the satellite animation
+initSatellite();
+
+
+</script>
+</body>
+</html>
