@@ -616,6 +616,92 @@ footer{
   background: linear-gradient(135deg, #3a0ca3, #4361ee);
 }
 
+/* Project action buttons */
+.project-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.details-btn {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+}
+
+.documentation-btn {
+  background: linear-gradient(135deg, #4361ee, #3a0ca3);
+}
+
+.documentation-btn:hover {
+  background: linear-gradient(135deg, #3a0ca3, #4361ee);
+}
+
+/* Enhanced Contact Section */
+#contact {
+  max-width: 1000px;
+  margin: 60px auto 20px;
+  padding: 40px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.contact-container {
+  background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(2,6,23,0.4);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.contact-container h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, var(--accent), var(--accent3), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.2rem;
+}
+
+.contact-item i {
+  font-size: 1.5rem;
+  color: var(--accent);
+}
+
+.contact-item a {
+  color: var(--Link);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+  color: var(--accent);
+}
+
+/* Project page back button at bottom */
+.project-back-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
 @media(max-width:880px){
   #home h1{font-size:3rem;}
   #home p{font-size:1.2rem;}
@@ -636,6 +722,16 @@ footer{
     height: 112px;
     opacity: 0.6;
   }
+  
+  /* Contact section mobile */
+  .contact-info {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .contact-container h2 {
+    font-size: 2rem;
+  }
 }
 
 @media(max-width:480px){
@@ -643,6 +739,10 @@ footer{
     width: 120px;
     height: 90px;
     opacity: 0.5;
+  }
+  
+  .project-actions {
+    flex-direction: column;
   }
 }
 </style>
@@ -1093,11 +1193,14 @@ footer{
       <div style="display: flex; align-items: flex-start; gap: 20px;">
         <div style="flex: 1;">
           <p>Developed a helium-based cryocooler system reaching sub-4 K temperatures with custom thermal links, vibration isolation, and a vacuum-sealed optical chamber for spectroscopic research.</p>
+          <div class="project-actions">
+            <a class="btn details-btn" href="#" onclick="showProject('cryogenics'); return false;">View Details</a>
+            <a class="btn documentation-btn" href="cryogenics_documentation.pdf" target="_blank">View Documentation</a>
+          </div>
         </div>
         <img src="IMG_1421.jpg" width="150" height="200" style="border-radius: 8px;">
       </div>
     </div>
-    <a class="btn details-btn" href="#" onclick="showProject('cryogenics'); return false;">View Details</a>
   </article>
 
  
@@ -1108,11 +1211,14 @@ footer{
       <div style="display: flex; align-items: flex-start; gap: 20px;">
         <div style="flex: 1;">
           <p>Researched and prototyped advanced techniques for bonding carbon fiber to metal components, using 3D-printed mock airfoils and composite layups to optimize aerodynamic assembly strength.</p>
+          <div class="project-actions">
+            <a class="btn details-btn" href="#" onclick="showProject('carbonfiber'); return false;">View Details</a>
+            <a class="btn documentation-btn" href="carbonfiber_documentation.pdf" target="_blank">View Documentation</a>
+          </div>
         </div>
         <img src="Goat car.jpg" width="200" height="150" style="border-radius: 8px;">
       </div>
     </div>
-    <a class="btn details-btn" href="#" onclick="showProject('carbonfiber'); return false;">View Details</a>
   </article>
 
   <!-- Finsight -->
@@ -1122,19 +1228,20 @@ footer{
       <div style="display: flex; align-items: flex-start; gap: 20px;">
         <div style="flex: 1;">
           <p>Developed an innovative financial analytics platform that provides real-time insights and predictive modeling for investment decisions using machine learning algorithms and financial data APIs as part of the 2025 Datathon.</p>
+          <div class="project-actions">
+            <a class="btn details-btn" href="#" onclick="showProject('finsight'); return false;">View Details</a>
+            <a class="btn documentation-btn" href="finsight_documentation.pdf" target="_blank">View Documentation</a>
+          </div>
         </div>
         <img src="Screenshot 2025-11-07 213508.png" width="175" height="250" style="border-radius: 8px;">
       </div>
     </div>
-    <a class="btn details-btn" href="#" onclick="showProject('finsight'); return false;">View Details</a>
   </article>
 </section>
 
 <!-- Project Detail Pages -->
 <!-- Cryogenics Project Page -->
 <div id="project-cryogenics" class="project-page">
-  <a href="#" class="btn back-btn" onclick="hideAllProjects(); return false;">← Back to Portfolio</a>
-  
   <div class="project-header">
     <h1>Closed-Cycle Cryogenic System (4 K)</h1>
   </div>
@@ -1185,14 +1292,17 @@ footer{
       <img src="graph.png" width="200" height="435" style="border-radius: 8px;" alt="Experimental Results">
     </div>
   </div>
+  
+  <!-- Back button at bottom -->
+  <div class="project-back-bottom">
+    <a href="#" class="btn back-btn" onclick="hideAllProjects(); return false;">← Back to Portfolio</a>
+  </div>
 </div>
 
 
 
 <!-- Carbon Fiber Project Page -->
 <div id="project-carbonfiber" class="project-page">
-  <a href="#" class="btn back-btn" onclick="hideAllProjects(); return false;">← Back to Portfolio</a>
-  
   <div class="project-header">
     <h1>R&D - Joining Methods</h1>
   </div>
@@ -1246,12 +1356,15 @@ footer{
       <img src="llllllll.jpg" width="450" height="375" style="border-radius: 8px;" alt="Implementation">
     </div>
   </div>
+  
+  <!-- Back button at bottom -->
+  <div class="project-back-bottom">
+    <a href="#" class="btn back-btn" onclick="hideAllProjects(); return false;">← Back to Portfolio</a>
+  </div>
 </div>
 
 <!-- Finsight Project Page -->
 <div id="project-finsight" class="project-page">
-  <a href="#" class="btn back-btn" onclick="hideAllProjects(); return false;">← Back to Portfolio</a>
-  
   <div class="project-header">
     <h1>FinSight - Financial Analytics Platform</h1>
   </div>
@@ -1307,6 +1420,11 @@ footer{
       
     </div>
   </div>
+  
+  <!-- Back button at bottom -->
+  <div class="project-back-bottom">
+    <a href="#" class="btn back-btn" onclick="hideAllProjects(); return false;">← Back to Portfolio</a>
+  </div>
 </div>
 
 <!-- Resume -->
@@ -1316,12 +1434,30 @@ footer{
   <iframe src="Resume ON.1.pdf" style="width:100%;height:600px;margin-top:20px;border-radius:8px;border:none"></iframe>
 </section>
 
-<!-- Contact -->
-<footer id="contact">
-  <h2>Contact Me</h2>
-  <p>Email: <a href="mailto:chakib.belghait@uwaterloo.ca" style="color:var(--accent)">chakib.belghait@uwaterloo.ca</a> | Phone: 438-503-0688</p>
-  <p>Connect with me on <a href="www.linkedin.com/in/chakib-belghait-a58932376" style="color:var(--Link)">LinkedIn</a></p>
-</footer>
+<!-- Enhanced Contact Section -->
+<section id="contact">
+  <div class="contact-container">
+    <h2>Contact Me</h2>
+    <p>Feel free to reach out for collaboration opportunities or to discuss engineering projects!</p>
+    
+    <div class="contact-info">
+      <div class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <a href="mailto:chakib.belghait@uwaterloo.ca">chakib.belghait@uwaterloo.ca</a>
+      </div>
+      
+      <div class="contact-item">
+        <i class="fas fa-phone"></i>
+        <span>438-503-0688</span>
+      </div>
+      
+      <div class="contact-item">
+        <i class="fab fa-linkedin"></i>
+        <a href="www.linkedin.com/in/chakib-belghait-a58932376" target="_blank">LinkedIn Profile</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <script>
 // Project page navigation
