@@ -11,17 +11,17 @@
   /* Professional Engineering Color Palette */
   --primary: #0a192f; /* Navy Blue */
   --secondary: #112240; /* Darker Navy */
-  --accent: #64ffda; /* Teal Accent */
-  --accent-light: #8affd7;
+  --accent: #00adb5; /* Stronger teal - better visibility */
+  --accent-light: #5cd5db;
   --audi-red: #da291c; /* Audi Red for subtle reference */
   --space-blue: #0066cc; /* Space blue for subtle reference */
   --text: #e6f1ff;
   --text-muted: #8892b0;
   --card-bg: rgba(17, 34, 64, 0.7);
   --header-bg: rgba(10, 25, 47, 0.95);
-  --border: rgba(100, 255, 218, 0.2);
+  --border: rgba(0, 173, 181, 0.3); /* Updated for better visibility */
   --shadow: rgba(2, 12, 27, 0.7);
-  --gradient: linear-gradient(135deg, #64ffda, #52d4c8);
+  --gradient: linear-gradient(135deg, #00adb5, #00959c);
   
   /* Theme toggle */
   --theme-transition: all 0.4s ease;
@@ -34,11 +34,13 @@
   --text-muted: #5a7399; /* Softer muted text */
   --card-bg: rgba(255, 255, 255, 0.95);
   --header-bg: rgba(240, 247, 255, 0.98);
-  --border: rgba(100, 255, 218, 0.3);
-  --shadow: rgba(30, 58, 95, 0.1);
-  --gradient: linear-gradient(135deg, #52d4c8, #64ffda);
+  --border: rgba(0, 173, 181, 0.4); /* More visible in light mode */
+  --shadow: rgba(30, 58, 95, 0.15);
+  --gradient: linear-gradient(135deg, #00959c, #00adb5);
   --audi-red: #c41e12; /* Slightly darker red for light mode */
   --space-blue: #0055aa; /* Darker blue for light mode */
+  --accent: #007d85; /* Even darker teal for light mode */
+  --accent-light: #00adb5;
 }
 
 * {
@@ -132,12 +134,12 @@ body {
 
 .space-dot {
   position: absolute;
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   background: var(--space-blue);
   border-radius: 50%;
-  opacity: 0.4;
-  box-shadow: 0 0 15px var(--space-blue);
+  opacity: 0.5;
+  box-shadow: 0 0 20px var(--space-blue);
   animation: space-float 20s linear infinite;
 }
 
@@ -167,40 +169,53 @@ body {
 
 @keyframes space-float {
   0% {
-    transform: rotate(0deg) translateX(40px) rotate(0deg);
+    transform: rotate(0deg) translateX(50px) rotate(0deg);
   }
   100% {
-    transform: rotate(360deg) translateX(40px) rotate(-360deg);
+    transform: rotate(360deg) translateX(50px) rotate(-360deg);
   }
 }
 
-/* Rocket Trail */
+/* Rocket Trail - More Visible */
 .rocket-trail {
   position: absolute;
   top: 40%;
-  left: -100px;
-  width: 300px;
-  height: 2px;
+  left: -200px;
+  width: 400px;
+  height: 3px;
   background: linear-gradient(90deg, var(--space-blue), var(--accent), transparent);
   transform: rotate(15deg);
   opacity: 0;
-  animation: rocket-launch 8s ease-in-out infinite;
+  animation: rocket-launch 10s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px var(--space-blue));
+}
+
+.rocket-trail::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  right: 0;
+  width: 30px;
+  height: 7px;
+  background: var(--accent);
+  border-radius: 50%;
+  filter: blur(3px);
 }
 
 @keyframes rocket-launch {
   0% {
     opacity: 0;
-    transform: translateX(-100px) rotate(15deg);
+    transform: translateX(-200px) rotate(15deg);
   }
-  30% {
-    opacity: 0.7;
+  20% {
+    opacity: 0.8;
   }
-  70% {
-    opacity: 0.7;
+  60% {
+    opacity: 0.8;
   }
   100% {
     opacity: 0;
-    transform: translateX(1500px) rotate(15deg);
+    transform: translateX(1800px) rotate(15deg);
   }
 }
 
@@ -212,8 +227,8 @@ body {
   width: 100%;
   height: 100%;
   background-image: 
-    linear-gradient(rgba(100, 255, 218, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(100, 255, 218, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(0, 173, 181, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 173, 181, 0.05) 1px, transparent 1px);
   background-size: 40px 40px;
   opacity: 0.3;
 }
@@ -506,7 +521,7 @@ nav {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.1), transparent);
+  background: linear-gradient(90deg, transparent, rgba(0, 173, 181, 0.1), transparent);
   transition: left 0.5s;
 }
 
@@ -546,20 +561,20 @@ nav {
 .gear-icon {
   position: absolute;
   color: var(--accent);
-  opacity: 0.15;
+  opacity: 0.2;
   animation: spin 20s linear infinite;
 }
 
 .gear-1 {
   top: 20%;
   right: 15%;
-  font-size: 80px;
+  font-size: 100px;
 }
 
 .gear-2 {
   bottom: 20%;
   right: 25%;
-  font-size: 60px;
+  font-size: 80px;
   animation-direction: reverse;
 }
 
@@ -567,9 +582,9 @@ nav {
   position: absolute;
   bottom: 15%;
   left: 10%;
-  width: 80px;
-  height: 80px;
-  opacity: 0.05;
+  width: 100px;
+  height: 100px;
+  opacity: 0.1;
 }
 
 .audi-ring::before {
@@ -577,7 +592,7 @@ nav {
   position: absolute;
   width: 100%;
   height: 100%;
-  border: 3px solid var(--audi-red);
+  border: 4px solid var(--audi-red);
   border-radius: 50%;
   animation: ring-pulse 3s ease-in-out infinite;
 }
@@ -589,14 +604,14 @@ nav {
   height: 70%;
   top: 15%;
   left: 15%;
-  border: 3px solid var(--audi-red);
+  border: 4px solid var(--audi-red);
   border-radius: 50%;
   animation: ring-pulse 3s ease-in-out infinite 0.2s;
 }
 
 @keyframes ring-pulse {
-  0%, 100% { transform: scale(1); opacity: 0.05; }
-  50% { transform: scale(1.1); opacity: 0.1; }
+  0%, 100% { transform: scale(1); opacity: 0.1; }
+  50% { transform: scale(1.2); opacity: 0.2; }
 }
 
 @keyframes spin {
@@ -798,7 +813,7 @@ nav {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(100, 255, 218, 0.1), transparent);
+  background: linear-gradient(135deg, rgba(0, 173, 181, 0.1), transparent);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -856,12 +871,13 @@ nav {
 }
 
 .tag {
-  background: rgba(100, 255, 218, 0.1);
+  background: rgba(0, 173, 181, 0.15);
   color: var(--accent);
   padding: 5px 15px;
   border-radius: 20px;
   font-size: 0.85rem;
   font-family: 'JetBrains Mono', monospace;
+  border: 1px solid rgba(0, 173, 181, 0.3);
 }
 
 .project-actions {
@@ -888,7 +904,7 @@ nav {
 
 .btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(100, 255, 218, 0.2);
+  box-shadow: 0 10px 25px rgba(0, 173, 181, 0.3);
 }
 
 .btn-outline {
@@ -1056,6 +1072,7 @@ footer {
   backdrop-filter: blur(10px);
   position: relative;
   z-index: 1;
+  overflow: hidden;
 }
 
 .project-header {
@@ -1086,7 +1103,7 @@ footer {
 }
 
 .overview-box {
-  background: rgba(100, 255, 218, 0.05);
+  background: rgba(0, 173, 181, 0.08);
   padding: 25px;
   border-radius: 12px;
   margin-bottom: 25px;
@@ -1131,20 +1148,25 @@ footer {
 /* Project-specific Animations */
 .code-animation {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  opacity: 0.1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
   pointer-events: none;
+  z-index: 1;
+  opacity: 0.15;
 }
 
 .code-line {
+  position: absolute;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.9rem;
   color: var(--accent);
-  margin-bottom: 2px;
   white-space: nowrap;
   overflow: hidden;
-  animation: typewriter 3s steps(30) infinite;
+  animation: typewriter 4s steps(40) infinite, scrollDown 20s linear infinite;
+  text-shadow: 0 0 10px var(--accent);
+  opacity: 0.7;
 }
 
 @keyframes typewriter {
@@ -1152,36 +1174,123 @@ footer {
   to { width: 100%; }
 }
 
+@keyframes scrollDown {
+  0% { 
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.7;
+  }
+  95% {
+    opacity: 0.7;
+  }
+  100% { 
+    transform: translateY(calc(100vh + 100px));
+    opacity: 0;
+  }
+}
+
+/* Cryo Animation - More Visible */
 .cryo-animation {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-  opacity: 0.1;
+  width: 120px;
+  height: 120px;
+  bottom: 40px;
+  right: 40px;
   pointer-events: none;
+  z-index: 1;
+  opacity: 0.3;
 }
 
 .cryo-gear {
-  font-size: 2rem;
+  font-size: 80px;
   color: var(--space-blue);
-  animation: cryo-spin 8s linear infinite;
+  animation: cryo-spin 6s linear infinite;
+  filter: drop-shadow(0 0 15px var(--space-blue));
 }
 
 @keyframes cryo-spin {
   0% { transform: rotate(0deg) scale(1); }
-  50% { transform: rotate(180deg) scale(1.1); }
+  50% { transform: rotate(180deg) scale(1.2); }
   100% { transform: rotate(360deg) scale(1); }
 }
 
-.carbon-gear {
-  font-size: 2rem;
-  color: var(--audi-red);
-  animation: carbon-vibrate 2s ease-in-out infinite;
+/* Carbon Fiber F1 Animation - More Visible */
+.carbon-animation {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  top: 40px;
+  right: 40px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.3;
 }
 
-@keyframes carbon-vibrate {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(5deg); }
-  75% { transform: rotate(-5deg); }
+.f1-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.track-line-f1 {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--audi-red), transparent);
+  border-radius: 2px;
+  animation: f1-speed 2s linear infinite;
+  filter: drop-shadow(0 0 10px var(--audi-red));
+}
+
+.track-line-f1:nth-child(1) {
+  top: 20%;
+  animation-delay: 0s;
+}
+
+.track-line-f1:nth-child(2) {
+  top: 50%;
+  animation-delay: 0.5s;
+}
+
+.track-line-f1:nth-child(3) {
+  top: 80%;
+  animation-delay: 1s;
+}
+
+@keyframes f1-speed {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.f1-gear {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  color: var(--audi-red);
+  animation: gear-vibrate 1s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px var(--audi-red));
+}
+
+@keyframes gear-vibrate {
+  0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+  25% { transform: translate(-50%, -50%) rotate(10deg); }
+  75% { transform: translate(-50%, -50%) rotate(-10deg); }
 }
 
 /* Responsive Design */
@@ -1255,7 +1364,8 @@ footer {
   }
   
   .code-animation,
-  .cryo-animation {
+  .cryo-animation,
+  .carbon-animation {
     display: none;
   }
 }
@@ -1290,788 +1400,4 @@ footer {
   <div class="blueprint-grid"></div>
   <div class="f1-circuit">
     <div class="circuit-line circuit-line-1"></div>
-    <div class="circuit-line circuit-line-2"></div>
-    <div class="circuit-line circuit-line-3"></div>
-  </div>
-  <div class="space-dots">
-    <div class="space-dot space-dot-1"></div>
-    <div class="space-dot space-dot-2"></div>
-    <div class="space-dot space-dot-3"></div>
-    <div class="space-dot space-dot-4"></div>
-  </div>
-  <div class="rocket-trail"></div>
-</div>
-
-<!-- Theme Toggle -->
-<div class="theme-toggle" id="themeToggle">
-  <i class="fas fa-moon"></i>
-</div>
-
-<!-- Header -->
-<header>
-  <div class="brand">
-    <div class="logo">CB</div>
-    <div class="brand-text">
-      <h1>Chakib Belghait</h1>
-      <p>Mechanical Engineering Student</p>
-    </div>
-  </div>
-  <nav>
-    <a href="#hero" class="nav-link active">Home</a>
-    <a href="#about" class="nav-link">About</a>
-    <a href="#projects" class="nav-link">Projects</a>
-    <a href="#resume" class="nav-link">Resume</a>
-    <a href="#contact" class="nav-link">Contact</a>
-  </nav>
-</header>
-
-<!-- Hero Section -->
-<section id="hero">
-  <div class="hero-content">
-    <div class="hero-text">
-      <p class="hero-greeting">Hi, I'm</p>
-      <h1 class="hero-title">Chakib Belghait<span>.</span></h1>
-      <p class="hero-subtitle">
-        <span class="typing-container">
-          <span class="typing-text">Mechanical Engineering student at the University of Waterloo</span>
-          <span class="cursor"></span>
-        </span>
-      </p>
-      
-      <div class="contact-info">
-        <a href="tel:4385030688" class="contact-item">
-          <i class="fas fa-phone"></i>
-          <span>438-503-0688</span>
-        </a>
-        <a href="mailto:chakib.belghait@uwaterloo.ca" class="contact-item">
-          <i class="fas fa-envelope"></i>
-          <span>chakib.belghait@uwaterloo.ca</span>
-        </a>
-        <a href="https://www.linkedin.com/in/chakib-belghait-a58932376" target="_blank" class="contact-item">
-          <i class="fab fa-linkedin"></i>
-          <span>LinkedIn</span>
-        </a>
-      </div>
-    </div>
-    
-    <!-- Vertical Navigation Menu -->
-    <div class="hero-menu">
-      <a href="#about" class="menu-item">
-        <i class="fas fa-user"></i>
-        <span>About Me</span>
-      </a>
-      <a href="#projects" class="menu-item">
-        <i class="fas fa-project-diagram"></i>
-        <span>Engineering Projects</span>
-      </a>
-      <a href="#resume" class="menu-item">
-        <i class="fas fa-file-alt"></i>
-        <span>Resume & Skills</span>
-      </a>
-      <a href="#contact" class="menu-item">
-        <i class="fas fa-envelope"></i>
-        <span>Contact Me</span>
-      </a>
-      <a href="Resume.pdf" target="_blank" class="menu-item">
-        <i class="fas fa-download"></i>
-        <span>Download Resume</span>
-      </a>
-    </div>
-  </div>
-  
-  <div class="hero-pattern">
-    <i class="fas fa-cog gear-icon gear-1"></i>
-    <i class="fas fa-cog gear-icon gear-2"></i>
-    <div class="audi-ring"></div>
-  </div>
-</section>
-
-<!-- About Section -->
-<section id="about">
-  <div class="section-header">
-    <h2 class="section-title">About Me</h2>
-    <p class="section-subtitle">Engineering student with a passion for precision and innovation</p>
-  </div>
-  
-  <div class="about-content">
-    <div class="profile-container">
-      <div class="profile-image">
-        <img src="Goat.jpg" alt="Chakib Belghait">
-      </div>
-    </div>
-    
-    <div class="about-text">
-      <p>
-        I am a Mechanical Engineering student at the University of Waterloo passionate about engineering systems, thermal design, and applied research. Throughout my academic journey, I've maintained a close connection with practical engineering, from participating in FIRST robotics competitions to conducting research at Concordia University.
-      </p>
-      
-      <p>
-        I've worked extensively with mechanical, electrical, and software systems across various projects. I thrive on conceptualizing and realizing innovative solutions, whether through CAD design, FEA simulations, or hands-on manufacturing and assembly.
-      </p>
-      
-      <p>
-        Beyond technical skills, I've developed discipline and strategic thinking through competitive chess (ranking 16th in Quebec U18 in 2024), provincial and national karate championships, and sports like soccer and fishing. These experiences have shaped my approach to engineering challenges.
-      </p>
-      
-      <div class="skills-container">
-        <div class="skill-item">
-          <i class="fas fa-cube"></i>
-          <h3>CAD & Design</h3>
-          <p>SolidWorks, AutoCAD</p>
-        </div>
-        
-        <div class="skill-item">
-          <i class="fas fa-cogs"></i>
-          <h3>Analysis</h3>
-          <p>MATLAB, FEA</p>
-        </div>
-        
-        <div class="skill-item">
-          <i class="fas fa-industry"></i>
-          <h3>Manufacturing</h3>
-          <p>3D Printing, Machining</p>
-        </div>
-        
-        <div class="skill-item">
-          <i class="fas fa-tools"></i>
-          <h3>Prototyping</h3>
-          <p>Assembly, Testing</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Projects Section -->
-<section id="projects">
-  <div class="section-header">
-    <h2 class="section-title">Projects</h2>
-    <p class="section-subtitle">Engineering solutions with practical applications</p>
-  </div>
-  
-  <div class="projects-grid">
-    <!-- Cryogenics Project -->
-    <div class="project-card">
-      <div class="project-image">
-        <img src="IMG_1421.jpg" alt="Cryogenic System">
-      </div>
-      <div class="project-content">
-        <h3>Closed-Cycle Cryogenic System</h3>
-        <p>Developed a helium-based cryocooler system reaching sub-4K temperatures with custom thermal links and vibration isolation for spectroscopic research applications.</p>
-        <div class="project-tags">
-          <span class="tag">Thermal Systems</span>
-          <span class="tag">Research</span>
-          <span class="tag">Prototyping</span>
-        </div>
-        <div class="project-actions">
-          <a href="#" class="btn" onclick="showProject('cryogenics'); return false;">View Details</a>
-          <a href="Design and Developpment of a Closed-Cycle cryogenic system.pdf" target="_blank" class="btn btn-outline">Documentation</a>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Carbon Fiber Project -->
-    <div class="project-card">
-      <div class="project-image">
-        <img src="Goat car.jpg" alt="Carbon Fiber Research">
-      </div>
-      <div class="project-content">
-        <h3>Composite Joining Methods</h3>
-        <p>Research on advanced techniques for bonding carbon fiber to metal components using 3D-printed prototypes and composite layups to optimize structural strength.</p>
-        <div class="project-tags">
-          <span class="tag">Materials</span>
-          <span class="tag">Composites</span>
-          <span class="tag">R&D</span>
-        </div>
-        <div class="project-actions">
-          <a href="#" class="btn" onclick="showProject('carbonfiber'); return false;">View Details</a>
-        </div>
-      </div>
-    </div>
-    
-    <!-- FinSight Project -->
-    <div class="project-card">
-      <div class="project-image">
-        <img src="Screenshot 2025-11-07 213508.png" alt="FinSight Platform">
-      </div>
-      <div class="project-content">
-        <h3>Financial Analytics Platform</h3>
-        <p>Developed a financial analytics platform providing real-time insights and predictive modeling using machine learning algorithms for investment decision support.</p>
-        <div class="project-tags">
-          <span class="tag">Software</span>
-          <span class="tag">Data Analysis</span>
-          <span class="tag">ML</span>
-        </div>
-        <div class="project-actions">
-          <a href="#" class="btn" onclick="showProject('finsight'); return false;">View Details</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Project Detail Pages -->
-<!-- Cryogenics Project Page -->
-<div id="project-cryogenics" class="project-page">
-  <div class="project-header">
-    <h1>Closed-Cycle Cryogenic System (4 K)</h1>
-  </div>
-
-  <!-- Cryo Animation -->
-  <div class="cryo-animation">
-    <i class="fas fa-snowflake cryo-gear"></i>
-  </div>
-
-  <!-- Overview Section -->
-  <div class="project-overview">
-    <div class="overview-image">
-      <img src="IMG_1421.jpg" width="150" height="480" style="border-radius: 8px;" alt="Cryogenic System">
-    </div>
-    <div class="overview-content">
-      <div class="overview-box">
-        <h3>Project Overview</h3>
-        <p> This research project was conducted at Concordia University, under the supervision of the physics department chair: Valter Zazubovits. The goal was to design an devlopp a system that could reach 4K for long time ranges as an alternative for liquid helium. This project was part of a bigger research on Light-Harvesting complexes and their application in bio-solar technologies. The cryogenic system involved a Sumitomo RDK-415D cryocooler with gold-coated copper links, vacuum-sealed aluminum chambers, and G10 supports for stability.
-        <h3>Skills Used</h3>
-        <p>Material structures, Material Analysis, Thermodynamics, Machining, Gold plating, Wiring, Vacuum systems, Assembly, Documentation, Heat transfer, Schematic reading, Teamwork</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Section 1 -->
-  <div class="project-section">
-    <div class="section-content">
-      <h2>System Design & Architecture</h2>
-      <p>The system architecture was developed around a modular closed-cycle cryogenic configuration integrating mechanical, thermal, and optical subsystems. A Sumitomo RDK-415D cold head serves as the central cooling unit, connected to a CSW-71C helium compressor through high-pressure lines operating in a sealed loop. The cold stages are thermally linked to the optical sample chamber via gold-coated OFHC copper links. The assembly is enclosed within a vacuum-sealed aluminum housing fitted with a low-emissivity radiation shield extending from the first stage of the cryocooler. The sample chamber is linked at the end of the system. Also two stainless-steel bellows isolate the cryostat from external vibrations. All components are mounted on a rigid optical table.</p>
-    </div>
-    <div class="section-image">
-      <img src="Arch.png" width="150" height="335" style="border-radius: 8px;" alt="Thermal Design">
-    </div>
-  </div>
-
-  <!-- Section 2 -->
-  <div class="project-section">
-    <div class="section-image">
-      <img src="opt.png" width="150" height="335" style="border-radius: 8px;" alt="Vibration Isolation">
-    </div>
-    <div class="section-content">
-      <h2>Improvements and Optimiziation</h2>
-      <p>Several upgrades were introduced to improve the system's performance, stability, and control. A radiation shield was added to reduce radiative heat transfer and keep the cold stages stable at cryogenic temperatures. The thermal links and contact surfaces were gold-coated to improve thermal conductivity and area of contact. The entire setup was sealed inside a vacuum chamber to eliminate convective losses and maintain uniform temperature over time. Dual bellows and a revised mounting structure helped reduce mechanical vibration, while an integrated heater and temperature sensors provided finer control during operation. Together, these improvements improved the cooling efficiency, reliability, and overall performance of the closed-cycle cryogenic system by 21%.</p>
-    </div>
-  </div>
-
-   <div class="project-section">
-    <div class="section-content">
-      <h2>Material </h2>
-      <p>The system design relied on three main materials, each chosen for its specific thermal and mechanical properties at cryogenic temperatures. Gold-coated high-purity OFHC copper was used for the thermal links due to its excellent heat conductivity, allowing efficient transfer from the cold head to the sample chamber. G10 fiberglass epoxy was selected for the chamber supports because of its very low thermal conductivity and minimal contraction when cooled, ensuring mechanical stability without introducing heat leaks. Aluminum 6061-T6 was used for the vacuum housing while Aluminum 6063-T5 was used for the radiation shield. This choice offered the structural strength for the vacuum housing while allowing high thermal conductivity around 40–50 K for the radiation shield which helped distribute and dissipate intercepted heat evenly. Together, these materials provided an optimal balance between thermal management, insulation, and mechanical reliability in the 4 K operating range.</p>
-    </div>
-    <div class="section-image">
-      <img src="graph.png" width="200" height="435" style="border-radius: 8px;" alt="Experimental Results">
-    </div>
-  </div>
-  
-  <!-- Back button at bottom -->
-  <div class="project-back-bottom">
-    <a href="#" class="btn back-btn" onclick="hideAllProjects(); return false;">← Back to Portfolio</a>
-  </div>
-</div>
-
-
-
-<!-- Carbon Fiber Project Page -->
-<div id="project-carbonfiber" class="project-page">
-  <div class="project-header">
-    <h1>R&D - Joining Methods</h1>
-  </div>
-
-  <!-- Gear Animation -->
-  <div class="cryo-animation">
-    <i class="fas fa-cog carbon-gear"></i>
-  </div>
-
-  <!-- Overview Section -->
-  <div class="project-overview">
-    <div class="overview-image">
-      <img src="IMG_3187.png" width="150" height="345" style="border-radius: 8px;" alt="Carbon Fiber Joining">
-    </div>
-    <div class="overview-content">
-      <div class="overview-box">
-        <h3>Project Overview</h3>
-        <p>Carbon Fiber is a unique material that is very hard to work with. Most of the parts of the Formula elctrcic car are recovered by this composite. This project aimed at finding new ways to optimise the joining methods between aluminium and Carbon Fiber mainly in the airfoil. This project was done with the aerodynamics sub-team.</p>
-        <h3>Skills Used</h3>
-        <p>Composite Manufacturing, Material Testing, SolidWorks, AutoCAD, Prototyping, 3D-printing, Structural Analysis</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Section 1 -->
-  <div class="project-section">
-    <div class="section-content">
-      <h2>Prototype Development</h2>
-      <p> The mountings for the joining block (immitation of airfoils) were designed on solidworks and 3D printed using BambuLab. 1-1 replicas of these blocks were designed on AutoCAD and waterjetted. This was made to replicate 3 different joining options and perform strngth and structural tests.</p>
-    </div>
-    <div class="section-image">
-      <img src="Orientations.png"  style="border-radius: 8px; width: 500px; object-fit: cover;" alt="Prototype Development">
-    </div>
-  </div>
-
-  <!-- Section 2 -->
-  <div class="project-section">
-    <div class="section-image">
-      <img src="IMG_1751.jpg" width="150" height="335" style="border-radius: 8px;; height: 250px; object-fit: cover;" alt="Joining Methods">
-      <img src="20251102_190453.jpg" width="150" height="330" style="border-radius: 8px;; height: 250px; object-fit: cover;" alt="Joining Methods">
-    </div>
-    <div class="section-content">
-      <h2>Manifacture and assemply</h2>
-      <p>For this project, a lot of manifacturing and assembling techniques and tools were used. We used 3D printing for the airfoil or aother car part replicas. These pieces were then recovered in resin and carbon fiber (vaccum at the end to dry and remove the extra resin). The blocks were made out of a 1/4" aluminium sheet that was waterjetted. </p>
-      <img src="image.jpg" width="450" height="410" style="border-radius: 8px;; height: 270px; object-fit: cover;" alt="Joining Methods">
-    </div>
-  </div>
-
-  <!-- Section 3 -->
-  <div class="project-section">
-    <div class="section-content">
-      <h2>Testing & Results</h2>
-      <p>This part is still on-going so there are no current results. However, after assembling the prototypes, various strength, aerodynamics and structural tests will be conducted. We will then compare the result and take a desision of potential future applications and implementations.</p>
-    </div>
-    <div class="section-image">
-      <img src="llllllll.jpg" width="450" height="375" style="border-radius: 8px;" alt="Implementation">
-    </div>
-  </div>
-  
-  <!-- Back button at bottom -->
-  <div class="project-back-bottom">
-    <a href="#" class="btn back-btn" onclick="hideAllProjects(); return false;">← Back to Portfolio</a>
-  </div>
-</div>
-
-<!-- Finsight Project Page -->
-<div id="project-finsight" class="project-page">
-  <div class="project-header">
-    <h1>FinSight - Financial Analytics Platform</h1>
-  </div>
-
-  <!-- Code Animation -->
-  <div class="code-animation">
-    <div class="code-line">import pandas as pd</div>
-    <div class="code-line">from flask import Flask</div>
-    <div class="code-line">import gemini_ai</div>
-    <div class="code-line"># Data analysis pipeline</div>
-    <div class="code-line">def analyze_financial_data():</div>
-  </div>
-
-  <!-- Overview Section -->
-  <div class="project-overview">
-    <div class="overview-image">
-      <img src="Screenshot 2025-11-07 212536.png" alt="FinSight Platform - Dashboard" style="border-radius: 8px; height: 400px; object-fit: cover;">
-     
-    </div>
-    <div class="overview-content">
-      <div class="overview-box">
-        <h3>Project Overview</h3>
-        <p>This project was part of the 2025 Dathaton organised by Polythechnique Montréal and AWS. The goal was to create a platform that will aid investors to comprehend complex financial laws, texts and reports, and visualize the direct impacts on their Portfolio, using an AI agent. The software was expected to give simple and consise insight while also propsing forecasts and risk mitigation. The event lasted 36 hours in teams of 2-4. </p>
-        <h3>Skills Used</h3>
-        <p>HTML, Machine Learning, Data Analysis, API Integration, Python, Algorithm Development, Teamwork </p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Section 1 -->
-  <div class="project-section">
-    <div class="section-content">
-      <h2>Platform Architecture</h2>
-      <p>The platform architecture was designed around a scalable Python backend capable of integrating multiple financial data sources through RESTful APIs. This approach was selected as it allows seamless aggregation of heterogeneous market datasets while maintaining flexibility for future expansion. Data processing pipelines were implemented within this framework to automatically clean, normalize, and analyze real-time financial streams. This design enables the predictive modeling module to operate on consistent, high-quality inputs, ensuring reliable insights and faster adaptation to market fluctuations.</p>
-    </div>
-    <div class="section-image">
-      <img src="Screenshot 2025-11-07 223726.png" width="150" height="335" style="border-radius: 8px;" alt="Platform Architecture">
-    </div>
-  </div>
-
-  <!-- Section 2 -->
-  <div class="project-section">
-    <div class="section-image">
-      <img src="Screenshot 2025-11-07 224613.png" width="150" height="335" style="border-radius: 8px;" alt="Machine Learning Models">
-    </div>
-    <div class="section-content">
-      <h2>AI and Python Implementation</h2>
-      <p>FinSight incorporates Google Gemini as the core of the Python backend. This AI agent was the best option for this project as compared to most other LLMs that primarily handle text, Gemini natively integrates multiple data types. Also, the FLASK library was improted to the python backend to create a direct connection with the user imputs conducted throught the HTML frontend. Finally, a memory system was added to the software, allowing th AI agent to keep long term memories of the document sent by the user and optimising the answers generated.</p>
-    </div>
-  </div>
-
-  <!-- Section 3 -->
-  <div class="project-section">
-    <div class="section-content">
-      <h2>User Interface & Visualization</h2>
-      <p>The UI was made using a mix of HTML, CSS, and Java Script. The platform launches with a home page that includes the name of the software and some background animation followed by a smooth transition made with JS. This transition leads to another interface where the user can upload documents of any types which are sent to the python backend. Another interface with the AI analysis and a text box opens to the user allowing him to write his own prompts. The pages are linked in the HTML code allowing smmoth transitions to one another.</p>
-      <img src="Screenshot 2025-11-07 223122.png" width="500" height="225" style="border-radius: 8px;" alt="User Interface">
-    </div>
-    <div class="section-image">
-      <img src="Screenshot 2025-11-07 212536.png" width="150" height="335" style="border-radius: 8px; height: 250px; object-fit: cover;" alt="User Interface">
-      <img src="Screenshot 2025-11-07 222904.png" width="250" height="325" style="border-radius: 8px; height: 250px; object-fit: cover;" alt="User Interface"> 
-      
-    </div>
-  </div>
-  
-  <!-- Back button at bottom -->
-  <div class="project-back-bottom">
-    <a href="#" class="btn back-btn" onclick="hideAllProjects(); return false;">← Back to Portfolio</a>
-  </div>
-</div>
-
-<!-- Resume Section -->
-<section id="resume">
-  <div class="section-header">
-    <h2 class="section-title">Resume</h2>
-    <p class="section-subtitle">Academic and professional experience</p>
-  </div>
-  
-  <div class="resume-container">
-    <div class="resume-preview">
-      <h3>View My Resume</h3>
-      <p>Download my complete resume to see detailed information about my education, projects, and technical skills in mechanical engineering.</p>
-      <a href="Resume.pdf" target="_blank" class="btn">
-        <i class="fas fa-download"></i> Download Resume
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- Contact Section -->
-<section id="contact">
-  <div class="section-header">
-    <h2 class="section-title">Get In Touch</h2>
-    <p class="section-subtitle">Feel free to reach out for collaboration or opportunities</p>
-  </div>
-  
-  <div class="contact-container">
-    <div class="contact-grid">
-      <div class="contact-card">
-        <i class="fas fa-envelope"></i>
-        <h3>Email</h3>
-        <p>chakib.belghait@uwaterloo.ca</p>
-        <a href="mailto:chakib.belghait@uwaterloo.ca" class="btn btn-outline">Send Message</a>
-      </div>
-      
-      <div class="contact-card">
-        <i class="fas fa-phone"></i>
-        <h3>Phone</h3>
-        <p>438-503-0688</p>
-        <a href="tel:4385030688" class="btn btn-outline">Call Now</a>
-      </div>
-      
-      <div class="contact-card">
-        <i class="fab fa-linkedin"></i>
-        <h3>LinkedIn</h3>
-        <p>Professional Profile</p>
-        <a href="https://www.linkedin.com/in/chakib-belghait-a58932376" target="_blank" class="btn btn-outline">Connect</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer>
-  <div class="footer-content">
-    <div class="footer-logo">CB</div>
-    
-    <div class="footer-links">
-      <a href="#hero" class="footer-link">Home</a>
-      <a href="#about" class="footer-link">About</a>
-      <a href="#projects" class="footer-link">Projects</a>
-      <a href="#resume" class="footer-link">Resume</a>
-      <a href="#contact" class="footer-link">Contact</a>
-    </div>
-    
-    <p class="copyright">© 2024 Chakib Belghait. University of Waterloo Mechanical Engineering.</p>
-  </div>
-</footer>
-
-<script>
-// Theme Toggle
-const themeToggle = document.getElementById('themeToggle');
-const body = document.body;
-
-// Check for saved theme or prefer-color-scheme
-const savedTheme = localStorage.getItem('theme') || 'dark';
-body.setAttribute('data-theme', savedTheme);
-updateThemeIcon(savedTheme);
-
-function updateThemeIcon(theme) {
-  const icon = themeToggle.querySelector('i');
-  icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
-}
-
-themeToggle.addEventListener('click', () => {
-  const currentTheme = body.getAttribute('data-theme');
-  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-  
-  body.setAttribute('data-theme', newTheme);
-  localStorage.setItem('theme', newTheme);
-  updateThemeIcon(newTheme);
-  
-  // Add animation effect
-  themeToggle.style.transform = 'scale(0.9)';
-  setTimeout(() => {
-    themeToggle.style.transform = '';
-  }, 150);
-});
-
-// Smooth scrolling for navigation links
-document.querySelectorAll('nav a, .footer-link, .menu-item').forEach(link => {
-  link.addEventListener('click', function(e) {
-    const href = this.getAttribute('href');
-    if (href && href.startsWith('#')) {
-      e.preventDefault();
-      const targetId = href;
-      const targetSection = document.querySelector(targetId);
-      
-      if (targetSection) {
-        // Update active nav link
-        document.querySelectorAll('.nav-link').forEach(navLink => {
-          navLink.classList.remove('active');
-        });
-        if (this.classList.contains('nav-link')) {
-          this.classList.add('active');
-        }
-        
-        // Smooth scroll to section
-        window.scrollTo({
-          top: targetSection.offsetTop - 80,
-          behavior: 'smooth'
-        });
-      }
-    }
-  });
-});
-
-// Active nav link on scroll
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('.nav-link');
-
-window.addEventListener('scroll', () => {
-  let current = '';
-  
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
-    
-    if (scrollY >= sectionTop - 100) {
-      current = section.getAttribute('id');
-    }
-  });
-  
-  navLinks.forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === `#${current}`) {
-      link.classList.add('active');
-    }
-  });
-});
-
-// Typing animation
-function initTypingAnimation() {
-  const texts = [
-    "Mechanical Engineering student at the University of Waterloo",
-    "Passionate about precision engineering and thermal systems",
-    "Developing innovative solutions through applied research",
-    "Bridging theory and practice in mechanical engineering"
-  ];
-  
-  let textIndex = 0;
-  let charIndex = 0;
-  const typingText = document.querySelector('.typing-text');
-  const cursor = document.querySelector('.cursor');
-  
-  if (!typingText || !cursor) return;
-  
-  function typeWriter() {
-    if (charIndex < texts[textIndex].length) {
-      typingText.textContent = texts[textIndex].substring(0, charIndex + 1);
-      charIndex++;
-      setTimeout(typeWriter, 50);
-    } else {
-      setTimeout(eraseText, 2000);
-    }
-  }
-  
-  function eraseText() {
-    if (charIndex > 0) {
-      typingText.textContent = texts[textIndex].substring(0, charIndex - 1);
-      charIndex--;
-      setTimeout(eraseText, 30);
-    } else {
-      textIndex = (textIndex + 1) % texts.length;
-      setTimeout(typeWriter, 500);
-    }
-  }
-  
-  // Start typing after a delay
-  setTimeout(typeWriter, 1000);
-}
-
-// Initialize background animations
-function initializeAnimations() {
-  // Animate circuit lines
-  const circuitLines = document.querySelectorAll('.circuit-line');
-  circuitLines.forEach((line, index) => {
-    setTimeout(() => {
-      line.style.animation = 'none';
-      setTimeout(() => {
-        line.style.animation = `circuit-race 4s linear infinite ${index}s`;
-      }, 10);
-    }, index * 500);
-  });
-  
-  // Animate space dots
-  const spaceDots = document.querySelectorAll('.space-dot');
-  spaceDots.forEach((dot, index) => {
-    dot.style.animation = `space-float 20s linear infinite ${index * 5}s`;
-  });
-  
-  // Rocket trail animation
-  const rocketTrail = document.querySelector('.rocket-trail');
-  if (rocketTrail) {
-    setInterval(() => {
-      rocketTrail.style.animation = 'none';
-      setTimeout(() => {
-        rocketTrail.style.animation = 'rocket-launch 8s ease-in-out infinite';
-      }, 10);
-    }, 8000);
-  }
-}
-
-// Hero text animation
-function animateHeroText() {
-  const greeting = document.querySelector('.hero-greeting');
-  const title = document.querySelector('.hero-title');
-  const subtitle = document.querySelector('.hero-subtitle');
-  const menu = document.querySelector('.hero-menu');
-  const contactInfo = document.querySelector('.contact-info');
-  
-  // Reset animations
-  [greeting, title, subtitle, menu, contactInfo].forEach(el => {
-    if (el) {
-      el.style.animation = 'none';
-      void el.offsetWidth; // Trigger reflow
-    }
-  });
-  
-  // Apply animations with delays
-  setTimeout(() => {
-    if (greeting) greeting.style.animation = 'slideInLeft 0.8s ease forwards';
-  }, 100);
-  
-  setTimeout(() => {
-    if (title) title.style.animation = 'slideInLeft 0.8s ease 0.2s forwards';
-  }, 300);
-  
-  setTimeout(() => {
-    if (subtitle) subtitle.style.animation = 'slideInLeft 0.8s ease 0.4s forwards';
-  }, 500);
-  
-  setTimeout(() => {
-    if (menu) menu.style.animation = 'slideInRight 0.8s ease 0.6s forwards';
-  }, 700);
-  
-  setTimeout(() => {
-    if (contactInfo) contactInfo.style.animation = 'fadeInUp 0.8s ease 0.8s forwards';
-  }, 900);
-}
-
-// Project page navigation
-function showProject(projectId) {
-  // Hide all project pages and main content
-  document.querySelectorAll('.project-page').forEach(page => {
-    page.style.display = 'none';
-  });
-  document.querySelectorAll('section, footer').forEach(section => {
-    section.style.display = 'none';
-  });
-  
-  // Show the selected project page
-  const projectPage = document.getElementById('project-' + projectId);
-  if (projectPage) {
-    projectPage.style.display = 'block';
-  }
-  
-  // Scroll to top
-  window.scrollTo(0, 0);
-  
-  // Initialize project-specific animations
-  if (projectId === 'finsight') {
-    initCodeAnimation();
-  }
-}
-
-function hideAllProjects() {
-  // Hide all project pages
-  document.querySelectorAll('.project-page').forEach(page => {
-    page.style.display = 'none';
-  });
-  
-  // Show all main content
-  document.querySelectorAll('section, footer').forEach(section => {
-    section.style.display = 'block';
-  });
-  
-  // Scroll to projects section
-  document.getElementById('projects').scrollIntoView();
-}
-
-// Code animation for FinSight project
-function initCodeAnimation() {
-  const codeLines = document.querySelectorAll('.code-line');
-  if (!codeLines.length) return;
-  
-  codeLines.forEach((line, index) => {
-    line.style.animation = 'none';
-    setTimeout(() => {
-      line.style.animation = `typewriter 3s steps(30) infinite ${index * 0.5}s`;
-    }, 100);
-  });
-}
-
-// Menu item hover effects
-document.querySelectorAll('.menu-item').forEach(item => {
-  item.addEventListener('mouseenter', function() {
-    this.style.transform = 'translateX(10px)';
-  });
-  
-  item.addEventListener('mouseleave', function() {
-    this.style.transform = 'translateX(0)';
-  });
-});
-
-// Initialize everything when page loads
-window.addEventListener('load', () => {
-  initializeAnimations();
-  animateHeroText();
-  initTypingAnimation();
-  
-  // Re-animate hero text every 30 seconds (subtle refresh)
-  setInterval(animateHeroText, 30000);
-  
-  // Parallax effect on scroll
-  window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const rocketTrail = document.querySelector('.rocket-trail');
-    const spaceDots = document.querySelectorAll('.space-dot');
-    
-    if (rocketTrail) {
-      rocketTrail.style.transform = `rotate(15deg) translateX(${scrolled * 0.1}px)`;
-    }
-    
-    spaceDots.forEach((dot, index) => {
-      dot.style.transform = `rotate(${scrolled * 0.01}deg) translateX(40px) rotate(${-scrolled * 0.01}deg)`;
-    });
-  });
-});
-
-// Add keyboard navigation for project pages
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    hideAllProjects();
-  }
-});
-</script>
-</body>
-</html>
+    <div class="circ
