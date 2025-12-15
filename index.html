@@ -1145,500 +1145,123 @@ footer {
   border-top: 1px solid var(--border);
 }
 
-/* ENHANCED: F1 Animation */
-.f1-animation {
-  position: fixed;
-  width: 400px;
-  height: 300px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.15;
-}
-
-.f1-track {
+/* Project-specific Animations */
+.code-animation {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba(218, 41, 28, 0.1) 20%,
-    rgba(218, 41, 28, 0.2) 50%,
-    rgba(218, 41, 28, 0.1) 80%,
-    transparent 100%);
-  border-radius: 50%;
-  animation: track-rotate 10s linear infinite;
-}
-
-.track-line {
-  position: absolute;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, transparent, var(--audi-red), transparent);
-  top: 50%;
-  transform: translateY(-50%);
-  filter: blur(1px);
-  opacity: 0.3;
-}
-
-.track-line:nth-child(2) {
-  transform: translateY(-50%) rotate(90deg);
-}
-
-@keyframes track-rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.f1-car-container {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  animation: f1-orbit 8s linear infinite;
-}
-
-.f1-car {
-  position: absolute;
-  width: 80px;
-  height: 25px;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  animation: car-drift 2s ease-in-out infinite alternate;
-}
-
-.f1-chassis {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, var(--audi-red), #ff6b6b);
-  border-radius: 5px 10px 10px 5px;
-  transform: perspective(100px) rotateY(-15deg);
-  box-shadow: 
-    0 0 20px var(--audi-red),
-    inset 0 0 10px rgba(255, 255, 255, 0.3);
-}
-
-.f1-halo {
-  position: absolute;
-  width: 60px;
-  height: 25px;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 50%;
-  top: -15px;
-  left: 10px;
-  transform: rotateX(60deg);
-  filter: blur(1px);
-}
-
-.f1-cockpit {
-  position: absolute;
-  width: 20px;
-  height: 15px;
-  background: rgba(0, 0, 0, 0.8);
-  top: 5px;
-  left: 15px;
-  border-radius: 3px;
-}
-
-.f1-engine-cover {
-  position: absolute;
-  width: 40px;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.5));
-  right: 0;
-  border-radius: 0 5px 5px 0;
-}
-
-.f1-wing {
-  position: absolute;
-  height: 8px;
-  background: var(--audi-red);
-  box-shadow: 0 0 10px var(--audi-red);
-}
-
-.front-wing {
-  width: 100px;
-  top: -10px;
-  left: -10px;
-  border-radius: 10px 2px 2px 10px;
-  transform: rotate(-5deg);
-}
-
-.rear-wing {
-  width: 90px;
-  bottom: -10px;
-  right: -10px;
-  border-radius: 2px 10px 10px 2px;
-  transform: rotate(5deg);
-}
-
-.f1-wheel {
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  background: radial-gradient(circle, #333 30%, #111 70%);
-  border-radius: 50%;
-  border: 2px solid #666;
-  animation: wheel-spin 0.5s linear infinite;
-}
-
-.front-wheel {
-  top: 50%;
-  left: -5px;
-  transform: translateY(-50%);
-}
-
-.rear-wheel {
-  top: 50%;
-  right: -5px;
-  transform: translateY(-50%);
-}
-
-.f1-exhaust {
-  position: absolute;
-  width: 20px;
-  height: 5px;
-  right: -15px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: linear-gradient(90deg, #ff9500, #ff3300, transparent);
-  border-radius: 5px;
-  animation: exhaust-flame 0.3s ease-in-out infinite alternate;
-  filter: blur(2px);
-}
-
-.f1-sparks {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.spark {
-  position: absolute;
-  width: 3px;
-  height: 3px;
-  background: #ffcc00;
-  border-radius: 50%;
-  animation: spark-fly 0.5s ease-out forwards;
-  filter: blur(1px);
-}
-
-@keyframes f1-orbit {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes car-drift {
-  0% { transform: translateY(-50%) translateX(0) rotate(0deg); }
-  100% { transform: translateY(-50%) translateX(10px) rotate(2deg); }
-}
-
-@keyframes wheel-spin {
-  from { transform: translateY(-50%) rotate(0deg); }
-  to { transform: translateY(-50%) rotate(360deg); }
-}
-
-@keyframes exhaust-flame {
-  0% { 
-    width: 15px; 
-    opacity: 0.7; 
-    background: linear-gradient(90deg, #ff9500, transparent);
-  }
-  100% { 
-    width: 25px; 
-    opacity: 1; 
-    background: linear-gradient(90deg, #ff3300, transparent);
-  }
-}
-
-@keyframes spark-fly {
-  0% {
-    transform: translate(0, 0) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(var(--tx, 20px), var(--ty, -20px)) scale(0);
-    opacity: 0;
-  }
-}
-
-/* ENHANCED: FinSight AI Animation */
-.ai-animation {
-  position: fixed;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.1;
-}
-
-.data-flow {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.data-particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: var(--accent);
-  border-radius: 50%;
-  filter: drop-shadow(0 0 8px var(--accent));
-  animation: data-flow-animation 3s linear infinite;
-}
-
-.data-particle:nth-child(1) {
-  top: 20%;
-  left: 10%;
-  animation-delay: 0s;
-}
-
-.data-particle:nth-child(2) {
-  top: 40%;
-  left: 30%;
-  animation-delay: 0.5s;
-}
-
-.data-particle:nth-child(3) {
-  top: 60%;
-  left: 50%;
-  animation-delay: 1s;
-}
-
-.data-particle:nth-child(4) {
-  top: 80%;
-  left: 70%;
-  animation-delay: 1.5s;
-}
-
-.data-particle:nth-child(5) {
-  top: 30%;
-  left: 90%;
-  animation-delay: 2s;
-}
-
-.data-particle:nth-child(6) {
-  top: 70%;
-  left: 20%;
-  animation-delay: 2.5s;
-}
-
-@keyframes data-flow-animation {
-  0% {
-    transform: translateY(0) translateX(0);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(calc(var(--dy, 100px))) translateX(calc(var(--dx, 100px)));
-    opacity: 0;
-  }
-}
-
-.neural-network {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.neuron {
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  background: var(--accent);
-  border-radius: 50%;
-  filter: drop-shadow(0 0 12px var(--accent));
-  animation: neuron-pulse 2s ease-in-out infinite;
-}
-
-.connection {
-  position: absolute;
-  height: 2px;
-  background: linear-gradient(90deg, var(--accent), transparent);
-  transform-origin: left center;
-  animation: connection-glow 3s ease-in-out infinite;
-}
-
-@keyframes neuron-pulse {
-  0%, 100% { 
-    transform: scale(1); 
-    opacity: 0.3;
-    box-shadow: 0 0 10px var(--accent);
-  }
-  50% { 
-    transform: scale(1.3); 
-    opacity: 0.8;
-    box-shadow: 0 0 20px var(--accent);
-  }
-}
-
-@keyframes connection-glow {
-  0%, 100% { 
-    opacity: 0.1; 
-    box-shadow: 0 0 5px var(--accent);
-  }
-  50% { 
-    opacity: 0.4; 
-    box-shadow: 0 0 15px var(--accent);
-  }
-}
-
-.code-terminal {
-  position: absolute;
-  width: 300px;
-  height: 200px;
-  bottom: 50px;
-  right: 50px;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid rgba(0, 173, 181, 0.3);
-  opacity: 0.2;
-}
-
-.terminal-header {
-  background: rgba(0, 173, 181, 0.2);
-  padding: 8px 15px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.9rem;
-  color: var(--accent);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.terminal-content {
-  padding: 15px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.8rem;
-  color: var(--accent);
-  line-height: 1.4;
+  opacity: 0.15;
 }
 
 .code-line {
-  animation: typewriter 2s steps(40) infinite alternate;
-  overflow: hidden;
+  position: absolute;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--accent);
   white-space: nowrap;
+  overflow: hidden;
+  animation: typewriter 4s steps(40) infinite, scrollDown 20s linear infinite;
+  text-shadow: 0 0 10px var(--accent);
+  opacity: 0.7;
 }
-
-.code-line:nth-child(2) { animation-delay: 1s; }
-.code-line:nth-child(3) { animation-delay: 2s; }
 
 @keyframes typewriter {
   from { width: 0; }
   to { width: 100%; }
 }
 
-/* Enhanced Cryogenics Animation */
+@keyframes scrollDown {
+  0% { 
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.7;
+  }
+  95% {
+    opacity: 0.7;
+  }
+  100% { 
+    transform: translateY(calc(100vh + 100px));
+    opacity: 0;
+  }
+}
+
+/* Cryo Animation - More Visible */
 .cryo-animation {
-  position: fixed;
-  width: 200px;
-  height: 300px;
-  bottom: 100px;
-  right: 100px;
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  bottom: 40px;
+  right: 40px;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.15;
+  opacity: 0.3;
 }
 
-.cryo-chamber {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.cryo-pipe {
-  position: absolute;
-  width: 20px;
-  height: 80px;
-  background: linear-gradient(to bottom, var(--space-blue), var(--accent));
-  border-radius: 10px;
-  left: 50%;
-  top: 10px;
-  transform: translateX(-50%);
-  animation: cryo-flow 3s ease-in-out infinite;
-}
-
-.cryo-temp {
-  position: absolute;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1.5rem;
-  font-weight: bold;
+.cryo-gear {
+  font-size: 80px;
   color: var(--space-blue);
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: temp-pulse 4s ease-in-out infinite;
+  animation: cryo-spin 6s linear infinite;
   filter: drop-shadow(0 0 15px var(--space-blue));
-  text-shadow: 0 0 10px var(--space-blue);
 }
 
-.cryo-particles {
+@keyframes cryo-spin {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.2); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Carbon Fiber F1 Animation - More Visible */
+.carbon-animation {
   position: absolute;
+  width: 150px;
+  height: 150px;
+  top: 40px;
+  right: 40px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.3;
+}
+
+.f1-track {
+  position: relative;
   width: 100%;
   height: 100%;
 }
 
-.cryo-particle {
+.track-line-f1 {
   position: absolute;
-  width: 6px;
-  height: 6px;
-  background: var(--space-blue);
-  border-radius: 50%;
-  filter: blur(1px);
-  animation: cryo-float 4s linear infinite;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--audi-red), transparent);
+  border-radius: 2px;
+  animation: f1-speed 2s linear infinite;
+  filter: drop-shadow(0 0 10px var(--audi-red));
 }
 
-@keyframes cryo-flow {
-  0%, 100% { 
-    height: 80px; 
-    opacity: 0.7;
-    filter: drop-shadow(0 0 5px var(--space-blue));
-  }
-  50% { 
-    height: 100px; 
-    opacity: 1;
-    filter: drop-shadow(0 0 15px var(--space-blue));
-  }
+.track-line-f1:nth-child(1) {
+  top: 20%;
+  animation-delay: 0s;
 }
 
-@keyframes temp-pulse {
-  0%, 100% { 
-    content: "4.0K"; 
-    transform: translateX(-50%) scale(1);
-    color: var(--space-blue);
-  }
-  25% { 
-    content: "3.8K"; 
-    transform: translateX(-50%) scale(1.1);
-    color: var(--accent);
-  }
-  50% { 
-    content: "3.6K"; 
-    transform: translateX(-50%) scale(1.2);
-    color: #00ffaa;
-  }
-  75% { 
-    content: "3.9K"; 
-    transform: translateX(-50%) scale(1.1);
-    color: var(--accent-light);
-  }
+.track-line-f1:nth-child(2) {
+  top: 50%;
+  animation-delay: 0.5s;
 }
 
-@keyframes cryo-float {
+.track-line-f1:nth-child(3) {
+  top: 80%;
+  animation-delay: 1s;
+}
+
+@keyframes f1-speed {
   0% {
-    transform: translateY(0) rotate(0deg);
+    transform: translateX(-100%);
     opacity: 0;
   }
   10% {
@@ -1648,9 +1271,26 @@ footer {
     opacity: 1;
   }
   100% {
-    transform: translateY(-100px) rotate(180deg);
+    transform: translateX(100%);
     opacity: 0;
   }
+}
+
+.f1-gear {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  color: var(--audi-red);
+  animation: gear-vibrate 1s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px var(--audi-red));
+}
+
+@keyframes gear-vibrate {
+  0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+  25% { transform: translate(-50%, -50%) rotate(10deg); }
+  75% { transform: translate(-50%, -50%) rotate(-10deg); }
 }
 
 /* Responsive Design */
@@ -1723,10 +1363,9 @@ footer {
     order: -1;
   }
   
-  .ai-animation,
+  .code-animation,
   .cryo-animation,
-  .f1-animation,
-  .code-terminal {
+  .carbon-animation {
     display: none;
   }
 }
@@ -1984,13 +1623,9 @@ footer {
 <!-- Project Detail Pages -->
 <!-- Cryogenics Project Page -->
 <div id="project-cryogenics" class="project-page">
-  <!-- Enhanced Cryo Animation -->
+  <!-- Cryo Animation -->
   <div class="cryo-animation">
-    <div class="cryo-chamber">
-      <div class="cryo-pipe"></div>
-      <div class="cryo-temp">4.0K</div>
-      <div class="cryo-particles"></div>
-    </div>
+    <i class="fas fa-snowflake cryo-gear"></i>
   </div>
 
   <div class="project-header">
@@ -2054,23 +1689,13 @@ footer {
 
 <!-- Carbon Fiber Project Page -->
 <div id="project-carbonfiber" class="project-page">
-  <!-- Enhanced F1 Car Animation -->
-  <div class="f1-animation">
-    <div class="f1-track"></div>
-    <div class="f1-car-container">
-      <div class="f1-car">
-        <div class="f1-chassis">
-          <div class="f1-halo"></div>
-          <div class="f1-cockpit"></div>
-          <div class="f1-engine-cover"></div>
-        </div>
-        <div class="f1-wing front-wing"></div>
-        <div class="f1-wing rear-wing"></div>
-        <div class="f1-wheel front-wheel"></div>
-        <div class="f1-wheel rear-wheel"></div>
-        <div class="f1-exhaust"></div>
-        <div class="f1-sparks"></div>
-      </div>
+  <!-- F1 Animation -->
+  <div class="carbon-animation">
+    <div class="f1-track">
+      <div class="track-line-f1"></div>
+      <div class="track-line-f1"></div>
+      <div class="track-line-f1"></div>
+      <i class="fas fa-cog f1-gear"></i>
     </div>
   </div>
 
@@ -2136,21 +1761,9 @@ footer {
 
 <!-- Finsight Project Page -->
 <div id="project-finsight" class="project-page">
-  <!-- Enhanced AI Neural Network Animation -->
-  <div class="ai-animation">
-    <div class="data-flow"></div>
-    <div class="neural-network"></div>
-    <div class="code-terminal">
-      <div class="terminal-header">
-        <i class="fas fa-code"></i>
-        <span>FinSight AI - Live Analysis</span>
-      </div>
-      <div class="terminal-content">
-        <div class="code-line">> analyzing market trends...</div>
-        <div class="code-line">> processing financial data...</div>
-        <div class="code-line">> generating predictions...</div>
-      </div>
-    </div>
+  <!-- Code Animation -->
+  <div class="code-animation" id="codeAnimationContainer">
+    <!-- Code lines will be generated by JavaScript -->
   </div>
 
   <div class="project-header">
@@ -2437,145 +2050,52 @@ function initializeAnimations() {
   }
 }
 
-// Enhanced F1 Animation with sparks
-function initF1Animation() {
-  const sparksContainer = document.querySelector('.f1-sparks');
-  if (!sparksContainer) return;
+// Code animation for FinSight project
+function initCodeAnimation() {
+  const container = document.getElementById('codeAnimationContainer');
+  if (!container) return;
   
-  function createSpark() {
-    const spark = document.createElement('div');
-    spark.className = 'spark';
-    
-    // Random position around the car
-    const angle = Math.random() * Math.PI * 2;
-    const distance = 20 + Math.random() * 30;
-    spark.style.left = '50%';
-    spark.style.top = '50%';
-    
-    // Random movement direction
-    const tx = Math.cos(angle) * distance;
-    const ty = Math.sin(angle) * distance;
-    spark.style.setProperty('--tx', `${tx}px`);
-    spark.style.setProperty('--ty', `${ty}px`);
-    
-    spark.style.animation = `spark-fly ${0.3 + Math.random() * 0.3}s ease-out forwards`;
-    
-    sparksContainer.appendChild(spark);
-    
-    // Remove spark after animation
-    setTimeout(() => {
-      spark.remove();
-    }, 500);
-  }
+  // Clear existing lines
+  container.innerHTML = '';
   
-  // Create sparks at regular intervals
-  setInterval(createSpark, 100);
+  // Generate code lines
+  const codeSnippets = [
+    "import pandas as pd",
+    "from flask import Flask, request",
+    "import gemini_ai",
+    "def analyze_financial_data(data):",
+    "    # ML model prediction",
+    "    prediction = model.predict(data)",
+    "    return prediction",
+    "app = Flask(__name__)",
+    "@app.route('/analyze', methods=['POST'])",
+    "def analyze():",
+    "    data = request.json",
+    "    result = analyze_financial_data(data)",
+    "    return jsonify(result)",
+    "class FinancialAnalyzer:",
+    "    def __init__(self):",
+    "        self.model = load_model()",
+    "    def predict_market(self, indicators):",
+    "        return self.model.predict(indicators)",
+    "# Real-time data processing",
+    "def process_stream(data_stream):",
+    "    for data in data_stream:",
+    "        analysis = analyzer.analyze(data)",
+    "        yield analysis",
+    "if __name__ == '__main__':",
+    "    app.run(debug=True)"
+  ];
   
-  // Randomize spark creation
-  setInterval(() => {
-    if (Math.random() > 0.5) createSpark();
-  }, 50);
-}
-
-// Enhanced AI Neural Network Animation
-function initAIAnimation() {
-  const dataFlow = document.querySelector('.data-flow');
-  const neuralNetwork = document.querySelector('.neural-network');
-  const cryoParticles = document.querySelector('.cryo-particles');
-  
-  if (!dataFlow || !neuralNetwork) return;
-  
-  // Create data particles
-  for (let i = 0; i < 20; i++) {
-    const particle = document.createElement('div');
-    particle.className = 'data-particle';
-    
-    // Random starting position
-    particle.style.left = `${Math.random() * 100}%`;
-    particle.style.top = `${Math.random() * 100}%`;
-    
-    // Random movement direction
-    const dx = (Math.random() - 0.5) * 200;
-    const dy = (Math.random() - 0.5) * 200;
-    particle.style.setProperty('--dx', `${dx}px`);
-    particle.style.setProperty('--dy', `${dy}px`);
-    
-    // Random delay and duration
-    const delay = Math.random() * 3;
-    const duration = 2 + Math.random() * 2;
-    particle.style.animationDelay = `${delay}s`;
-    particle.style.animationDuration = `${duration}s`;
-    
-    dataFlow.appendChild(particle);
-  }
-  
-  // Create neurons
-  const neuronCount = 15;
-  const neurons = [];
-  
-  for (let i = 0; i < neuronCount; i++) {
-    const neuron = document.createElement('div');
-    neuron.className = 'neuron';
-    neuron.style.left = `${Math.random() * 95}%`;
-    neuron.style.top = `${Math.random() * 95}%`;
-    neuron.style.animationDelay = `${Math.random() * 2}s`;
-    neuron.style.opacity = `${0.3 + Math.random() * 0.5}`;
-    
-    neuralNetwork.appendChild(neuron);
-    neurons.push({
-      element: neuron,
-      x: parseFloat(neuron.style.left),
-      y: parseFloat(neuron.style.top)
-    });
-  }
-  
-  // Create connections between neurons
-  for (let i = 0; i < neurons.length; i++) {
-    for (let j = i + 1; j < neurons.length; j++) {
-      // Only connect neurons that are relatively close
-      const dx = neurons[i].x - neurons[j].x;
-      const dy = neurons[i].y - neurons[j].y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-      
-      if (distance < 30 && Math.random() > 0.6) {
-        const connection = document.createElement('div');
-        connection.className = 'connection';
-        
-        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-        const length = distance;
-        
-        connection.style.width = `${length}%`;
-        connection.style.left = `${neurons[i].x}%`;
-        connection.style.top = `${neurons[i].y}%`;
-        connection.style.transform = `rotate(${angle}deg)`;
-        connection.style.opacity = `${0.1 + Math.random() * 0.2}`;
-        connection.style.animationDelay = `${Math.random() * 3}s`;
-        
-        neuralNetwork.appendChild(connection);
-      }
-    }
-  }
-  
-  // Create cryo particles if container exists
-  if (cryoParticles) {
-    for (let i = 0; i < 15; i++) {
-      const particle = document.createElement('div');
-      particle.className = 'cryo-particle';
-      
-      particle.style.left = `${30 + Math.random() * 40}%`;
-      particle.style.top = `${60 + Math.random() * 30}%`;
-      particle.style.animationDelay = `${Math.random() * 4}s`;
-      particle.style.animationDuration = `${2 + Math.random() * 3}s`;
-      
-      cryoParticles.appendChild(particle);
-    }
-  }
-  
-  // Add CSS for animations if not already added
-  if (!document.getElementById('enhanced-animation-styles')) {
-    const style = document.createElement('style');
-    style.id = 'enhanced-animation-styles';
-    document.head.appendChild(style);
+  // Create multiple lines with random positions
+  for (let i = 0; i < 15; i++) {
+    const line = document.createElement('div');
+    line.className = 'code-line';
+    line.textContent = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
+    line.style.left = `${Math.random() * 90}%`;
+    line.style.animationDelay = `${Math.random() * 5}s`;
+    line.style.fontSize = `${0.8 + Math.random() * 0.4}rem`;
+    container.appendChild(line);
   }
 }
 
@@ -2638,11 +2158,7 @@ function showProject(projectId) {
   
   // Initialize project-specific animations
   if (projectId === 'finsight') {
-    setTimeout(initAIAnimation, 100);
-  } else if (projectId === 'carbonfiber') {
-    setTimeout(initF1Animation, 100);
-  } else if (projectId === 'cryogenics') {
-    setTimeout(initAIAnimation, 100); // Also initializes cryo particles
+    initCodeAnimation();
   }
 }
 
