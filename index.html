@@ -1145,8 +1145,8 @@ footer {
   border-top: 1px solid var(--border);
 }
 
-/* Project-specific Animations */
-.code-animation {
+/* NEW: AI Neural Network Animation for FinSight */
+.ai-animation {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1157,140 +1157,177 @@ footer {
   opacity: 0.15;
 }
 
-.code-line {
+.neuron {
   position: absolute;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.9rem;
-  color: var(--accent);
-  white-space: nowrap;
-  overflow: hidden;
-  animation: typewriter 4s steps(40) infinite, scrollDown 20s linear infinite;
-  text-shadow: 0 0 10px var(--accent);
-  opacity: 0.7;
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  border-radius: 50%;
+  filter: drop-shadow(0 0 8px var(--accent));
 }
 
-@keyframes typewriter {
-  from { width: 0; }
-  to { width: 100%; }
+.neuron-connection {
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  transform-origin: left center;
 }
 
-@keyframes scrollDown {
-  0% { 
-    transform: translateY(-100px);
-    opacity: 0;
-  }
-  5% {
-    opacity: 0.7;
-  }
-  95% {
-    opacity: 0.7;
-  }
-  100% { 
-    transform: translateY(calc(100vh + 100px));
-    opacity: 0;
-  }
-}
-
-/* Cryo Animation - More Visible */
+/* NEW: Enhanced Cryogenics Animation */
 .cryo-animation {
   position: absolute;
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   bottom: 40px;
   right: 40px;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.3;
+  opacity: 0.25;
 }
 
-.cryo-gear {
-  font-size: 80px;
-  color: var(--space-blue);
-  animation: cryo-spin 6s linear infinite;
-  filter: drop-shadow(0 0 15px var(--space-blue));
-}
-
-@keyframes cryo-spin {
-  0% { transform: rotate(0deg) scale(1); }
-  50% { transform: rotate(180deg) scale(1.2); }
-  100% { transform: rotate(360deg) scale(1); }
-}
-
-/* Carbon Fiber F1 Animation - More Visible */
-.carbon-animation {
+.cryo-chamber {
   position: absolute;
-  width: 150px;
-  height: 150px;
-  top: 40px;
-  right: 40px;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.3;
-}
-
-.f1-track {
-  position: relative;
   width: 100%;
   height: 100%;
 }
 
-.track-line-f1 {
+.cryo-pipe {
+  position: absolute;
+  width: 20px;
+  height: 80px;
+  background: linear-gradient(to bottom, var(--space-blue), var(--accent));
+  border-radius: 10px;
+  left: 50%;
+  top: 10px;
+  transform: translateX(-50%);
+  animation: cryo-flow 3s ease-in-out infinite;
+}
+
+.cryo-temp {
+  position: absolute;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.2rem;
+  color: var(--space-blue);
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: temp-pulse 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px var(--space-blue));
+}
+
+@keyframes cryo-flow {
+  0%, 100% { height: 80px; opacity: 0.7; }
+  50% { height: 100px; opacity: 1; }
+}
+
+@keyframes temp-pulse {
+  0%, 100% { 
+    content: "4K"; 
+    transform: translateX(-50%) scale(1);
+  }
+  50% { 
+    content: "3.8K"; 
+    transform: translateX(-50%) scale(1.1);
+  }
+}
+
+/* NEW: F1 Car Animation for Carbon Fiber */
+.f1-animation {
+  position: absolute;
+  width: 200px;
+  height: 80px;
+  top: 40px;
+  right: 40px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.25;
+}
+
+.f1-car {
   position: absolute;
   width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, transparent, var(--audi-red), transparent);
-  border-radius: 2px;
-  animation: f1-speed 2s linear infinite;
+  height: 100%;
+  animation: f1-drive 8s linear infinite;
+}
+
+.f1-body {
+  position: absolute;
+  width: 120px;
+  height: 30px;
+  background: linear-gradient(90deg, var(--audi-red), #ff4444);
+  border-radius: 5px 15px 15px 5px;
+  top: 25px;
+  left: 0;
   filter: drop-shadow(0 0 10px var(--audi-red));
 }
 
-.track-line-f1:nth-child(1) {
-  top: 20%;
-  animation-delay: 0s;
+.f1-wing {
+  position: absolute;
+  width: 140px;
+  height: 10px;
+  background: var(--audi-red);
+  border-radius: 2px;
+  top: 15px;
+  left: -10px;
 }
 
-.track-line-f1:nth-child(2) {
-  top: 50%;
-  animation-delay: 0.5s;
+.f1-wheel {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #333;
+  border-radius: 50%;
+  border: 3px solid #666;
 }
 
-.track-line-f1:nth-child(3) {
-  top: 80%;
-  animation-delay: 1s;
+.f1-wheel-front {
+  top: 40px;
+  left: 25px;
+  animation: wheel-spin 1s linear infinite;
 }
 
-@keyframes f1-speed {
+.f1-wheel-rear {
+  top: 40px;
+  right: 25px;
+  animation: wheel-spin 1s linear infinite;
+}
+
+.f1-exhaust {
+  position: absolute;
+  width: 15px;
+  height: 10px;
+  background: linear-gradient(90deg, #ff9500, transparent);
+  border-radius: 5px;
+  top: 30px;
+  right: -5px;
+  animation: exhaust-puff 1s ease-in-out infinite;
+}
+
+@keyframes f1-drive {
   0% {
-    transform: translateX(-100%);
+    transform: translateX(-100px) rotate(0deg);
     opacity: 0;
   }
   10% {
-    opacity: 1;
+    opacity: 0.8;
   }
   90% {
-    opacity: 1;
+    opacity: 0.8;
   }
   100% {
-    transform: translateX(100%);
+    transform: translateX(calc(100vw + 200px)) rotate(5deg);
     opacity: 0;
   }
 }
 
-.f1-gear {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 50px;
-  color: var(--audi-red);
-  animation: gear-vibrate 1s ease-in-out infinite;
-  filter: drop-shadow(0 0 10px var(--audi-red));
+@keyframes wheel-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-@keyframes gear-vibrate {
-  0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
-  25% { transform: translate(-50%, -50%) rotate(10deg); }
-  75% { transform: translate(-50%, -50%) rotate(-10deg); }
+@keyframes exhaust-puff {
+  0%, 100% { opacity: 0.3; width: 15px; }
+  50% { opacity: 0.8; width: 25px; }
 }
 
 /* Responsive Design */
@@ -1363,9 +1400,9 @@ footer {
     order: -1;
   }
   
-  .code-animation,
+  .ai-animation,
   .cryo-animation,
-  .carbon-animation {
+  .f1-animation {
     display: none;
   }
 }
@@ -1623,9 +1660,12 @@ footer {
 <!-- Project Detail Pages -->
 <!-- Cryogenics Project Page -->
 <div id="project-cryogenics" class="project-page">
-  <!-- Cryo Animation -->
+  <!-- Enhanced Cryo Animation -->
   <div class="cryo-animation">
-    <i class="fas fa-snowflake cryo-gear"></i>
+    <div class="cryo-chamber">
+      <div class="cryo-pipe"></div>
+      <div class="cryo-temp">4K</div>
+    </div>
   </div>
 
   <div class="project-header">
@@ -1689,13 +1729,14 @@ footer {
 
 <!-- Carbon Fiber Project Page -->
 <div id="project-carbonfiber" class="project-page">
-  <!-- F1 Animation -->
-  <div class="carbon-animation">
-    <div class="f1-track">
-      <div class="track-line-f1"></div>
-      <div class="track-line-f1"></div>
-      <div class="track-line-f1"></div>
-      <i class="fas fa-cog f1-gear"></i>
+  <!-- F1 Car Animation -->
+  <div class="f1-animation">
+    <div class="f1-car">
+      <div class="f1-wing"></div>
+      <div class="f1-body"></div>
+      <div class="f1-wheel f1-wheel-front"></div>
+      <div class="f1-wheel f1-wheel-rear"></div>
+      <div class="f1-exhaust"></div>
     </div>
   </div>
 
@@ -1761,9 +1802,9 @@ footer {
 
 <!-- Finsight Project Page -->
 <div id="project-finsight" class="project-page">
-  <!-- Code Animation -->
-  <div class="code-animation" id="codeAnimationContainer">
-    <!-- Code lines will be generated by JavaScript -->
+  <!-- AI Neural Network Animation -->
+  <div class="ai-animation" id="aiAnimationContainer">
+    <!-- Neurons and connections will be generated by JavaScript -->
   </div>
 
   <div class="project-header">
@@ -2050,52 +2091,81 @@ function initializeAnimations() {
   }
 }
 
-// Code animation for FinSight project
-function initCodeAnimation() {
-  const container = document.getElementById('codeAnimationContainer');
+// NEW: AI Neural Network Animation for FinSight
+function initAIAnimation() {
+  const container = document.getElementById('aiAnimationContainer');
   if (!container) return;
   
-  // Clear existing lines
+  // Clear existing elements
   container.innerHTML = '';
   
-  // Generate code lines
-  const codeSnippets = [
-    "import pandas as pd",
-    "from flask import Flask, request",
-    "import gemini_ai",
-    "def analyze_financial_data(data):",
-    "    # ML model prediction",
-    "    prediction = model.predict(data)",
-    "    return prediction",
-    "app = Flask(__name__)",
-    "@app.route('/analyze', methods=['POST'])",
-    "def analyze():",
-    "    data = request.json",
-    "    result = analyze_financial_data(data)",
-    "    return jsonify(result)",
-    "class FinancialAnalyzer:",
-    "    def __init__(self):",
-    "        self.model = load_model()",
-    "    def predict_market(self, indicators):",
-    "        return self.model.predict(indicators)",
-    "# Real-time data processing",
-    "def process_stream(data_stream):",
-    "    for data in data_stream:",
-    "        analysis = analyzer.analyze(data)",
-    "        yield analysis",
-    "if __name__ == '__main__':",
-    "    app.run(debug=True)"
-  ];
+  // Create neurons
+  const neuronCount = 20;
+  const neurons = [];
   
-  // Create multiple lines with random positions
-  for (let i = 0; i < 15; i++) {
-    const line = document.createElement('div');
-    line.className = 'code-line';
-    line.textContent = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
-    line.style.left = `${Math.random() * 90}%`;
-    line.style.animationDelay = `${Math.random() * 5}s`;
-    line.style.fontSize = `${0.8 + Math.random() * 0.4}rem`;
-    container.appendChild(line);
+  for (let i = 0; i < neuronCount; i++) {
+    const neuron = document.createElement('div');
+    neuron.className = 'neuron';
+    neuron.style.left = `${Math.random() * 95}%`;
+    neuron.style.top = `${Math.random() * 95}%`;
+    neuron.style.animationDelay = `${Math.random() * 2}s`;
+    neuron.style.opacity = `${0.3 + Math.random() * 0.5}`;
+    
+    // Pulsing animation
+    neuron.style.animation = `neuron-pulse ${2 + Math.random() * 3}s ease-in-out infinite`;
+    
+    container.appendChild(neuron);
+    neurons.push({
+      element: neuron,
+      x: parseFloat(neuron.style.left),
+      y: parseFloat(neuron.style.top)
+    });
+  }
+  
+  // Create connections between neurons
+  for (let i = 0; i < neurons.length; i++) {
+    for (let j = i + 1; j < neurons.length; j++) {
+      // Only connect neurons that are relatively close
+      const dx = neurons[i].x - neurons[j].x;
+      const dy = neurons[i].y - neurons[j].y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      
+      if (distance < 40 && Math.random() > 0.5) {
+        const connection = document.createElement('div');
+        connection.className = 'neuron-connection';
+        
+        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+        const length = distance;
+        
+        connection.style.width = `${length}%`;
+        connection.style.left = `${neurons[i].x}%`;
+        connection.style.top = `${neurons[i].y}%`;
+        connection.style.transform = `rotate(${angle}deg)`;
+        connection.style.opacity = `${0.1 + Math.random() * 0.2}`;
+        
+        // Pulsing animation for connections
+        connection.style.animation = `connection-pulse ${3 + Math.random() * 4}s ease-in-out infinite`;
+        
+        container.appendChild(connection);
+      }
+    }
+  }
+  
+  // Add CSS for animations
+  if (!document.getElementById('ai-animation-styles')) {
+    const style = document.createElement('style');
+    style.id = 'ai-animation-styles';
+    style.textContent = `
+      @keyframes neuron-pulse {
+        0%, 100% { transform: scale(1); opacity: 0.3; }
+        50% { transform: scale(1.3); opacity: 0.8; }
+      }
+      @keyframes connection-pulse {
+        0%, 100% { opacity: 0.1; }
+        50% { opacity: 0.3; }
+      }
+    `;
+    document.head.appendChild(style);
   }
 }
 
@@ -2158,7 +2228,7 @@ function showProject(projectId) {
   
   // Initialize project-specific animations
   if (projectId === 'finsight') {
-    initCodeAnimation();
+    initAIAnimation();
   }
 }
 
