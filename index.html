@@ -13,6 +13,8 @@
   --secondary: #112240; /* Darker Navy */
   --accent: #64ffda; /* Teal Accent */
   --accent-light: #8affd7;
+  --audi-red: #da291c; /* Audi Red for subtle reference */
+  --space-blue: #0066cc; /* Space blue for subtle reference */
   --text: #e6f1ff;
   --text-muted: #8892b0;
   --card-bg: rgba(17, 34, 64, 0.7);
@@ -53,7 +55,7 @@ body {
   position: relative;
 }
 
-/* Subtle Engineering Background */
+/* Engineering Background */
 .engineering-bg {
   position: fixed;
   top: 0;
@@ -65,6 +67,141 @@ body {
   pointer-events: none;
 }
 
+/* F1 Circuit Lines - More Visible */
+.f1-circuit {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.circuit-line {
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--audi-red), var(--accent), transparent);
+  opacity: 0.4;
+  filter: blur(0.5px);
+  box-shadow: 0 0 10px var(--audi-red);
+  animation: circuit-race 4s linear infinite;
+}
+
+.circuit-line-1 {
+  top: 25%;
+  width: 80%;
+  transform: rotate(-5deg);
+  animation-delay: 0s;
+}
+
+.circuit-line-2 {
+  top: 60%;
+  width: 70%;
+  right: 0;
+  transform: rotate(3deg);
+  animation-delay: 1s;
+}
+
+.circuit-line-3 {
+  bottom: 30%;
+  width: 60%;
+  left: 10%;
+  transform: rotate(8deg);
+  animation-delay: 2s;
+}
+
+@keyframes circuit-race {
+  0% {
+    opacity: 0.2;
+    transform: translateX(-100%) rotate(var(--rotation, -5deg));
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0.2;
+    transform: translateX(100%) rotate(var(--rotation, -5deg));
+  }
+}
+
+/* Space/Orbital Dots - More Visible */
+.space-dots {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.space-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--space-blue);
+  border-radius: 50%;
+  opacity: 0.4;
+  box-shadow: 0 0 15px var(--space-blue);
+  animation: space-float 20s linear infinite;
+}
+
+.space-dot-1 {
+  top: 20%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.space-dot-2 {
+  top: 70%;
+  right: 20%;
+  animation-delay: 5s;
+}
+
+.space-dot-3 {
+  top: 40%;
+  left: 30%;
+  animation-delay: 10s;
+}
+
+.space-dot-4 {
+  bottom: 20%;
+  left: 50%;
+  animation-delay: 15s;
+}
+
+@keyframes space-float {
+  0% {
+    transform: rotate(0deg) translateX(40px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(40px) rotate(-360deg);
+  }
+}
+
+/* Rocket Trail */
+.rocket-trail {
+  position: absolute;
+  top: 40%;
+  left: -100px;
+  width: 300px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--space-blue), var(--accent), transparent);
+  transform: rotate(15deg);
+  opacity: 0;
+  animation: rocket-launch 8s ease-in-out infinite;
+}
+
+@keyframes rocket-launch {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px) rotate(15deg);
+  }
+  30% {
+    opacity: 0.7;
+  }
+  70% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(1500px) rotate(15deg);
+  }
+}
+
 /* Blueprint Grid */
 .blueprint-grid {
   position: absolute;
@@ -73,92 +210,10 @@ body {
   width: 100%;
   height: 100%;
   background-image: 
-    linear-gradient(rgba(100, 255, 218, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(100, 255, 218, 0.02) 1px, transparent 1px);
+    linear-gradient(rgba(100, 255, 218, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100, 255, 218, 0.03) 1px, transparent 1px);
   background-size: 40px 40px;
-  opacity: 0.4;
-}
-
-/* Subtle Speed Lines */
-.speed-line {
-  position: absolute;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
-  opacity: 0;
-  animation: speed-pass 2s ease-out infinite;
-}
-
-.speed-line:nth-child(1) {
-  top: 25%;
-  left: 0;
-  width: 100%;
-  animation-delay: 0s;
-}
-
-.speed-line:nth-child(2) {
-  top: 50%;
-  right: 0;
-  width: 60%;
-  animation-delay: 0.7s;
-}
-
-.speed-line:nth-child(3) {
-  bottom: 35%;
-  left: 0;
-  width: 80%;
-  animation-delay: 1.4s;
-}
-
-@keyframes speed-pass {
-  0% {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  50% {
-    opacity: 0.3;
-  }
-  100% {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-}
-
-/* Subtle Orbital Dots */
-.orbital-dot {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: var(--accent);
-  border-radius: 50%;
-  opacity: 0.2;
-  animation: orbital-float 15s linear infinite;
-}
-
-.orbital-dot:nth-child(1) {
-  top: 20%;
-  left: 15%;
-  animation-delay: 0s;
-}
-
-.orbital-dot:nth-child(2) {
-  top: 70%;
-  right: 20%;
-  animation-delay: 5s;
-}
-
-.orbital-dot:nth-child(3) {
-  top: 40%;
-  left: 30%;
-  animation-delay: 10s;
-}
-
-@keyframes orbital-float {
-  0% {
-    transform: rotate(0deg) translateX(20px) rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg) translateX(20px) rotate(-360deg);
-  }
+  opacity: 0.3;
 }
 
 /* Theme Toggle - Minimal */
@@ -301,41 +356,66 @@ nav {
   width: 100%;
 }
 
-/* Hero Section */
+/* Hero Section - Enhanced */
 #hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
   padding: 0 50px;
   position: relative;
+  overflow: hidden;
 }
 
 .hero-content {
-  max-width: 800px;
+  max-width: 1200px;
   z-index: 1;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.hero-text {
+  max-width: 800px;
 }
 
 .hero-greeting {
   font-family: 'JetBrains Mono', monospace;
   color: var(--accent);
   font-size: 1.1rem;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   opacity: 0;
-  animation: fadeInUp 0.6s ease forwards;
+  animation: slideInLeft 0.8s ease forwards;
 }
 
 .hero-title {
-  font-size: 3.5rem;
+  font-size: 4rem;
   font-weight: 700;
   line-height: 1.1;
   margin-bottom: 25px;
   opacity: 0;
-  animation: fadeInUp 0.6s ease 0.2s forwards;
+  animation: slideInLeft 0.8s ease 0.2s forwards;
 }
 
 .hero-title span {
   color: var(--accent);
   position: relative;
+  display: inline-block;
+}
+
+.hero-title span::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--gradient);
+  animation: underlineExpand 1s ease 1s forwards;
+}
+
+@keyframes underlineExpand {
+  to { width: 100%; }
 }
 
 .hero-subtitle {
@@ -345,18 +425,89 @@ nav {
   max-width: 600px;
   line-height: 1.6;
   opacity: 0;
-  animation: fadeInUp 0.6s ease 0.4s forwards;
+  animation: slideInLeft 0.8s ease 0.4s forwards;
 }
 
-@keyframes fadeInUp {
+@keyframes slideInLeft {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateX(-30px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
+}
+
+/* Vertical Navigation Menu */
+.hero-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  animation: slideInRight 0.8s ease 0.6s forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 15px;
+  border-radius: 10px;
+  transition: var(--theme-transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.menu-item:hover::before {
+  left: 100%;
+}
+
+.menu-item:hover {
+  color: var(--accent);
+  transform: translateX(10px);
+  border-left: 3px solid var(--accent);
+}
+
+.menu-item i {
+  width: 24px;
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+
+.menu-item span {
+  font-weight: 500;
+  font-size: 1rem;
 }
 
 /* Subtle Hero Elements */
@@ -367,13 +518,13 @@ nav {
   transform: translateY(-50%);
   width: 300px;
   height: 300px;
-  opacity: 0.05;
+  opacity: 0.1;
 }
 
 .gear-icon {
   position: absolute;
   color: var(--accent);
-  opacity: 0.1;
+  opacity: 0.15;
   animation: spin 20s linear infinite;
 }
 
@@ -390,6 +541,42 @@ nav {
   animation-direction: reverse;
 }
 
+.audi-ring {
+  position: absolute;
+  bottom: 15%;
+  left: 10%;
+  width: 80px;
+  height: 80px;
+  opacity: 0.05;
+}
+
+.audi-ring::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 3px solid var(--audi-red);
+  border-radius: 50%;
+  animation: ring-pulse 3s ease-in-out infinite;
+}
+
+.audi-ring::after {
+  content: '';
+  position: absolute;
+  width: 70%;
+  height: 70%;
+  top: 15%;
+  left: 15%;
+  border: 3px solid var(--audi-red);
+  border-radius: 50%;
+  animation: ring-pulse 3s ease-in-out infinite 0.2s;
+}
+
+@keyframes ring-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.05; }
+  50% { transform: scale(1.1); opacity: 0.1; }
+}
+
 @keyframes spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -402,7 +589,18 @@ nav {
   flex-wrap: wrap;
   margin-top: 30px;
   opacity: 0;
-  animation: fadeInUp 0.6s ease 0.6s forwards;
+  animation: fadeInUp 0.8s ease 0.8s forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .contact-item {
@@ -822,10 +1020,101 @@ footer {
   font-size: 0.9rem;
 }
 
+/* Project Page Styles (Restored from original) */
+.project-page {
+  display: none;
+  max-width: 1000px;
+  margin: 150px auto 40px;
+  padding: 40px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px var(--shadow);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1;
+}
+
+.project-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.project-overview {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 40px;
+  align-items: flex-start;
+}
+
+.overview-image {
+  flex: 1;
+}
+
+.overview-image img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px var(--shadow);
+}
+
+.overview-content {
+  flex: 1;
+}
+
+.overview-box {
+  background: rgba(100, 255, 218, 0.05);
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  border: 1px solid var(--border);
+}
+
+.project-section {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 50px;
+  align-items: flex-start;
+}
+
+.section-image {
+  flex: 1;
+}
+
+.section-image img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px var(--shadow);
+}
+
+.section-content {
+  flex: 1;
+}
+
+.back-btn {
+  margin-bottom: 30px;
+  background: var(--gradient);
+}
+
+.project-back-bottom {
+  text-align: center;
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 1px solid var(--border);
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .hero-title {
     font-size: 3rem;
+  }
+  
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  
+  .hero-menu {
+    order: -1;
   }
   
   .about-content {
@@ -872,6 +1161,16 @@ footer {
   .hero-pattern {
     display: none;
   }
+  
+  .project-overview,
+  .project-section {
+    flex-direction: column;
+  }
+  
+  .overview-image,
+  .section-image {
+    order: -1;
+  }
 }
 
 @media (max-width: 480px) {
@@ -899,15 +1198,21 @@ footer {
 </style>
 </head>
 <body>
-<!-- Subtle Engineering Background -->
+<!-- Engineering Background with Enhanced Animations -->
 <div class="engineering-bg">
   <div class="blueprint-grid"></div>
-  <div class="speed-line"></div>
-  <div class="speed-line"></div>
-  <div class="speed-line"></div>
-  <div class="orbital-dot"></div>
-  <div class="orbital-dot"></div>
-  <div class="orbital-dot"></div>
+  <div class="f1-circuit">
+    <div class="circuit-line circuit-line-1"></div>
+    <div class="circuit-line circuit-line-2"></div>
+    <div class="circuit-line circuit-line-3"></div>
+  </div>
+  <div class="space-dots">
+    <div class="space-dot space-dot-1"></div>
+    <div class="space-dot space-dot-2"></div>
+    <div class="space-dot space-dot-3"></div>
+    <div class="space-dot space-dot-4"></div>
+  </div>
+  <div class="rocket-trail"></div>
 </div>
 
 <!-- Theme Toggle -->
@@ -936,24 +1241,50 @@ footer {
 <!-- Hero Section -->
 <section id="hero">
   <div class="hero-content">
-    <p class="hero-greeting">Hi, my name is</p>
-    <h1 class="hero-title">Chakib Belghait.</h1>
-    <p class="hero-subtitle">
-      I'm a Mechanical Engineering student at the University of Waterloo passionate about innovative engineering solutions, thermal design, and applied research. I enjoy creating things that live at the intersection of precision and performance.
-    </p>
+    <div class="hero-text">
+      <p class="hero-greeting">Hi, I'm</p>
+      <h1 class="hero-title">Chakib Belghait<span>.</span></h1>
+      <p class="hero-subtitle">
+        Mechanical Engineering student at the University of Waterloo passionate about precision engineering, thermal systems, and innovative solutions that push boundaries and solve complex challenges.
+      </p>
+      
+      <div class="contact-info">
+        <a href="tel:4385030688" class="contact-item">
+          <i class="fas fa-phone"></i>
+          <span>438-503-0688</span>
+        </a>
+        <a href="mailto:chakib.belghait@uwaterloo.ca" class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <span>chakib.belghait@uwaterloo.ca</span>
+        </a>
+        <a href="https://www.linkedin.com/in/chakib-belghait-a58932376" target="_blank" class="contact-item">
+          <i class="fab fa-linkedin"></i>
+          <span>LinkedIn</span>
+        </a>
+      </div>
+    </div>
     
-    <div class="contact-info">
-      <a href="tel:4385030688" class="contact-item">
-        <i class="fas fa-phone"></i>
-        <span>438-503-0688</span>
+    <!-- Vertical Navigation Menu -->
+    <div class="hero-menu">
+      <a href="#about" class="menu-item">
+        <i class="fas fa-user"></i>
+        <span>About Me</span>
       </a>
-      <a href="mailto:chakib.belghait@uwaterloo.ca" class="contact-item">
+      <a href="#projects" class="menu-item">
+        <i class="fas fa-project-diagram"></i>
+        <span>Engineering Projects</span>
+      </a>
+      <a href="#resume" class="menu-item">
+        <i class="fas fa-file-alt"></i>
+        <span>Resume & Skills</span>
+      </a>
+      <a href="#contact" class="menu-item">
         <i class="fas fa-envelope"></i>
-        <span>chakib.belghait@uwaterloo.ca</span>
+        <span>Contact Me</span>
       </a>
-      <a href="https://www.linkedin.com/in/chakib-belghait-a58932376" target="_blank" class="contact-item">
-        <i class="fab fa-linkedin"></i>
-        <span>LinkedIn</span>
+      <a href="Resume.pdf" target="_blank" class="menu-item">
+        <i class="fas fa-download"></i>
+        <span>Download Resume</span>
       </a>
     </div>
   </div>
@@ -961,6 +1292,7 @@ footer {
   <div class="hero-pattern">
     <i class="fas fa-cog gear-icon gear-1"></i>
     <i class="fas fa-cog gear-icon gear-2"></i>
+    <div class="audi-ring"></div>
   </div>
 </section>
 
@@ -1042,7 +1374,7 @@ footer {
           <span class="tag">Prototyping</span>
         </div>
         <div class="project-actions">
-          <a href="#" class="btn" onclick="showProjectDetails('cryogenics')">View Details</a>
+          <a href="#" class="btn" onclick="showProject('cryogenics'); return false;">View Details</a>
           <a href="Design and Developpment of a Closed-Cycle cryogenic system.pdf" target="_blank" class="btn btn-outline">Documentation</a>
         </div>
       </div>
@@ -1062,7 +1394,7 @@ footer {
           <span class="tag">R&D</span>
         </div>
         <div class="project-actions">
-          <a href="#" class="btn" onclick="showProjectDetails('carbonfiber')">View Details</a>
+          <a href="#" class="btn" onclick="showProject('carbonfiber'); return false;">View Details</a>
         </div>
       </div>
     </div>
@@ -1081,12 +1413,200 @@ footer {
           <span class="tag">ML</span>
         </div>
         <div class="project-actions">
-          <a href="#" class="btn" onclick="showProjectDetails('finsight')">View Details</a>
+          <a href="#" class="btn" onclick="showProject('finsight'); return false;">View Details</a>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- Project Detail Pages (Restored from original) -->
+<!-- Cryogenics Project Page -->
+<div id="project-cryogenics" class="project-page">
+  <div class="project-header">
+    <h1>Closed-Cycle Cryogenic System (4 K)</h1>
+  </div>
+
+  <!-- Overview Section -->
+  <div class="project-overview">
+    <div class="overview-image">
+      <img src="IMG_1421.jpg" width="150" height="480" style="border-radius: 8px;" alt="Cryogenic System">
+    </div>
+    <div class="overview-content">
+      <div class="overview-box">
+        <h3>Project Overview</h3>
+        <p> This research project was conducted at Concordia University, under the supervision of the physics department chair: Valter Zazubovits. The goal was to design an devlopp a system that could reach 4K for long time ranges as an alternative for liquid helium. This project was part of a bigger research on Light-Harvesting complexes and their application in bio-solar technologies. The cryogenic system involved a Sumitomo RDK-415D cryocooler with gold-coated copper links, vacuum-sealed aluminum chambers, and G10 supports for stability.
+        <h3>Skills Used</h3>
+        <p>Material structures, Material Analysis, Thermodynamics, Machining, Gold plating, Wiring, Vacuum systems, Assembly, Documentation, Heat transfer, Schematic reading, Teamwork</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="project-section">
+    <div class="section-content">
+      <h2>System Design & Architecture</h2>
+      <p>The system architecture was developed around a modular closed-cycle cryogenic configuration integrating mechanical, thermal, and optical subsystems. A Sumitomo RDK-415D cold head serves as the central cooling unit, connected to a CSW-71C helium compressor through high-pressure lines operating in a sealed loop. The cold stages are thermally linked to the optical sample chamber via gold-coated OFHC copper links. The assembly is enclosed within a vacuum-sealed aluminum housing fitted with a low-emissivity radiation shield extending from the first stage of the cryocooler. The sample chamber is linked at the end of the system. Also two stainless-steel bellows isolate the cryostat from external vibrations. All components are mounted on a rigid optical table.</p>
+    </div>
+    <div class="section-image">
+      <img src="Arch.png" width="150" height="335" style="border-radius: 8px;" alt="Thermal Design">
+    </div>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="project-section">
+    <div class="section-image">
+      <img src="opt.png" width="150" height="335" style="border-radius: 8px;" alt="Vibration Isolation">
+    </div>
+    <div class="section-content">
+      <h2>Improvements and Optimiziation</h2>
+      <p>Several upgrades were introduced to improve the system's performance, stability, and control. A radiation shield was added to reduce radiative heat transfer and keep the cold stages stable at cryogenic temperatures. The thermal links and contact surfaces were gold-coated to improve thermal conductivity and area of contact. The entire setup was sealed inside a vacuum chamber to eliminate convective losses and maintain uniform temperature over time. Dual bellows and a revised mounting structure helped reduce mechanical vibration, while an integrated heater and temperature sensors provided finer control during operation. Together, these improvements improved the cooling efficiency, reliability, and overall performance of the closed-cycle cryogenic system by 21%.</p>
+    </div>
+  </div>
+
+   <div class="project-section">
+    <div class="section-content">
+      <h2>Material </h2>
+      <p>The system design relied on three main materials, each chosen for its specific thermal and mechanical properties at cryogenic temperatures. Gold-coated high-purity OFHC copper was used for the thermal links due to its excellent heat conductivity, allowing efficient transfer from the cold head to the sample chamber. G10 fiberglass epoxy was selected for the chamber supports because of its very low thermal conductivity and minimal contraction when cooled, ensuring mechanical stability without introducing heat leaks. Aluminum 6061-T6 was used for the vacuum housing while Aluminum 6063-T5 was used for the radiation shield. This choice offered the structural strength for the vacuum housing while allowing high thermal conductivity around 40–50 K for the radiation shield which helped distribute and dissipate intercepted heat evenly. Together, these materials provided an optimal balance between thermal management, insulation, and mechanical reliability in the 4 K operating range.</p>
+    </div>
+    <div class="section-image">
+      <img src="graph.png" width="200" height="435" style="border-radius: 8px;" alt="Experimental Results">
+    </div>
+  </div>
+  
+  <!-- Back button at bottom -->
+  <div class="project-back-bottom">
+    <a href="#" class="btn back-btn" onclick="hideAllProjects(); return false;">← Back to Portfolio</a>
+  </div>
+</div>
+
+
+
+<!-- Carbon Fiber Project Page -->
+<div id="project-carbonfiber" class="project-page">
+  <div class="project-header">
+    <h1>R&D - Joining Methods</h1>
+  </div>
+
+  <!-- Overview Section -->
+  <div class="project-overview">
+    <div class="overview-image">
+      <img src="IMG_3187.png" width="150" height="345" style="border-radius: 8px;" alt="Carbon Fiber Joining">
+    </div>
+    <div class="overview-content">
+      <div class="overview-box">
+        <h3>Project Overview</h3>
+        <p>Carbon Fiber is a unique material that is very hard to work with. Most of the parts of the Formula elctrcic car are recovered by this composite. This project aimed at finding new ways to optimise the joining methods between aluminium and Carbon Fiber mainly in the airfoil. This project was done with the aerodynamics sub-team.</p>
+        <h3>Skills Used</h3>
+        <p>Composite Manufacturing, Material Testing, SolidWorks, AutoCAD, Prototyping, 3D-printing, Structural Analysis</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="project-section">
+    <div class="section-content">
+      <h2>Prototype Development</h2>
+      <p> The mountings for the joining block (immitation of airfoils) were designed on solidworks and 3D printed using BambuLab. 1-1 replicas of these blocks were designed on AutoCAD and waterjetted. This was made to replicate 3 different joining options and perform strngth and structural tests.</p>
+    </div>
+    <div class="section-image">
+      <img src="Orientations.png"  style="border-radius: 8px; width: 500px; object-fit: cover;" alt="Prototype Development">
+    </div>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="project-section">
+    <div class="section-image">
+      <img src="IMG_1751.jpg" width="150" height="335" style="border-radius: 8px;; height: 250px; object-fit: cover;" alt="Joining Methods">
+      <img src="20251102_190453.jpg" width="150" height="330" style="border-radius: 8px;; height: 250px; object-fit: cover;" alt="Joining Methods">
+    </div>
+    <div class="section-content">
+      <h2>Manifacture and assemply</h2>
+      <p>For this project, a lot of manifacturing and assembling techniques and tools were used. We used 3D printing for the airfoil or aother car part replicas. These pieces were then recovered in resin and carbon fiber (vaccum at the end to dry and remove the extra resin). The blocks were made out of a 1/4" aluminium sheet that was waterjetted. </p>
+      <img src="image.jpg" width="450" height="410" style="border-radius: 8px;; height: 270px; object-fit: cover;" alt="Joining Methods">
+    </div>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="project-section">
+    <div class="section-content">
+      <h2>Testing & Results</h2>
+      <p>This part is still on-going so there are no current results. However, after assembling the prototypes, various strength, aerodynamics and structural tests will be conducted. We will then compare the result and take a desision of potential future applications and implementations.</p>
+    </div>
+    <div class="section-image">
+      <img src="llllllll.jpg" width="450" height="375" style="border-radius: 8px;" alt="Implementation">
+    </div>
+  </div>
+  
+  <!-- Back button at bottom -->
+  <div class="project-back-bottom">
+    <a href="#" class="btn back-btn" onclick="hideAllProjects(); return false;">← Back to Portfolio</a>
+  </div>
+</div>
+
+<!-- Finsight Project Page -->
+<div id="project-finsight" class="project-page">
+  <div class="project-header">
+    <h1>FinSight - Financial Analytics Platform</h1>
+  </div>
+
+  <!-- Overview Section -->
+  <div class="project-overview">
+    <div class="overview-image">
+      <img src="Screenshot 2025-11-07 212536.png" alt="FinSight Platform - Dashboard" style="border-radius: 8px; height: 400px; object-fit: cover;">
+     
+    </div>
+    <div class="overview-content">
+      <div class="overview-box">
+        <h3>Project Overview</h3>
+        <p>This project was part of the 2025 Dathaton organised by Polythechnique Montréal and AWS. The goal was to create a platform that will aid investors to comprehend complex financial laws, texts and reports, and visualize the direct impacts on their Portfolio, using an AI agent. The software was expected to give simple and consise insight while also propsing forecasts and risk mitigation. The event lasted 36 hours in teams of 2-4. </p>
+        <h3>Skills Used</h3>
+        <p>HTML, Machine Learning, Data Analysis, API Integration, Python, Algorithm Development, Teamwork </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="project-section">
+    <div class="section-content">
+      <h2>Platform Architecture</h2>
+      <p>The platform architecture was designed around a scalable Python backend capable of integrating multiple financial data sources through RESTful APIs. This approach was selected as it allows seamless aggregation of heterogeneous market datasets while maintaining flexibility for future expansion. Data processing pipelines were implemented within this framework to automatically clean, normalize, and analyze real-time financial streams. This design enables the predictive modeling module to operate on consistent, high-quality inputs, ensuring reliable insights and faster adaptation to market fluctuations.</p>
+    </div>
+    <div class="section-image">
+      <img src="Screenshot 2025-11-07 223726.png" width="150" height="335" style="border-radius: 8px;" alt="Platform Architecture">
+    </div>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="project-section">
+    <div class="section-image">
+      <img src="Screenshot 2025-11-07 224613.png" width="150" height="335" style="border-radius: 8px;" alt="Machine Learning Models">
+    </div>
+    <div class="section-content">
+      <h2>AI and Python Implementation</h2>
+      <p>FinSight incorporates Google Gemini as the core of the Python backend. This AI agent was the best option for this project as compared to most other LLMs that primarily handle text, Gemini natively integrates multiple data types. Also, the FLASK library was improted to the python backend to create a direct connection with the user imputs conducted throught the HTML frontend. Finally, a memory system was added to the software, allowing th AI agent to keep long term memories of the document sent by the user and optimising the answers generated.</p>
+    </div>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="project-section">
+    <div class="section-content">
+      <h2>User Interface & Visualization</h2>
+      <p>The UI was made using a mix of HTML, CSS, and Java Script. The platform launches with a home page that includes the name of the software and some background animation followed by a smooth transition made with JS. This transition leads to another interface where the user can upload documents of any types which are sent to the python backend. Another interface with the AI analysis and a text box opens to the user allowing him to write his own prompts. The pages are linked in the HTML code allowing smmoth transitions to one another.</p>
+      <img src="Screenshot 2025-11-07 223122.png" width="500" height="225" style="border-radius: 8px;" alt="User Interface">
+    </div>
+    <div class="section-image">
+      <img src="Screenshot 2025-11-07 212536.png" width="150" height="335" style="border-radius: 8px; height: 250px; object-fit: cover;" alt="User Interface">
+      <img src="Screenshot 2025-11-07 222904.png" width="250" height="325" style="border-radius: 8px; height: 250px; object-fit: cover;" alt="User Interface"> 
+      
+    </div>
+  </div>
+  
+  <!-- Back button at bottom -->
+  <div class="project-back-bottom">
+    <a href="#" class="btn back-btn" onclick="hideAllProjects(); return false;">← Back to Portfolio</a>
+  </div>
+</div>
 
 <!-- Resume Section -->
 <section id="resume">
@@ -1184,24 +1704,29 @@ themeToggle.addEventListener('click', () => {
 });
 
 // Smooth scrolling for navigation links
-document.querySelectorAll('nav a, .footer-link').forEach(link => {
+document.querySelectorAll('nav a, .footer-link, .menu-item').forEach(link => {
   link.addEventListener('click', function(e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href');
-    const targetSection = document.querySelector(targetId);
-    
-    if (targetSection) {
-      // Update active nav link
-      document.querySelectorAll('.nav-link').forEach(navLink => {
-        navLink.classList.remove('active');
-      });
-      this.classList.add('active');
+    const href = this.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      e.preventDefault();
+      const targetId = href;
+      const targetSection = document.querySelector(targetId);
       
-      // Smooth scroll to section
-      window.scrollTo({
-        top: targetSection.offsetTop - 80,
-        behavior: 'smooth'
-      });
+      if (targetSection) {
+        // Update active nav link
+        document.querySelectorAll('.nav-link').forEach(navLink => {
+          navLink.classList.remove('active');
+        });
+        if (this.classList.contains('nav-link')) {
+          this.classList.add('active');
+        }
+        
+        // Smooth scroll to section
+        window.scrollTo({
+          top: targetSection.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
     }
   });
 });
@@ -1230,180 +1755,150 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// Subtle animation for speed lines
-function animateSpeedLines() {
-  const lines = document.querySelectorAll('.speed-line');
-  lines.forEach((line, index) => {
+// Initialize background animations
+function initializeAnimations() {
+  // Animate circuit lines
+  const circuitLines = document.querySelectorAll('.circuit-line');
+  circuitLines.forEach((line, index) => {
     setTimeout(() => {
       line.style.animation = 'none';
       setTimeout(() => {
-        line.style.animation = 'speed-pass 2s ease-out infinite';
+        line.style.animation = `circuit-race 4s linear infinite ${index}s`;
       }, 10);
-    }, index * 700);
-  });
-}
-
-// Animate orbital dots
-function animateOrbitalDots() {
-  const dots = document.querySelectorAll('.orbital-dot');
-  dots.forEach((dot, index) => {
-    dot.style.animation = 'none';
-    setTimeout(() => {
-      dot.style.animation = `orbital-float ${15 + index * 2}s linear infinite`;
     }, index * 500);
   });
+  
+  // Animate space dots
+  const spaceDots = document.querySelectorAll('.space-dot');
+  spaceDots.forEach((dot, index) => {
+    dot.style.animation = `space-float 20s linear infinite ${index * 5}s`;
+  });
+  
+  // Rocket trail animation
+  const rocketTrail = document.querySelector('.rocket-trail');
+  if (rocketTrail) {
+    setInterval(() => {
+      rocketTrail.style.animation = 'none';
+      setTimeout(() => {
+        rocketTrail.style.animation = 'rocket-launch 8s ease-in-out infinite';
+      }, 10);
+    }, 8000);
+  }
 }
 
-// Initialize animations
-window.addEventListener('load', () => {
-  animateSpeedLines();
-  animateOrbitalDots();
+// Hero text animation
+function animateHeroText() {
+  const greeting = document.querySelector('.hero-greeting');
+  const title = document.querySelector('.hero-title');
+  const subtitle = document.querySelector('.hero-subtitle');
+  const menu = document.querySelector('.hero-menu');
+  const contactInfo = document.querySelector('.contact-info');
   
-  // Repeat speed line animation every 6 seconds
-  setInterval(animateSpeedLines, 6000);
+  // Reset animations
+  [greeting, title, subtitle, menu, contactInfo].forEach(el => {
+    if (el) {
+      el.style.animation = 'none';
+      void el.offsetWidth; // Trigger reflow
+    }
+  });
+  
+  // Apply animations with delays
+  setTimeout(() => {
+    if (greeting) greeting.style.animation = 'slideInLeft 0.8s ease forwards';
+  }, 100);
+  
+  setTimeout(() => {
+    if (title) title.style.animation = 'slideInLeft 0.8s ease 0.2s forwards';
+  }, 300);
+  
+  setTimeout(() => {
+    if (subtitle) subtitle.style.animation = 'slideInLeft 0.8s ease 0.4s forwards';
+  }, 500);
+  
+  setTimeout(() => {
+    if (menu) menu.style.animation = 'slideInRight 0.8s ease 0.6s forwards';
+  }, 700);
+  
+  setTimeout(() => {
+    if (contactInfo) contactInfo.style.animation = 'fadeInUp 0.8s ease 0.8s forwards';
+  }, 900);
+}
+
+// Project page navigation (restored from original)
+function showProject(projectId) {
+  // Hide all project pages and main content
+  document.querySelectorAll('.project-page').forEach(page => {
+    page.style.display = 'none';
+  });
+  document.querySelectorAll('section, footer').forEach(section => {
+    section.style.display = 'none';
+  });
+  
+  // Show the selected project page
+  const projectPage = document.getElementById('project-' + projectId);
+  if (projectPage) {
+    projectPage.style.display = 'block';
+  }
+  
+  // Scroll to top
+  window.scrollTo(0, 0);
+}
+
+function hideAllProjects() {
+  // Hide all project pages
+  document.querySelectorAll('.project-page').forEach(page => {
+    page.style.display = 'none';
+  });
+  
+  // Show all main content
+  document.querySelectorAll('section, footer').forEach(section => {
+    section.style.display = 'block';
+  });
+  
+  // Scroll to projects section
+  document.getElementById('projects').scrollIntoView();
+}
+
+// Menu item hover effects
+document.querySelectorAll('.menu-item').forEach(item => {
+  item.addEventListener('mouseenter', function() {
+    this.style.transform = 'translateX(10px)';
+  });
+  
+  item.addEventListener('mouseleave', function() {
+    this.style.transform = 'translateX(0)';
+  });
 });
 
-// Project details modal
-function showProjectDetails(projectId) {
-  const projectData = {
-    cryogenics: {
-      title: "Closed-Cycle Cryogenic System (4K)",
-      description: "This research project was conducted at Concordia University, under the supervision of the physics department chair: Valter Zazubovits. The goal was to design and develop a system that could reach 4K for long time ranges as an alternative for liquid helium. This project was part of a bigger research on Light-Harvesting complexes and their application in bio-solar technologies.",
-      skills: ["Material structures", "Thermodynamics", "Machining", "Vacuum systems", "Heat transfer"],
-      image: "IMG_1421.jpg"
-    },
-    carbonfiber: {
-      title: "Composite Joining Methods R&D",
-      description: "Research on advanced techniques for bonding carbon fiber to metal components, using 3D-printed mock airfoils and composite layups to optimize aerodynamic assembly strength. This project was done with the aerodynamics sub-team.",
-      skills: ["Composite Manufacturing", "SolidWorks", "3D-printing", "Structural Analysis"],
-      image: "Goat car.jpg"
-    },
-    finsight: {
-      title: "FinSight - Financial Analytics Platform",
-      description: "Developed an innovative financial analytics platform that provides real-time insights and predictive modeling for investment decisions using machine learning algorithms and financial data APIs as part of the 2025 Datathon.",
-      skills: ["HTML/CSS/JS", "Machine Learning", "API Integration", "Python"],
-      image: "Screenshot 2025-11-07 213508.png"
+// Initialize everything when page loads
+window.addEventListener('load', () => {
+  initializeAnimations();
+  animateHeroText();
+  
+  // Re-animate hero text every 30 seconds (subtle refresh)
+  setInterval(animateHeroText, 30000);
+  
+  // Parallax effect on scroll
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const rocketTrail = document.querySelector('.rocket-trail');
+    const spaceDots = document.querySelectorAll('.space-dot');
+    
+    if (rocketTrail) {
+      rocketTrail.style.transform = `rotate(15deg) translateX(${scrolled * 0.1}px)`;
     }
-  };
-  
-  const project = projectData[projectId];
-  
-  // Create modal
-  const modal = document.createElement('div');
-  modal.style.cssText = `
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(10, 25, 47, 0.95);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    padding: 20px;
-    backdrop-filter: blur(10px);
-  `;
-  
-  modal.innerHTML = `
-    <div style="
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      padding: 40px;
-      max-width: 800px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      position: relative;
-    ">
-      <button style="
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        background: transparent;
-        color: var(--accent);
-        border: 1px solid var(--border);
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        cursor: pointer;
-        font-size: 1.2rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-      " 
-      onmouseover="this.style.transform='rotate(90deg)'"
-      onmouseout="this.style.transform='rotate(0deg)'"
-      onclick="this.parentElement.parentElement.remove()">×</button>
-      
-      <h2 style="color: var(--accent); margin-bottom: 20px; font-size: 2rem;">${project.title}</h2>
-      
-      <div style="margin-bottom: 30px;">
-        <img src="${project.image}" alt="${project.title}" style="width: 100%; border-radius: 10px; margin-bottom: 20px;">
-        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 20px;">${project.description}</p>
-      </div>
-      
-      <div style="margin-top: 30px;">
-        <h3 style="color: var(--text); margin-bottom: 15px;">Skills Used</h3>
-        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-          ${project.skills.map(skill => `
-            <span style="
-              background: rgba(100, 255, 218, 0.1);
-              color: var(--accent);
-              padding: 8px 16px;
-              border-radius: 20px;
-              font-size: 0.9rem;
-              border: 1px solid var(--border);
-            ">${skill}</span>
-          `).join('')}
-        </div>
-      </div>
-      
-      <div style="margin-top: 40px; display: flex; gap: 15px;">
-        <button class="btn" onclick="this.parentElement.parentElement.remove()" style="
-          padding: 12px 24px;
-          background: var(--gradient);
-          color: var(--primary);
-          border: none;
-          border-radius: 8px;
-          cursor: pointer;
-          font-weight: 600;
-        ">Close</button>
-      </div>
-    </div>
-  `;
-  
-  document.body.appendChild(modal);
-  
-  // Add styles to modal elements
-  const style = document.createElement('style');
-  style.textContent = `
-    div[style*="position: fixed"] * {
-      font-family: 'Inter', sans-serif;
-    }
-  `;
-  document.head.appendChild(style);
-}
+    
+    spaceDots.forEach((dot, index) => {
+      dot.style.transform = `rotate(${scrolled * 0.01}deg) translateX(40px) rotate(${-scrolled * 0.01}deg)`;
+    });
+  });
+});
 
-// Close modal on escape key
+// Add keyboard navigation for project pages
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
-    const modal = document.querySelector('div[style*="position: fixed; top: 0; left: 0; width: 100%;"]');
-    if (modal) modal.remove();
+    hideAllProjects();
   }
-});
-
-// Add hover effect to project cards
-document.querySelectorAll('.project-card').forEach(card => {
-  card.addEventListener('mouseenter', function() {
-    this.style.transform = 'translateY(-10px) scale(1.02)';
-  });
-  
-  card.addEventListener('mouseleave', function() {
-    this.style.transform = 'translateY(0) scale(1)';
-  });
 });
 </script>
 </body>
