@@ -1,4 +1,4 @@
- <!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8810PDKJ2N"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -245,10 +245,10 @@ body {
   opacity: 0.3;
 }
 
-/* Theme Toggle - Minimal */
+/* Theme Toggle - Moved lower to avoid clash with contact button */
 .theme-toggle {
   position: fixed;
-  top: 25px;
+  top: 120px; /* Changed from 25px to 120px */
   right: 25px;
   z-index: 1000;
   width: 45px;
@@ -1380,6 +1380,12 @@ footer {
   .carbon-animation {
     display: none;
   }
+  
+  /* Adjust theme toggle for mobile */
+  .theme-toggle {
+    top: 100px; /* Adjust for mobile */
+    right: 15px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1400,7 +1406,7 @@ footer {
   }
   
   .theme-toggle {
-    top: 15px;
+    top: 90px; /* Adjust for smaller screens */
     right: 15px;
   }
 }
@@ -1424,7 +1430,7 @@ footer {
   <div class="rocket-trail"></div>
 </div>
 
-<!-- Theme Toggle -->
+<!-- Theme Toggle - Now positioned lower -->
 <div class="theme-toggle" id="themeToggle">
   <i class="fas fa-moon"></i>
 </div>
@@ -2096,7 +2102,7 @@ function initCodeAnimation() {
     "        analysis = analyzer.analyze(data)",
     "        yield analysis",
     "if __name__ == '__main__':",
-    "    app.run(debug=True)"
+    "    app.run(debug=true)"
   ];
   
   // Create multiple lines with random positions
@@ -2186,51 +2192,4 @@ function hideAllProjects() {
   });
   
   // Scroll to projects section
-  document.getElementById('projects').scrollIntoView();
-}
-
-// Menu item hover effects
-document.querySelectorAll('.menu-item').forEach(item => {
-  item.addEventListener('mouseenter', function() {
-    this.style.transform = 'translateX(10px)';
-  });
-  
-  item.addEventListener('mouseleave', function() {
-    this.style.transform = 'translateX(0)';
-  });
-});
-
-// Initialize everything when page loads
-window.addEventListener('load', () => {
-  initializeAnimations();
-  animateHeroText();
-  initTypingAnimation();
-  
-  // Re-animate hero text every 30 seconds (subtle refresh)
-  setInterval(animateHeroText, 30000);
-  
-  // Parallax effect on scroll
-  window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const rocketTrail = document.querySelector('.rocket-trail');
-    const spaceDots = document.querySelectorAll('.space-dot');
-    
-    if (rocketTrail) {
-      rocketTrail.style.transform = `rotate(15deg) translateX(${scrolled * 0.1}px)`;
-    }
-    
-    spaceDots.forEach((dot, index) => {
-      dot.style.transform = `rotate(${scrolled * 0.01}deg) translateX(50px) rotate(${-scrolled * 0.01}deg)`;
-    });
-  });
-});
-
-// Add keyboard navigation for project pages
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    hideAllProjects();
-  }
-});
-</script>
-</body>
-</html>
+  document.getElementById('projects').scrollInto
