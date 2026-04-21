@@ -34,7 +34,6 @@
   --gradient:linear-gradient(135deg,#00adb5,#00959c);
   --theme-transition:all .35s ease;
 
-  /* mobile ergonomics */
   --container:1200px;
   --header-h:72px;
   --pad:50px;
@@ -158,7 +157,6 @@ nav{display:flex;gap:22px;align-items:center;}
 .nav-link.active{color:var(--accent);}
 .nav-link.active::after{width:100%;}
 
-/* Mobile nav button */
 .nav-toggle{
   display:none;
   width:44px;height:44px;border-radius:12px;
@@ -189,7 +187,6 @@ nav{display:flex;gap:22px;align-items:center;}
 .mobile-nav a:active{transform:scale(.99);}
 .mobile-nav a + a{margin-top:6px;}
 
-/* Theme Toggle (mobile-safe) */
 .theme-toggle{
   position:fixed;
   top:calc(env(safe-area-inset-top) + 88px);
@@ -374,7 +371,7 @@ footer{
 .footer-link:hover{color:var(--accent);}
 .copyright{color:var(--text-muted);margin-top:12px;font-size:.9rem;}
 
-/* Project pages (mobile-safe widths) */
+/* ── Project detail pages ── */
 .project-page{
   display:none;
   max-width:1000px;
@@ -400,12 +397,79 @@ footer{
 .back-btn{background:var(--gradient);}
 .project-back-bottom{text-align:center;margin-top:26px;padding-top:18px;border-top:1px solid var(--border);}
 
-/* Reduce motion on mobile if user prefers */
+/* ── Flusso phone mockup layout ── */
+.flusso-phones{
+  display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
+  margin-bottom:26px;
+}
+.flusso-phone{
+  width:160px;flex:0 0 auto;
+  border-radius:28px;overflow:hidden;
+  box-shadow:0 12px 40px var(--shadow);
+  border:2px solid var(--border);
+}
+.flusso-phone img{width:100%;display:block;}
+
+/* two-column phone + text for flusso sections */
+.flusso-section{
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:24px;align-items:start;
+  margin-bottom:32px;
+}
+.flusso-section.reverse{grid-template-columns:1fr 180px;}
+.flusso-section.reverse .flusso-phone{order:2;}
+.flusso-section.reverse .flusso-text{order:1;}
+
+.flusso-phone-wrap{
+  border-radius:28px;overflow:hidden;
+  box-shadow:0 12px 40px var(--shadow);
+  border:2px solid var(--border);
+}
+.flusso-phone-wrap img{width:100%;display:block;}
+
+.flusso-text h2{font-size:1.3rem;color:var(--text);margin-bottom:10px;}
+.flusso-text p{color:var(--text-muted);line-height:1.75;font-size:1rem;margin-bottom:10px;}
+.flusso-text ul{list-style:none;padding:0;margin:0;}
+.flusso-text ul li{
+  color:var(--text-muted);font-size:.95rem;line-height:1.6;
+  padding:4px 0 4px 18px;position:relative;
+}
+.flusso-text ul li::before{
+  content:"→";position:absolute;left:0;color:var(--accent);font-size:.85rem;
+}
+
+/* tech pill row */
+.tech-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.tech-pill{
+  background:rgba(0,173,181,.12);
+  border:1px solid rgba(0,173,181,.35);
+  color:var(--accent);
+  font-family:"JetBrains Mono",monospace;
+  font-size:.78rem;
+  padding:5px 11px;border-radius:999px;
+}
+
+/* stack overview grid */
+.stack-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:12px;
+  margin-top:18px;
+}
+.stack-card{
+  background:rgba(0,173,181,.06);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:14px 16px;
+}
+.stack-card h4{color:var(--accent);font-size:.9rem;margin-bottom:6px;font-family:"JetBrains Mono",monospace;}
+.stack-card p{color:var(--text-muted);font-size:.88rem;line-height:1.6;}
+
 @media (prefers-reduced-motion: reduce){
   *{animation:none !important;transition:none !important;scroll-behavior:auto !important;}
 }
 
-/* Responsive */
 @media (max-width: 1024px){
   :root{--pad:22px;}
   .hero-content{grid-template-columns:1fr;gap:22px;}
@@ -430,6 +494,10 @@ footer{
   .contact-item{width:100%;}
   .projects-grid{grid-template-columns:1fr;}
   .project-overview,.project-section{flex-direction:column;}
+  .flusso-section,.flusso-section.reverse{grid-template-columns:1fr;}
+  .flusso-section.reverse .flusso-phone{order:0;}
+  .flusso-section.reverse .flusso-text{order:0;}
+  .flusso-phone-wrap{max-width:220px;margin:0 auto;}
   .engineering-bg{opacity:.9;}
 }
 @media (max-width: 420px){
@@ -484,7 +552,6 @@ footer{
   </nav>
 </header>
 
-<!-- Mobile dropdown nav -->
 <div class="mobile-nav" id="mobileNav" aria-hidden="true">
   <a href="#hero"><b>Home</b> <span>Top</span></a>
   <a href="#about"><b>About</b> <span>Profile</span></a>
@@ -585,6 +652,8 @@ footer{
   </div>
 
   <div class="projects-grid">
+
+    <!-- Cryogenics -->
     <div class="project-card">
       <div class="project-image">
         <img src="IMG_1421.jpg" alt="Cryogenic System">
@@ -604,6 +673,7 @@ footer{
       </div>
     </div>
 
+    <!-- Carbon Fiber -->
     <div class="project-card">
       <div class="project-image">
         <img src="Goat car.jpg" alt="Carbon Fiber Research">
@@ -622,6 +692,7 @@ footer{
       </div>
     </div>
 
+    <!-- FinSight -->
     <div class="project-card">
       <div class="project-image">
         <img src="Screenshot 2025-11-07 213508.png" alt="FinSight Platform">
@@ -639,10 +710,42 @@ footer{
         </div>
       </div>
     </div>
+
+    <!-- Flusso -->
+    <div class="project-card">
+      <div class="project-image" style="background:#0B1F33;display:flex;align-items:center;justify-content:center;gap:10px;padding:10px;">
+        <div style="width:80px;border-radius:18px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.5);flex:0 0 auto;">
+          <img src="flusso_dashboard.png" alt="Flusso Dashboard" style="width:100%;display:block;">
+        </div>
+        <div style="width:80px;border-radius:18px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.5);flex:0 0 auto;">
+          <img src="flusso_focus.png" alt="Flusso Focus Zone" style="width:100%;display:block;">
+        </div>
+        <div style="width:80px;border-radius:18px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.5);flex:0 0 auto;">
+          <img src="flusso_tasks.png" alt="Flusso Tasks" style="width:100%;display:block;">
+        </div>
+      </div>
+      <div class="project-content">
+        <h3>Flusso — iOS & Android Productivity App</h3>
+        <p>Designed and built a full-stack mobile app from scratch as a solo developer — React Native, Firebase backend, Spotify integration, RevenueCat subscriptions, and custom native iOS modules.</p>
+        <div class="project-tags">
+          <span class="tag">React Native</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Firebase</span>
+          <span class="tag">iOS / Android</span>
+        </div>
+        <div class="project-actions">
+          <a href="#" class="btn" onclick="showProject('flusso'); return false;">View Details</a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- Project pages (kept; made responsive by CSS above) -->
+
+<!-- ═══════════════ PROJECT DETAIL PAGES ═══════════════ -->
+
+<!-- Cryogenics -->
 <div id="project-cryogenics" class="project-page">
   <div class="project-header"><h1>Closed-Cycle Cryogenic System (4 K)</h1></div>
 
@@ -675,7 +778,7 @@ footer{
       <img src="opt.png" alt="Vibration Isolation">
     </div>
     <div class="section-content">
-      <h2>Improvements and Optimiziation</h2>
+      <h2>Improvements and Optimization</h2>
       <p>Several upgrades were introduced to improve the system's performance, stability, and control. A radiation shield was added to reduce radiative heat transfer and keep the cold stages stable at cryogenic temperatures. The thermal links and contact surfaces were gold-coated to improve thermal conductivity and area of contact. The entire setup was sealed inside a vacuum chamber to eliminate convective losses and maintain uniform temperature over time. Dual bellows and a revised mounting structure helped reduce mechanical vibration, while an integrated heater and temperature sensors provided finer control during operation. Together, these improvements improved the cooling efficiency, reliability, and overall performance of the closed-cycle cryogenic system by 21%.</p>
     </div>
   </div>
@@ -695,6 +798,7 @@ footer{
   </div>
 </div>
 
+<!-- Carbon Fiber -->
 <div id="project-carbonfiber" class="project-page">
   <div class="project-header"><h1>R&amp;D - Joining Methods</h1></div>
 
@@ -751,6 +855,7 @@ footer{
   </div>
 </div>
 
+<!-- FinSight -->
 <div id="project-finsight" class="project-page">
   <div class="project-header"><h1>FinSight - Financial Analytics Platform</h1></div>
 
@@ -807,6 +912,181 @@ footer{
   </div>
 </div>
 
+
+<!-- ═══════════════ FLUSSO DETAIL PAGE ═══════════════ -->
+<div id="project-flusso" class="project-page">
+  <div class="project-header">
+    <h1>Flusso — iOS &amp; Android Productivity App</h1>
+    <p style="color:var(--text-muted);margin-top:8px;font-size:1rem;">Solo-developed · React Native · TypeScript · Firebase · App Store</p>
+  </div>
+
+  <!-- Overview -->
+  <div class="overview-box" style="margin-bottom:26px;">
+    <h3>What is Flusso?</h3>
+    <p style="color:var(--text-muted);margin-top:8px;line-height:1.75;">
+      Flusso is a full-featured deep-work and productivity app I designed and built from scratch as the sole developer, under my company BLG Group (Canada). The core idea is "Movement" — progress is not just checking boxes, but building intentional daily momentum. Users set high-level Objectives, break them into Tasks, commit to immersive Focus Sessions, and compete with friends on a live leaderboard. The app is published on the Apple App Store and Google Play.
+    </p>
+    <div class="tech-pills" style="margin-top:14px;">
+      <span class="tech-pill">React Native 0.83 / Expo SDK 55</span>
+      <span class="tech-pill">TypeScript 5.9</span>
+      <span class="tech-pill">Firebase Auth + Firestore</span>
+      <span class="tech-pill">RevenueCat</span>
+      <span class="tech-pill">Spotify Web API (OAuth2 PKCE)</span>
+      <span class="tech-pill">EAS CI/CD</span>
+      <span class="tech-pill">Custom Native iOS Modules</span>
+    </div>
+  </div>
+
+  <!-- Section 1: Architecture -->
+  <div class="flusso-section">
+    <div class="flusso-phone-wrap">
+      <img src="flusso_dashboard.png" alt="Flusso Dashboard">
+    </div>
+    <div class="flusso-text">
+      <h2>Architecture &amp; Data Layer</h2>
+      <p>The app follows a <strong style="color:var(--text);">local-first architecture</strong>: all reads and writes hit AsyncStorage on-device first, so the UI is instant and works fully offline. A 3-layer cloud sync system then reconciles data with Firestore in the background:</p>
+      <ul>
+        <li><strong style="color:var(--text);">CloudBootstrap</strong> — runs on first login or new device, pulls the full user dataset from Firestore and hydrates local storage.</li>
+        <li><strong style="color:var(--text);">CloudSync</strong> — bi-directional pull/push on demand, handling conflicts between local and cloud state.</li>
+        <li><strong style="color:var(--text);">CloudAutoPush</strong> — silent background push triggered whenever the app moves from foreground to background, keeping cloud state fresh without user action.</li>
+      </ul>
+      <p style="margin-top:10px;">Firestore Security Rules enforce strict per-user data isolation — users can only read or write their own subcollections — while a separate top-level structure handles social data (friendships, shared objectives, invites).</p>
+      <div class="tech-pills">
+        <span class="tech-pill">AsyncStorage</span>
+        <span class="tech-pill">Cloud Firestore</span>
+        <span class="tech-pill">Firebase Auth</span>
+        <span class="tech-pill">Security Rules</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2: Focus Zone -->
+  <div class="flusso-section reverse">
+    <div class="flusso-text">
+      <h2>Focus Zone &amp; Audio Engine</h2>
+      <p>The Focus Zone is the core feature: an immersive full-screen environment with 5 room backgrounds (mountain, ocean, skyline, space, forest). The audio engine layers ambient sounds with music style selection (lofi, piano, classical). The timer keeps running when the app is backgrounded.</p>
+      <ul>
+        <li>Spotify Web API integrated via <strong style="color:var(--text);">OAuth2 PKCE</strong> — no client secret exposed client-side. Refresh tokens persist across restarts via AsyncStorage so users never re-authenticate.</li>
+        <li>The in-app mini-player exposes playback control, seekable progress bar, shuffle/repeat, and playlist browsing — all through the Spotify Web API (not the SDK).</li>
+        <li>A custom native iOS module integrates with <strong style="color:var(--text);">iOS 17 Live Activity / Dynamic Island</strong> to keep the focus timer visible on the Lock Screen even when backgrounded.</li>
+        <li>Pomodoro mode and freeform timer modes both supported, with local notification scheduling for phase transitions.</li>
+      </ul>
+      <div class="tech-pills">
+        <span class="tech-pill">expo-audio</span>
+        <span class="tech-pill">expo-video</span>
+        <span class="tech-pill">Spotify Web API</span>
+        <span class="tech-pill">Live Activity (iOS 17)</span>
+        <span class="tech-pill">Expo Notifications</span>
+      </div>
+    </div>
+    <div class="flusso-phone-wrap">
+      <img src="flusso_focus.png" alt="Flusso Focus Zone">
+    </div>
+  </div>
+
+  <!-- Section 3: Task & Goal System -->
+  <div class="flusso-section">
+    <div class="flusso-phone-wrap">
+      <img src="flusso_tasks.png" alt="Flusso Tasks">
+    </div>
+    <div class="flusso-text">
+      <h2>Goal &amp; Task System</h2>
+      <p>Tasks and Objectives form a two-level hierarchy. Tasks carry 4 importance levels, deadlines, and status tracking. Objectives are high-level goals with 7 categories, 8 color labels, and optional Training Plans.</p>
+      <ul>
+        <li><strong style="color:var(--text);">Training Plans</strong> come in two types: cycle-based (rotation with missed-day logic — keep-order or shift-forward) and week-based (fixed day-of-week schedule).</li>
+        <li>4 sort/filter modes: My Day, Important, Planned, Objectives — with the Important filter strictly showing only starred tasks.</li>
+        <li>Deadline notifications are deduplicated using a logical key system: a stable <code style="color:var(--accent);font-family:'JetBrains Mono',monospace;">logicalKey → notificationId</code> map prevents duplicate alerts across sessions.</li>
+        <li>Device contacts are scanned (with permission) for birthdays and anniversaries — stored locally only, never synced to the cloud. iOS 0-based month normalization and Feb 29 edge cases handled explicitly.</li>
+      </ul>
+      <div class="tech-pills">
+        <span class="tech-pill">React Context API</span>
+        <span class="tech-pill">expo-contacts</span>
+        <span class="tech-pill">Notification deduplication</span>
+        <span class="tech-pill">AsyncStorage</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 4: Objectives screen -->
+  <div class="flusso-section reverse">
+    <div class="flusso-text">
+      <h2>Social, Gamification &amp; Subscriptions</h2>
+      <p>Friends connect via a 6-character Friend Tag. The friend system supports pending / accepted / blocked states with notification badges for incoming requests. A live leaderboard tracks focus minutes, tasks completed, and login streak across daily, weekly, monthly, and yearly ranges.</p>
+      <ul>
+        <li><strong style="color:var(--text);">Shared Objectives</strong> — collaborative goals with member assignment and per-member completion tracking stored in Firestore.</li>
+        <li><strong style="color:var(--text);">35-badge Achievement system</strong> across 5 trophy tiers, tracking task completion, streaks, focus sessions, time-of-day patterns, and social activity. Modal celebration on unlock with Lottie animation + confetti.</li>
+        <li>Subscriptions handled by <strong style="color:var(--text);">RevenueCat</strong>, wrapping Apple StoreKit and Google Play Billing. Custom paywall UI with monthly/annual toggle. Entitlement linked to Firebase UID for cross-device state.</li>
+        <li>Auth supports Apple Sign-In (native iOS module via expo-apple-authentication, with a platform stub for Android), Google Sign-In, and email/password.</li>
+      </ul>
+      <div class="tech-pills">
+        <span class="tech-pill">RevenueCat</span>
+        <span class="tech-pill">Apple StoreKit</span>
+        <span class="tech-pill">expo-apple-authentication</span>
+        <span class="tech-pill">Firestore social collections</span>
+        <span class="tech-pill">Lottie</span>
+      </div>
+    </div>
+    <div class="flusso-phone-wrap">
+      <img src="flusso_objectives.png" alt="Flusso Objectives">
+    </div>
+  </div>
+
+  <!-- Section 5: Account & Stats -->
+  <div class="flusso-section">
+    <div class="flusso-phone-wrap">
+      <img src="flusso_account.png" alt="Flusso Account">
+    </div>
+    <div class="flusso-text">
+      <h2>UI System &amp; Build Pipeline</h2>
+      <p>The design system uses a custom <code style="color:var(--accent);font-family:'JetBrains Mono',monospace;">s()</code> responsive scaling function capped on tablets, safe-area-aware layouts for notches and home indicators, and a floating pill-shaped custom tab bar with animated auto-hide and notification badges built from scratch in React Native.</p>
+      <ul>
+        <li>Dark mode (default) and light mode, with 8 user-selectable accent colors persisted via AsyncStorage.</li>
+        <li>TypeScript strict mode enforced throughout the entire codebase.</li>
+        <li>Platform-specific module resolution via Metro bundler: <code style="color:var(--accent);font-family:'JetBrains Mono',monospace;">.ios.ts / .ts</code> file strategy for native-only modules.</li>
+        <li><strong style="color:var(--text);">EAS (Expo Application Services)</strong> handles cloud-based iOS and Android builds, OTA updates, and App Store / Google Play submissions. Build profiles: development, preview, and production (auto-increment).</li>
+        <li>Custom Expo Config Plugins inject native code into managed workflow builds without ejecting.</li>
+        <li><code style="color:var(--accent);font-family:'JetBrains Mono',monospace;">patch-package</code> used for upstream node_modules fixes without forking dependencies.</li>
+      </ul>
+      <div class="tech-pills">
+        <span class="tech-pill">EAS Build / OTA</span>
+        <span class="tech-pill">Expo Config Plugins</span>
+        <span class="tech-pill">Metro bundler</span>
+        <span class="tech-pill">patch-package</span>
+        <span class="tech-pill">TypeScript strict</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stack summary -->
+  <div style="margin-bottom:26px;">
+    <h2 style="color:var(--text);font-size:1.3rem;margin-bottom:14px;">Full Stack at a Glance</h2>
+    <div class="stack-grid">
+      <div class="stack-card">
+        <h4>Frontend</h4>
+        <p>React Native 0.83 · Expo SDK 55 · TypeScript 5.9 · React Navigation 7 · expo-linear-gradient · lucide-react-native · react-native-svg</p>
+      </div>
+      <div class="stack-card">
+        <h4>Backend / Cloud</h4>
+        <p>Firebase Auth · Cloud Firestore (NoSQL) · Firestore Security Rules · Firebase CLI · 3-layer sync (Bootstrap / Sync / AutoPush)</p>
+      </div>
+      <div class="stack-card">
+        <h4>Integrations</h4>
+        <p>Spotify Web API (PKCE OAuth2) · RevenueCat (StoreKit + Play Billing) · Apple Sign-In · Google Sign-In · Expo Notifications · expo-contacts</p>
+      </div>
+      <div class="stack-card">
+        <h4>Native / Build</h4>
+        <p>Custom Live Activity module (iOS 17 Dynamic Island) · Smart Location (MapKit) · EAS Build &amp; Submit · Expo Config Plugins · patch-package</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-back-bottom">
+    <a href="#" class="btn back-btn" onclick="hideAllProjects(); return false;">← Back to Portfolio</a>
+  </div>
+</div>
+
+
+<!-- Resume -->
 <section id="resume">
   <div class="section-header">
     <h2 class="section-title">Resume</h2>
@@ -824,6 +1104,7 @@ footer{
   </div>
 </section>
 
+<!-- Contact -->
 <section id="contact">
   <div class="section-header">
     <h2 class="section-title">Get In Touch</h2>
@@ -927,7 +1208,6 @@ mobileNav.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', () => closeMobileNav());
 });
 
-/* Tap outside closes mobile nav */
 document.addEventListener('click', (e) => {
   const within = mobileNav.contains(e.target) || navToggle.contains(e.target);
   if (!within) closeMobileNav();
@@ -947,7 +1227,7 @@ document.querySelectorAll('nav a, .footer-link, .menu-item, #mobileNav a').forEa
   });
 });
 
-/* Active nav link on scroll (desktop) */
+/* Active nav link on scroll */
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('.nav-link');
 window.addEventListener('scroll', () => {
@@ -996,7 +1276,6 @@ function initTypingAnimation() {
   setTimeout(typeWriter, 800);
 }
 
-/* Animations init (kept lightweight) */
 function initializeAnimations() {
   document.querySelectorAll('.space-dot').forEach((dot, i) => {
     dot.style.animation = `space-float 20s linear infinite ${i * 5}s`;
@@ -1021,7 +1300,6 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') hideAllProjects();
 });
 
-/* Load */
 window.addEventListener('load', () => {
   initializeAnimations();
   initTypingAnimation();
