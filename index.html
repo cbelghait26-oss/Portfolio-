@@ -40,7 +40,7 @@ body{font-family:Inter,sans-serif;color:var(--text);background:var(--primary);ov
 img{max-width:100%;height:auto;display:block;}
 a{color:inherit}
 
-/* Background */
+/* ══ Background ══ */
 .engineering-bg{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none;}
 .f1-circuit,.space-dots{position:absolute;inset:0;}
 .circuit-line{position:absolute;height:2px;background:linear-gradient(90deg,transparent,var(--audi-red),var(--accent),transparent);opacity:.4;filter:blur(.5px);box-shadow:0 0 10px var(--audi-red);animation:circuit-race 4s linear infinite;}
@@ -49,14 +49,14 @@ a{color:inherit}
 .circuit-line-3{bottom:30%;width:60%;left:10%;transform:rotate(8deg);animation-delay:2s;}
 @keyframes circuit-race{0%{opacity:.2;transform:translateX(-100%) rotate(-5deg);}50%{opacity:.6;}100%{opacity:.2;transform:translateX(100%) rotate(-5deg);}}
 .space-dot{position:absolute;width:8px;height:8px;background:var(--space-blue);border-radius:50%;opacity:.5;box-shadow:0 0 20px var(--space-blue);animation:space-float 20s linear infinite;}
-.space-dot-1{top:20%;left:15%;animation-delay:0s;}.space-dot-2{top:70%;right:20%;animation-delay:5s;}.space-dot-3{top:40%;left:30%;animation-delay:10s;}.space-dot-4{bottom:20%;left:50%;animation-delay:15s;}
+.space-dot-1{top:20%;left:15%;}.space-dot-2{top:70%;right:20%;animation-delay:5s;}.space-dot-3{top:40%;left:30%;animation-delay:10s;}.space-dot-4{bottom:20%;left:50%;animation-delay:15s;}
 @keyframes space-float{0%{transform:rotate(0deg) translateX(50px) rotate(0deg);}100%{transform:rotate(360deg) translateX(50px) rotate(-360deg);}}
 .rocket-trail{position:absolute;top:40%;left:-200px;width:400px;height:3px;background:linear-gradient(90deg,var(--space-blue),var(--accent),transparent);transform:rotate(15deg);opacity:0;animation:rocket-launch 10s ease-in-out infinite;filter:drop-shadow(0 0 10px var(--space-blue));}
 .rocket-trail::after{content:"";position:absolute;top:-2px;right:0;width:30px;height:7px;background:var(--accent);border-radius:50%;filter:blur(3px);}
 @keyframes rocket-launch{0%{opacity:0;transform:translateX(-200px) rotate(15deg);}20%,60%{opacity:.8;}100%{opacity:0;transform:translateX(1800px) rotate(15deg);}}
 .blueprint-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,173,181,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,173,181,.05) 1px,transparent 1px);background-size:40px 40px;opacity:.3;}
 
-/* Header */
+/* ══ Header ══ */
 header{padding:16px var(--pad);display:flex;justify-content:space-between;align-items:center;position:fixed;top:0;left:0;width:100%;background:var(--header-bg);backdrop-filter:blur(10px);z-index:100;transition:var(--theme-transition);border-bottom:1px solid rgba(255,255,255,.04);}
 .brand{display:flex;gap:12px;align-items:center;min-width:0;}
 .logo{width:44px;height:44px;background:var(--gradient);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:"JetBrains Mono",monospace;font-weight:700;font-size:1.15rem;color:var(--primary);flex:0 0 auto;}
@@ -75,7 +75,7 @@ nav{display:flex;gap:22px;align-items:center;}
 .theme-toggle{position:fixed;top:calc(env(safe-area-inset-top) + 88px);right:calc(env(safe-area-inset-right) + 18px);z-index:140;width:44px;height:44px;background:var(--card-bg);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--theme-transition);}
 .theme-toggle i{color:var(--accent);font-size:1.1rem;}.theme-toggle:active{transform:scale(.96);}
 
-/* Hero */
+/* ══ Hero ══ */
 section{scroll-margin-top:calc(var(--header-h) + 18px);}
 #hero{min-height:100svh;display:flex;align-items:center;padding:calc(var(--header-h) + 40px) var(--pad) 70px;position:relative;overflow:hidden;}
 .hero-content{width:100%;max-width:var(--container);margin:0 auto;z-index:1;display:grid;grid-template-columns:3fr 2fr;gap:70px;align-items:center;}
@@ -96,7 +96,7 @@ section{scroll-margin-top:calc(var(--header-h) + 18px);}
 .contact-item{display:inline-flex;align-items:center;gap:10px;color:var(--text);text-decoration:none;padding:12px 14px;background:var(--card-bg);border:1px solid var(--border);border-radius:14px;transition:var(--theme-transition);}
 .contact-item i{color:var(--accent);font-size:1.1rem;}
 
-/* Sections */
+/* ══ Sections ══ */
 #about,#resume,footer{background:var(--secondary);}
 #about,#projects,#resume,#contact{padding:90px var(--pad);}
 .section-header{max-width:var(--container);margin:0 auto 46px;}
@@ -104,32 +104,71 @@ section{scroll-margin-top:calc(var(--header-h) + 18px);}
 .section-title::after{content:"";position:absolute;bottom:-10px;left:0;width:60px;height:3px;background:var(--gradient);}
 .section-subtitle{font-size:1.05rem;color:var(--text-muted);max-width:650px;line-height:1.65;}
 
-/* About */
+/* ══ About ══ */
 .about-content{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:44px;align-items:start;}
 .profile-image{border-radius:16px;overflow:hidden;box-shadow:0 20px 40px var(--shadow);border:1px solid rgba(255,255,255,.05);}
+.profile-image img{width:100%;height:auto;object-fit:cover;}
 .about-text p{margin-bottom:16px;line-height:1.8;font-size:1.05rem;color:var(--text-muted);}
 .skills-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:26px;}
 .skill-item{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:18px;text-align:center;transition:var(--theme-transition);}
 .skill-item i{font-size:1.6rem;color:var(--accent);margin-bottom:10px;}.skill-item h3{font-size:1rem;color:var(--text);margin-bottom:4px;}.skill-item p{font-size:.9rem;color:var(--text-muted);}
 
-/* Projects grid */
+/* ══ Projects Grid ══ */
 .projects-grid{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;}
-.project-card{background:var(--card-bg);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:var(--theme-transition);}
-.project-image{height:190px;overflow:hidden;background:#0B1F33;display:flex;align-items:center;justify-content:center;}
-.project-image img{width:100%;height:100%;object-fit:cover;object-position:top;}
-.project-content{padding:18px;}
-.project-content h3{font-size:1.35rem;color:var(--text);margin-bottom:10px;}
-.project-content p{color:var(--text-muted);margin-bottom:14px;line-height:1.6;}
-.project-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
-.tag{background:rgba(0,173,181,.15);color:var(--accent);padding:6px 12px;border-radius:999px;font-size:.82rem;font-family:"JetBrains Mono",monospace;border:1px solid rgba(0,173,181,.3);}
-.project-actions{display:flex;gap:10px;flex-wrap:wrap;}
+.project-card{background:var(--card-bg);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:var(--theme-transition);display:flex;flex-direction:column;}
+.project-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px var(--shadow);border-color:var(--accent);}
 
-/* Buttons */
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;background:var(--gradient);color:var(--primary);text-decoration:none;border-radius:14px;font-weight:800;font-size:.95rem;border:none;cursor:pointer;transition:var(--theme-transition);min-height:44px;}
+/* ── Project image wrapper: fixed-height, no bleed ── */
+.project-image{
+  width:100%;height:200px;
+  overflow:hidden;
+  background:var(--secondary);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  border-bottom:1px solid var(--border);
+}
+.project-image img{
+  width:100%;height:100%;
+  object-fit:cover;        /* fills the box, crops if needed */
+  object-position:center top; /* show the top of the image */
+  display:block;
+}
+
+/* Flusso special: 3-screenshot row */
+.project-image.flusso-preview{
+  gap:10px;padding:16px;
+  justify-content:center;
+  background:var(--secondary);
+}
+.flusso-preview .phone-thumb{
+  flex:0 0 auto;
+  width:calc((100% - 52px) / 3); /* 3 columns with 2×10px gaps + 2×16px padding */
+  max-width:100px;
+  height:100%;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 4px 16px rgba(0,0,0,.55);
+  background:#0B1F33;
+}
+.flusso-preview .phone-thumb img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:top;
+}
+
+.project-content{padding:20px;flex:1;display:flex;flex-direction:column;}
+.project-content h3{font-size:1.2rem;color:var(--text);margin-bottom:10px;}
+.project-content p{color:var(--text-muted);margin-bottom:14px;line-height:1.6;flex:1;}
+.project-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
+.tag{background:rgba(0,173,181,.15);color:var(--accent);padding:5px 11px;border-radius:999px;font-size:.79rem;font-family:"JetBrains Mono",monospace;border:1px solid rgba(0,173,181,.3);}
+.project-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;}
+
+/* ══ Buttons ══ */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;background:var(--gradient);color:var(--primary);text-decoration:none;border-radius:14px;font-weight:800;font-size:.95rem;border:none;cursor:pointer;transition:var(--theme-transition);min-height:44px;white-space:nowrap;}
 .btn:active{transform:scale(.99);}
 .btn-outline{background:transparent;border:1px solid var(--border);color:var(--accent);}
 
-/* Resume / Contact */
+/* ══ Resume / Contact ══ */
 #resume{text-align:center;}.resume-container{max-width:900px;margin:0 auto;}
 .resume-preview{background:var(--card-bg);border:1px solid var(--border);border-radius:18px;padding:26px;margin-top:26px;}
 .resume-preview h3{font-size:1.8rem;color:var(--text);margin-bottom:10px;}.resume-preview p{color:var(--text-muted);margin-bottom:16px;line-height:1.6;}
@@ -143,58 +182,98 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
 .footer-link{color:var(--text-muted);text-decoration:none;font-weight:600;}.footer-link:hover{color:var(--accent);}
 .copyright{color:var(--text-muted);margin-top:12px;font-size:.9rem;}
 
-/* ══════════════════════════════════════
-   UNIFIED PROJECT DETAIL PAGE SYSTEM
-   ══════════════════════════════════════ */
+/* ══════════════════════════════════════════
+   PROJECT DETAIL PAGES
+══════════════════════════════════════════ */
 .project-page{
-  display:none;max-width:1000px;
+  display:none;
+  max-width:1000px;
   margin:calc(var(--header-h) + 60px) auto 60px;
-  padding:28px;background:var(--card-bg);
-  border:1px solid var(--border);border-radius:18px;
-  box-shadow:0 8px 32px var(--shadow);backdrop-filter:blur(10px);
+  padding:28px;
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  border-radius:18px;
+  box-shadow:0 8px 32px var(--shadow);
+  backdrop-filter:blur(10px);
   position:relative;z-index:1;
 }
 
 /* Header */
 .pd-header{text-align:center;margin-bottom:28px;padding-bottom:22px;border-bottom:1px solid var(--border);}
-.pd-header h1{font-size:1.85rem;color:var(--text);margin-bottom:6px;}
+.pd-header h1{font-size:clamp(1.3rem,3vw,1.85rem);color:var(--text);margin-bottom:6px;}
 .pd-header p{color:var(--text-muted);font-size:.93rem;}
 
 /* Overview */
 .pd-overview{background:rgba(0,173,181,.07);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:28px;}
 .pd-overview h3{color:var(--accent);font-size:.85rem;font-family:"JetBrains Mono",monospace;margin-bottom:8px;text-transform:uppercase;letter-spacing:.08em;}
 .pd-overview p{color:var(--text-muted);line-height:1.75;font-size:.96rem;}
-
-/* Pills */
 .pd-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
 .pd-pill{background:rgba(0,173,181,.12);border:1px solid rgba(0,173,181,.35);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.76rem;padding:4px 10px;border-radius:999px;}
 
 /* Section label */
-.pd-label{font-family:"JetBrains Mono",monospace;font-size:.75rem;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;opacity:.7;}
+.pd-label{font-family:"JetBrains Mono",monospace;font-size:.75rem;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;opacity:.7;display:block;}
 
-/* Section row */
-.pd-section{display:grid;grid-template-columns:240px 1fr;gap:24px;align-items:start;margin-bottom:32px;}
-.pd-section.rev{grid-template-columns:1fr 240px;}
-.pd-section.rev .pd-img-col{order:2;}.pd-section.rev .pd-text{order:1;}
+/* ── Detail section: two-column on desktop, single on mobile ── */
+.pd-section{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:24px;
+  align-items:start;
+  margin-bottom:36px;
+}
+.pd-section.rev{grid-template-columns:1fr 280px;}
+.pd-section.rev .pd-img-col{order:2;}
+.pd-section.rev .pd-text{order:1;}
 
-/* Image column — landscape (default) */
+/* Image column */
 .pd-img-col{display:flex;flex-direction:column;gap:12px;}
-.pd-img{border-radius:14px;overflow:hidden;box-shadow:0 8px 24px var(--shadow);border:1px solid var(--border);}
-.pd-img img{width:100%;display:block;height:auto;max-height:280px;object-fit:cover;object-position:top;}
 
-/* Phone image variant — portrait, narrower */
-.pd-img-col.phone{max-width:180px;margin:0 auto;}
-.pd-img-col.phone .pd-img{border-radius:22px;}
-.pd-img-col.phone .pd-img img{max-height:360px;object-fit:cover;object-position:top;}
+/* ── Landscape image box ── */
+.pd-img{
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 8px 24px var(--shadow);
+  border:1px solid var(--border);
+  background:var(--secondary);
+  width:100%;
+}
+.pd-img img{
+  width:100%;
+  height:220px;          /* fixed height — no blank space, no overflow */
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+}
+
+/* ── Phone/portrait image column ── */
+.pd-img-col.phone{
+  max-width:200px;
+  margin:0 auto;
+}
+.pd-img-col.phone .pd-img{
+  border-radius:24px;
+}
+.pd-img-col.phone .pd-img img{
+  height:380px;
+  object-fit:cover;
+  object-position:top;
+}
 
 /* Text column */
-.pd-text h2{font-size:1.2rem;color:var(--text);margin-bottom:10px;}
+.pd-text h2{font-size:1.18rem;color:var(--text);margin-bottom:10px;}
 .pd-text p{color:var(--text-muted);line-height:1.75;font-size:.95rem;margin-bottom:10px;}
 .pd-text ul{list-style:none;padding:0;margin:0;}
-.pd-text ul li{color:var(--text-muted);font-size:.92rem;line-height:1.65;padding:4px 0 4px 18px;position:relative;}
+.pd-text ul li{color:var(--text-muted);font-size:.92rem;line-height:1.65;padding:5px 0 5px 20px;position:relative;}
 .pd-text ul li::before{content:"→";position:absolute;left:0;color:var(--accent);font-size:.8rem;}
 .pd-text code{color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.84em;background:rgba(0,173,181,.1);padding:1px 5px;border-radius:4px;}
 .pd-text strong{color:var(--text);}
+
+/* Inline image inside text col */
+.pd-text .inline-img{
+  border-radius:14px;overflow:hidden;box-shadow:0 8px 24px var(--shadow);
+  border:1px solid var(--border);margin-top:14px;background:var(--secondary);
+}
+.pd-text .inline-img img{width:100%;height:180px;object-fit:cover;object-position:top;display:block;}
 
 /* Summary grid */
 .pd-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:6px;margin-bottom:28px;}
@@ -202,34 +281,84 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
 .pd-card h4{color:var(--accent);font-size:.83rem;margin-bottom:6px;font-family:"JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.06em;}
 .pd-card p{color:var(--text-muted);font-size:.85rem;line-height:1.6;}
 
-/* Back */
+/* Back button */
 .pd-back{text-align:center;margin-top:28px;padding-top:20px;border-top:1px solid var(--border);}
 
-/* Responsive */
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important;}}
+
+/* Tablet */
 @media (max-width:1024px){
   :root{--pad:22px;}
-  .hero-content{grid-template-columns:1fr;gap:22px;}.hero-menu{order:2;}
-  .hero-title{font-size:3rem;}.about-content{grid-template-columns:1fr;gap:22px;}
+  .hero-content{grid-template-columns:1fr;gap:22px;}
+  .hero-menu{order:2;}
+  .hero-title{font-size:3rem;}
+  .about-content{grid-template-columns:1fr;gap:22px;}
+  .pd-section{grid-template-columns:220px 1fr;}
+  .pd-section.rev{grid-template-columns:1fr 220px;}
 }
+
+/* Mobile */
 @media (max-width:820px){
   :root{--pad:16px;--header-h:64px;}
-  header{padding:12px var(--pad);}nav{display:none;}.nav-toggle{display:flex;}
+  header{padding:12px var(--pad);}
+  nav{display:none;}
+  .nav-toggle{display:flex;}
   .theme-toggle{top:calc(env(safe-area-inset-top)+12px);right:calc(env(safe-area-inset-right)+12px);}
   #hero{padding:calc(var(--header-h)+22px) var(--pad) 56px;}
-  #about,#projects,#resume,#contact{padding:70px var(--pad);}
-  .hero-title{font-size:2.35rem;}.hero-subtitle{font-size:1.05rem;}
-  .contact-info{flex-direction:column;align-items:stretch;}.contact-item{width:100%;}
+  #about,#projects,#resume,#contact{padding:60px var(--pad);}
+  .hero-title{font-size:2.35rem;}
+  .hero-subtitle{font-size:1.05rem;}
+  .contact-info{flex-direction:column;align-items:stretch;}
+  .contact-item{width:100%;}
   .projects-grid{grid-template-columns:1fr;}
-  .pd-section,.pd-section.rev{grid-template-columns:1fr;}
-  .pd-section.rev .pd-img-col,.pd-section.rev .pd-text{order:unset;}
-  .pd-img-col.phone{max-width:200px;}
-  .project-page{padding:16px;margin-top:calc(var(--header-h)+20px);}
+
+  /* Stack detail sections vertically on mobile */
+  .pd-section,
+  .pd-section.rev{
+    grid-template-columns:1fr;
+  }
+  .pd-section.rev .pd-img-col,
+  .pd-section.rev .pd-text{order:unset;}
+
+  /* On mobile landscape imgs fill width nicely */
+  .pd-img img{height:200px;}
+
+  /* Phone col: center but don't squish */
+  .pd-img-col.phone{
+    max-width:180px;
+    margin:0 auto;
+  }
+  .pd-img-col.phone .pd-img img{height:320px;}
+
+  .project-page{
+    padding:16px;
+    margin-top:calc(var(--header-h)+16px);
+    margin-left:var(--pad);
+    margin-right:var(--pad);
+  }
+
+  /* Project cards full width, proper image */
+  .project-image{height:200px;}
+  .flusso-preview .phone-thumb{
+    width:calc((100% - 44px) / 3);
+    max-width:90px;
+  }
 }
+
+/* Small phones */
 @media (max-width:420px){
   .skills-container{grid-template-columns:repeat(2,1fr);}
-  .btn{width:100%;justify-content:center;}.project-actions{flex-direction:column;}
+  .btn{width:100%;justify-content:center;}
+  .project-actions{flex-direction:column;}
   .brand-text p{display:none;}
+  .hero-title{font-size:2rem;}
+  .pd-img img{height:170px;}
+  .pd-img-col.phone .pd-img img{height:280px;}
+  .flusso-preview{padding:10px;gap:7px;}
+  .flusso-preview .phone-thumb{border-radius:10px;}
 }
 </style>
 </head>
@@ -243,8 +372,10 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
     <div class="circuit-line circuit-line-3"></div>
   </div>
   <div class="space-dots">
-    <div class="space-dot space-dot-1"></div><div class="space-dot space-dot-2"></div>
-    <div class="space-dot space-dot-3"></div><div class="space-dot space-dot-4"></div>
+    <div class="space-dot space-dot-1"></div>
+    <div class="space-dot space-dot-2"></div>
+    <div class="space-dot space-dot-3"></div>
+    <div class="space-dot space-dot-4"></div>
   </div>
   <div class="rocket-trail"></div>
 </div>
@@ -279,7 +410,7 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
   <a href="#contact"><b>Contact</b><span>Links</span></a>
 </div>
 
-<!-- HERO -->
+<!-- ══ HERO ══ -->
 <section id="hero">
   <div class="hero-content">
     <div class="hero-text">
@@ -304,14 +435,14 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ══ ABOUT ══ -->
 <section id="about">
   <div class="section-header">
     <h2 class="section-title">About Me</h2>
     <p class="section-subtitle">Engineering student with a passion for Aerospace and automotive</p>
   </div>
   <div class="about-content">
-    <div class="profile-image"><img src="Goat2.0.png" alt="Chakib Belghait"></div>
+    <div class="profile-image"><img src="Goat2.0.png" alt="Chakib Belghait" loading="lazy"></div>
     <div class="about-text">
       <p>I am a Mechanical Engineering student at the University of Waterloo passionate about robotics, aerospace, and the automobile industry. Throughout my academic journey, I've maintained a close connection with practical engineering, from participating in FIRST robotics competitions to conducting research at Concordia University.</p>
       <p>I've worked extensively with mechanical, electrical, and software systems across various projects. I thrive on conceptualizing and realizing innovative solutions, whether through CAD design, FEA simulations, or hands-on manufacturing and assembly.</p>
@@ -326,7 +457,7 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
   </div>
 </section>
 
-<!-- PROJECTS GRID -->
+<!-- ══ PROJECTS GRID ══ -->
 <section id="projects">
   <div class="section-header">
     <h2 class="section-title">Projects</h2>
@@ -334,8 +465,11 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
   </div>
   <div class="projects-grid">
 
+    <!-- Cryogenics -->
     <div class="project-card">
-      <div class="project-image"><img src="IMG_1421.jpg" alt="Cryogenic System"></div>
+      <div class="project-image">
+        <img src="IMG_1421.jpg" alt="Cryogenic System" loading="lazy">
+      </div>
       <div class="project-content">
         <h3>Closed-Cycle Cryogenic System</h3>
         <p>Helium-based cryocooler reaching sub-4K temperatures with custom thermal links and vibration isolation for spectroscopic research at Concordia University.</p>
@@ -347,8 +481,11 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
       </div>
     </div>
 
+    <!-- Carbon Fiber -->
     <div class="project-card">
-      <div class="project-image"><img src="Goat car.jpg" alt="Carbon Fiber Research"></div>
+      <div class="project-image">
+        <img src="Goat car.jpg" alt="Carbon Fiber Research" loading="lazy">
+      </div>
       <div class="project-content">
         <h3>Composite Joining Methods</h3>
         <p>R&amp;D on advanced bonding techniques between carbon fiber and aluminum for Formula electric car aerodynamic surfaces.</p>
@@ -359,8 +496,11 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
       </div>
     </div>
 
+    <!-- FinSight -->
     <div class="project-card">
-      <div class="project-image"><img src="Screenshot 2025-11-07 213508.png" alt="FinSight"></div>
+      <div class="project-image">
+        <img src="Screenshot 2025-11-07 213508.png" alt="FinSight" loading="lazy">
+      </div>
       <div class="project-content">
         <h3>FinSight — Financial Analytics Platform</h3>
         <p>AI-powered financial platform built in 36 hours at the Polytechnique Montréal &amp; AWS Datathon — document analysis, portfolio impact visualization, and risk forecasting.</p>
@@ -371,11 +511,12 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
       </div>
     </div>
 
+    <!-- Flusso -->
     <div class="project-card">
-      <div class="project-image" style="gap:8px;padding:12px;">
-        <div style="width:70px;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.5);flex:0 0 auto;"><img src="flusso_dashboard.png" style="width:100%;display:block;" alt="Dashboard"></div>
-        <div style="width:70px;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.5);flex:0 0 auto;"><img src="flusso_focus.png" style="width:100%;display:block;" alt="Focus Zone"></div>
-        <div style="width:70px;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.5);flex:0 0 auto;"><img src="flusso_tasks.png" style="width:100%;display:block;" alt="Tasks"></div>
+      <div class="project-image flusso-preview">
+        <div class="phone-thumb"><img src="flusso_dashboard.png" alt="Dashboard" loading="lazy"></div>
+        <div class="phone-thumb"><img src="flusso_focus.png" alt="Focus Zone" loading="lazy"></div>
+        <div class="phone-thumb"><img src="flusso_tasks.png" alt="Tasks" loading="lazy"></div>
       </div>
       <div class="project-content">
         <h3>Flusso — iOS &amp; Android Productivity App</h3>
@@ -391,9 +532,9 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
 </section>
 
 
-<!-- ══════════════════════════════════════
+<!-- ══════════════════════════════════════════
      DETAIL: CRYOGENICS
-══════════════════════════════════════ -->
+══════════════════════════════════════════ -->
 <div id="project-cryogenics" class="project-page">
   <div class="pd-header">
     <h1>Closed-Cycle Cryogenic System (4 K)</h1>
@@ -410,10 +551,10 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
     </div>
   </div>
 
-  <p class="pd-label">System Design</p>
+  <span class="pd-label">System Design</span>
   <div class="pd-section">
     <div class="pd-img-col">
-      <div class="pd-img"><img src="Arch.png" alt="System Architecture"></div>
+      <div class="pd-img"><img src="Arch.png" alt="System Architecture" loading="lazy"></div>
     </div>
     <div class="pd-text">
       <h2>Architecture &amp; Design</h2>
@@ -427,10 +568,10 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
     </div>
   </div>
 
-  <p class="pd-label">Optimizations</p>
+  <span class="pd-label">Optimizations</span>
   <div class="pd-section rev">
     <div class="pd-img-col">
-      <div class="pd-img"><img src="opt.png" alt="Vibration Isolation"></div>
+      <div class="pd-img"><img src="opt.png" alt="Vibration Isolation" loading="lazy"></div>
     </div>
     <div class="pd-text">
       <h2>Improvements &amp; Performance Gains</h2>
@@ -445,10 +586,10 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
     </div>
   </div>
 
-  <p class="pd-label">Materials</p>
+  <span class="pd-label">Materials</span>
   <div class="pd-section">
     <div class="pd-img-col">
-      <div class="pd-img"><img src="graph.png" alt="Results Graph"></div>
+      <div class="pd-img"><img src="graph.png" alt="Results Graph" loading="lazy"></div>
     </div>
     <div class="pd-text">
       <h2>Material Selection</h2>
@@ -468,9 +609,9 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
 </div>
 
 
-<!-- ══════════════════════════════════════
+<!-- ══════════════════════════════════════════
      DETAIL: CARBON FIBER
-══════════════════════════════════════ -->
+══════════════════════════════════════════ -->
 <div id="project-carbonfiber" class="project-page">
   <div class="pd-header">
     <h1>R&amp;D — Composite Joining Methods</h1>
@@ -487,10 +628,10 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
     </div>
   </div>
 
-  <p class="pd-label">Prototype Development</p>
+  <span class="pd-label">Prototype Development</span>
   <div class="pd-section">
     <div class="pd-img-col">
-      <div class="pd-img"><img src="Orientations.png" alt="Joining Orientations"></div>
+      <div class="pd-img"><img src="Orientations.png" alt="Joining Orientations" loading="lazy"></div>
     </div>
     <div class="pd-text">
       <h2>Design &amp; Prototyping</h2>
@@ -503,11 +644,11 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
     </div>
   </div>
 
-  <p class="pd-label">Manufacturing</p>
+  <span class="pd-label">Manufacturing</span>
   <div class="pd-section rev">
     <div class="pd-img-col">
-      <div class="pd-img"><img src="IMG_1751.jpg" alt="Assembly process"></div>
-      <div class="pd-img"><img src="20251102_190453.jpg" alt="Carbon fiber layup"></div>
+      <div class="pd-img"><img src="IMG_1751.jpg" alt="Assembly process" loading="lazy"></div>
+      <div class="pd-img"><img src="20251102_190453.jpg" alt="Carbon fiber layup" loading="lazy"></div>
     </div>
     <div class="pd-text">
       <h2>Manufacture &amp; Assembly</h2>
@@ -518,16 +659,16 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
         <li>Aluminum joining blocks <strong>waterjet cut</strong> to precise tolerances for consistent fit across all three test variants.</li>
         <li>Final assemblies bonded and mechanically fastened depending on the joining variant being evaluated.</li>
       </ul>
-      <div class="pd-img" style="margin-top:12px;border-radius:14px;overflow:hidden;box-shadow:0 8px 24px var(--shadow);border:1px solid var(--border);">
-        <img src="image.jpg" alt="Final assembly" style="width:100%;display:block;max-height:200px;object-fit:cover;">
+      <div class="inline-img">
+        <img src="image.jpg" alt="Final assembly" loading="lazy">
       </div>
     </div>
   </div>
 
-  <p class="pd-label">Testing</p>
+  <span class="pd-label">Testing</span>
   <div class="pd-section">
     <div class="pd-img-col">
-      <div class="pd-img"><img src="llllllll.jpg" alt="Testing setup"></div>
+      <div class="pd-img"><img src="llllllll.jpg" alt="Testing setup" loading="lazy"></div>
     </div>
     <div class="pd-text">
       <h2>Testing &amp; Results</h2>
@@ -546,9 +687,9 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
 </div>
 
 
-<!-- ══════════════════════════════════════
+<!-- ══════════════════════════════════════════
      DETAIL: FINSIGHT
-══════════════════════════════════════ -->
+══════════════════════════════════════════ -->
 <div id="project-finsight" class="project-page">
   <div class="pd-header">
     <h1>FinSight — Financial Analytics Platform</h1>
@@ -564,10 +705,10 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
     </div>
   </div>
 
-  <p class="pd-label">Backend Architecture</p>
+  <span class="pd-label">Backend Architecture</span>
   <div class="pd-section">
     <div class="pd-img-col">
-      <div class="pd-img"><img src="Screenshot 2025-11-07 223726.png" alt="Platform Architecture"></div>
+      <div class="pd-img"><img src="Screenshot 2025-11-07 223726.png" alt="Platform Architecture" loading="lazy"></div>
     </div>
     <div class="pd-text">
       <h2>System Architecture</h2>
@@ -581,10 +722,10 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
     </div>
   </div>
 
-  <p class="pd-label">AI Integration</p>
+  <span class="pd-label">AI Integration</span>
   <div class="pd-section rev">
     <div class="pd-img-col">
-      <div class="pd-img"><img src="Screenshot 2025-11-07 224613.png" alt="AI Implementation"></div>
+      <div class="pd-img"><img src="Screenshot 2025-11-07 224613.png" alt="AI Implementation" loading="lazy"></div>
     </div>
     <div class="pd-text">
       <h2>AI &amp; Python Implementation</h2>
@@ -598,11 +739,11 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
     </div>
   </div>
 
-  <p class="pd-label">User Interface</p>
+  <span class="pd-label">User Interface</span>
   <div class="pd-section">
     <div class="pd-img-col">
-      <div class="pd-img"><img src="Screenshot 2025-11-07 212536.png" alt="Home screen"></div>
-      <div class="pd-img"><img src="Screenshot 2025-11-07 223122.png" alt="Analysis screen"></div>
+      <div class="pd-img"><img src="Screenshot 2025-11-07 212536.png" alt="Home screen" loading="lazy"></div>
+      <div class="pd-img"><img src="Screenshot 2025-11-07 223122.png" alt="Analysis screen" loading="lazy"></div>
     </div>
     <div class="pd-text">
       <h2>Frontend &amp; UX</h2>
@@ -622,9 +763,9 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
 </div>
 
 
-<!-- ══════════════════════════════════════
+<!-- ══════════════════════════════════════════
      DETAIL: FLUSSO
-══════════════════════════════════════ -->
+══════════════════════════════════════════ -->
 <div id="project-flusso" class="project-page">
   <div class="pd-header">
     <h1>Flusso — iOS &amp; Android Productivity App</h1>
@@ -641,10 +782,10 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
     </div>
   </div>
 
-  <p class="pd-label">Data Architecture</p>
+  <span class="pd-label">Data Architecture</span>
   <div class="pd-section">
     <div class="pd-img-col phone">
-      <div class="pd-img"><img src="flusso_dashboard.png" alt="Flusso Dashboard"></div>
+      <div class="pd-img"><img src="flusso_dashboard.png" alt="Flusso Dashboard" loading="lazy"></div>
     </div>
     <div class="pd-text">
       <h2>Local-First Architecture &amp; Cloud Sync</h2>
@@ -655,17 +796,17 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
         <li><strong>CloudAutoPush</strong> — silent push triggered when the app moves foreground → background, keeping cloud state current without user action.</li>
         <li><strong>Firestore Security Rules</strong> enforce per-user data isolation at the row level; a separate top-level structure handles social data (friendships, shared objectives, invites).</li>
       </ul>
-      <div class="pd-pills">
+      <div class="pd-pills" style="margin-top:12px;">
         <span class="pd-pill">AsyncStorage</span><span class="pd-pill">Cloud Firestore</span>
         <span class="pd-pill">Firebase Auth</span><span class="pd-pill">Security Rules</span>
       </div>
     </div>
   </div>
 
-  <p class="pd-label">Focus Zone</p>
+  <span class="pd-label">Focus Zone</span>
   <div class="pd-section rev">
     <div class="pd-img-col phone">
-      <div class="pd-img"><img src="flusso_focus.png" alt="Flusso Focus Zone"></div>
+      <div class="pd-img"><img src="flusso_focus.png" alt="Flusso Focus Zone" loading="lazy"></div>
     </div>
     <div class="pd-text">
       <h2>Focus Zone &amp; Audio Engine</h2>
@@ -676,17 +817,17 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
         <li>Custom native iOS module integrates with <strong>iOS 17 Live Activity / Dynamic Island</strong> to show the focus timer on the Lock Screen when backgrounded.</li>
         <li>Pomodoro and freeform timer modes; local notifications handle phase transitions via a <strong>logical key deduplication system</strong> preventing duplicate alerts.</li>
       </ul>
-      <div class="pd-pills">
+      <div class="pd-pills" style="margin-top:12px;">
         <span class="pd-pill">expo-audio</span><span class="pd-pill">Spotify Web API</span>
         <span class="pd-pill">Live Activity (iOS 17)</span><span class="pd-pill">Expo Notifications</span>
       </div>
     </div>
   </div>
 
-  <p class="pd-label">Task System</p>
+  <span class="pd-label">Task System</span>
   <div class="pd-section">
     <div class="pd-img-col phone">
-      <div class="pd-img"><img src="flusso_tasks.png" alt="Flusso Tasks"></div>
+      <div class="pd-img"><img src="flusso_tasks.png" alt="Flusso Tasks" loading="lazy"></div>
     </div>
     <div class="pd-text">
       <h2>Goal &amp; Task System</h2>
@@ -694,19 +835,19 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
       <ul>
         <li><strong>Training Plans</strong> — cycle-based (rotation with missed-day logic: keep-order or shift-forward) and week-based (fixed day-of-week schedule).</li>
         <li>4 sort/filter modes: My Day, Important, Planned, Objectives — each with its own Firestore query logic.</li>
-        <li>Device contacts scanned for birthdays/anniversaries — <strong>stored locally only</strong>, never synced to cloud. iOS 0-based month normalization and Feb 29 edge cases handled explicitly in code.</li>
+        <li>Device contacts scanned for birthdays/anniversaries — <strong>stored locally only</strong>, never synced to cloud.</li>
         <li>Notification deduplication via a stable <code>logicalKey → notificationId</code> map prevents duplicate alerts across sessions.</li>
       </ul>
-      <div class="pd-pills">
+      <div class="pd-pills" style="margin-top:12px;">
         <span class="pd-pill">React Context API</span><span class="pd-pill">expo-contacts</span><span class="pd-pill">AsyncStorage</span>
       </div>
     </div>
   </div>
 
-  <p class="pd-label">Social &amp; Subscriptions</p>
+  <span class="pd-label">Social &amp; Subscriptions</span>
   <div class="pd-section rev">
     <div class="pd-img-col phone">
-      <div class="pd-img"><img src="flusso_objectives.png" alt="Flusso Objectives"></div>
+      <div class="pd-img"><img src="flusso_objectives.png" alt="Flusso Objectives" loading="lazy"></div>
     </div>
     <div class="pd-text">
       <h2>Social, Gamification &amp; Subscriptions</h2>
@@ -718,17 +859,17 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
         <li><strong>RevenueCat</strong> wraps Apple StoreKit and Google Play Billing. Custom paywall with monthly/annual toggle. Entitlement linked to Firebase UID for cross-device state.</li>
         <li>Auth: <strong>Apple Sign-In</strong> (native iOS module with Android platform stub), <strong>Google Sign-In</strong>, and email/password.</li>
       </ul>
-      <div class="pd-pills">
+      <div class="pd-pills" style="margin-top:12px;">
         <span class="pd-pill">RevenueCat</span><span class="pd-pill">Apple StoreKit</span>
         <span class="pd-pill">Lottie</span><span class="pd-pill">Firestore social collections</span>
       </div>
     </div>
   </div>
 
-  <p class="pd-label">Build Pipeline</p>
+  <span class="pd-label">Build Pipeline</span>
   <div class="pd-section">
     <div class="pd-img-col phone">
-      <div class="pd-img"><img src="flusso_account.png" alt="Flusso Account"></div>
+      <div class="pd-img"><img src="flusso_account.png" alt="Flusso Account" loading="lazy"></div>
     </div>
     <div class="pd-text">
       <h2>UI System &amp; Build Pipeline</h2>
@@ -736,19 +877,19 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
       <ul>
         <li>Dark/light mode with <strong>8 user-selectable accent colors</strong> persisted via AsyncStorage.</li>
         <li><strong>TypeScript strict mode</strong> enforced throughout the entire codebase.</li>
-        <li>Platform-specific module resolution via Metro bundler: <code>.ios.ts / .ts</code> file strategy for native-only modules like Apple Sign-In.</li>
+        <li>Platform-specific module resolution via Metro bundler: <code>.ios.ts / .ts</code> file strategy for native-only modules.</li>
         <li><strong>EAS (Expo Application Services)</strong> — cloud-based iOS and Android builds, OTA updates, App Store / Google Play submissions. Profiles: development, preview, production (auto-increment).</li>
         <li>Custom <strong>Expo Config Plugins</strong> inject the Live Activity and Smart Location native modules into managed workflow builds without ejecting.</li>
         <li><code>patch-package</code> for upstream node_modules fixes without forking dependencies.</li>
       </ul>
-      <div class="pd-pills">
+      <div class="pd-pills" style="margin-top:12px;">
         <span class="pd-pill">EAS Build / OTA</span><span class="pd-pill">Expo Config Plugins</span>
         <span class="pd-pill">Metro bundler</span><span class="pd-pill">patch-package</span><span class="pd-pill">TypeScript strict</span>
       </div>
     </div>
   </div>
 
-  <p class="pd-label">Stack Summary</p>
+  <span class="pd-label">Stack Summary</span>
   <div class="pd-grid">
     <div class="pd-card"><h4>Frontend</h4><p>React Native 0.83 · Expo SDK 55 · TypeScript 5.9 · React Navigation 7 · expo-linear-gradient · lucide-react-native · react-native-svg · Lottie</p></div>
     <div class="pd-card"><h4>Backend / Cloud</h4><p>Firebase Auth · Cloud Firestore · Firestore Security Rules · Firebase CLI · 3-layer sync (Bootstrap / Sync / AutoPush)</p></div>
@@ -762,7 +903,7 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
 </div>
 
 
-<!-- RESUME -->
+<!-- ══ RESUME ══ -->
 <section id="resume">
   <div class="section-header">
     <h2 class="section-title">Resume</h2>
@@ -777,7 +918,7 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ══ CONTACT ══ -->
 <section id="contact">
   <div class="section-header">
     <h2 class="section-title">Get In Touch</h2>
@@ -796,8 +937,10 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
   <div class="footer-content">
     <div class="footer-logo">CB</div>
     <div class="footer-links">
-      <a href="#hero" class="footer-link">Home</a><a href="#about" class="footer-link">About</a>
-      <a href="#projects" class="footer-link">Projects</a><a href="#resume" class="footer-link">Resume</a>
+      <a href="#hero" class="footer-link">Home</a>
+      <a href="#about" class="footer-link">About</a>
+      <a href="#projects" class="footer-link">Projects</a>
+      <a href="#resume" class="footer-link">Resume</a>
       <a href="#contact" class="footer-link">Contact</a>
     </div>
     <p class="copyright">© 2026 Chakib Belghait. University of Waterloo Mechanical Engineering.</p>
@@ -805,7 +948,7 @@ footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--bord
 </footer>
 
 <script>
-/* Theme */
+/* ── Theme ── */
 const themeToggle=document.getElementById('themeToggle'),body=document.body;
 const savedTheme=localStorage.getItem('theme')||'dark';
 body.setAttribute('data-theme',savedTheme);updateThemeIcon(savedTheme);
@@ -818,7 +961,7 @@ function toggleTheme(){
 themeToggle.addEventListener('click',toggleTheme);
 themeToggle.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleTheme();}});
 
-/* Mobile nav */
+/* ── Mobile nav ── */
 const navToggle=document.getElementById('navToggle'),mobileNav=document.getElementById('mobileNav');
 function closeMobileNav(){mobileNav.style.display='none';mobileNav.setAttribute('aria-hidden','true');navToggle.querySelector('i').className='fas fa-bars';}
 function openMobileNav(){mobileNav.style.display='block';mobileNav.setAttribute('aria-hidden','false');navToggle.querySelector('i').className='fas fa-xmark';}
@@ -826,7 +969,7 @@ navToggle.addEventListener('click',()=>mobileNav.style.display==='block'?closeMo
 mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMobileNav));
 document.addEventListener('click',e=>{if(!mobileNav.contains(e.target)&&!navToggle.contains(e.target))closeMobileNav();});
 
-/* Smooth scroll */
+/* ── Smooth scroll ── */
 document.querySelectorAll('nav a,.footer-link,.menu-item,#mobileNav a').forEach(link=>{
   link.addEventListener('click',function(e){
     const href=this.getAttribute('href');
@@ -834,7 +977,7 @@ document.querySelectorAll('nav a,.footer-link,.menu-item,#mobileNav a').forEach(
   });
 });
 
-/* Active nav */
+/* ── Active nav ── */
 const sections=document.querySelectorAll('section'),navLinks=document.querySelectorAll('.nav-link');
 window.addEventListener('scroll',()=>{
   let cur='';
@@ -842,7 +985,7 @@ window.addEventListener('scroll',()=>{
   navLinks.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur));
 });
 
-/* Typing */
+/* ── Typing animation ── */
 function initTypingAnimation(){
   const texts=["Mechanical Engineering student at the University of Waterloo","Passionate about Aerospace and Automotive","Developing innovative solutions in all ways possible","Bridging theory and practice in mechanical engineering"];
   let ti=0,ci=0;const el=document.querySelector('.typing-text');if(!el)return;
@@ -851,17 +994,20 @@ function initTypingAnimation(){
   setTimeout(type,800);
 }
 
+/* ── Project detail pages ── */
 function showProject(id){
   document.querySelectorAll('.project-page').forEach(p=>p.style.display='none');
   document.querySelectorAll('section,footer').forEach(s=>s.style.display='none');
   const page=document.getElementById('project-'+id);
-  if(page)page.style.display='block';
-  window.scrollTo(0,0);closeMobileNav();
+  if(page){page.style.display='block';}
+  window.scrollTo({top:0,behavior:'instant'});
+  closeMobileNav();
 }
 function hideAllProjects(){
   document.querySelectorAll('.project-page').forEach(p=>p.style.display='none');
   document.querySelectorAll('section,footer').forEach(s=>s.style.display='block');
-  document.getElementById('projects').scrollIntoView({behavior:'smooth'});closeMobileNav();
+  document.getElementById('projects').scrollIntoView({behavior:'smooth'});
+  closeMobileNav();
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')hideAllProjects();});
 
