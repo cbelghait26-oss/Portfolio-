@@ -19,491 +19,216 @@
 
 <style>
 :root{
-  --primary:#0a192f;
-  --secondary:#112240;
-  --accent:#00adb5;
-  --accent-light:#5cd5db;
-  --audi-red:#da291c;
-  --space-blue:#0066cc;
-  --text:#e6f1ff;
-  --text-muted:#8892b0;
-  --card-bg:rgba(17,34,64,.72);
-  --header-bg:rgba(10,25,47,.95);
-  --border:rgba(0,173,181,.3);
-  --shadow:rgba(2,12,27,.7);
+  --primary:#0a192f;--secondary:#112240;--accent:#00adb5;--accent-light:#5cd5db;
+  --audi-red:#da291c;--space-blue:#0066cc;--text:#e6f1ff;--text-muted:#8892b0;
+  --card-bg:rgba(17,34,64,.72);--header-bg:rgba(10,25,47,.95);
+  --border:rgba(0,173,181,.3);--shadow:rgba(2,12,27,.7);
   --gradient:linear-gradient(135deg,#00adb5,#00959c);
   --theme-transition:all .35s ease;
-
-  --container:1200px;
-  --header-h:72px;
-  --pad:50px;
-  --gutter:18px;
-  --radius:16px;
+  --container:1200px;--header-h:72px;--pad:50px;--gutter:18px;
 }
-
 [data-theme="light"]{
-  --primary:#f0f7ff;
-  --secondary:#ffffff;
-  --text:#1e3a5f;
-  --text-muted:#5a7399;
-  --card-bg:rgba(255,255,255,.95);
-  --header-bg:rgba(240,247,255,.98);
-  --border:rgba(0,173,181,.4);
-  --shadow:rgba(30,58,95,.15);
+  --primary:#f0f7ff;--secondary:#ffffff;--text:#1e3a5f;--text-muted:#5a7399;
+  --card-bg:rgba(255,255,255,.95);--header-bg:rgba(240,247,255,.98);
+  --border:rgba(0,173,181,.4);--shadow:rgba(30,58,95,.15);
   --gradient:linear-gradient(135deg,#00959c,#00adb5);
-  --audi-red:#c41e12;
-  --space-blue:#0055aa;
-  --accent:#007d85;
-  --accent-light:#00adb5;
+  --audi-red:#c41e12;--space-blue:#0055aa;--accent:#007d85;--accent-light:#00adb5;
 }
-
 *{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth;}
 html,body{height:100%;}
-body{
-  font-family:Inter,sans-serif;
-  color:var(--text);
-  background:var(--primary);
-  overflow-x:hidden;
-  transition:var(--theme-transition);
-  -webkit-text-size-adjust:100%;
-  text-rendering:optimizeLegibility;
-}
+body{font-family:Inter,sans-serif;color:var(--text);background:var(--primary);overflow-x:hidden;transition:var(--theme-transition);-webkit-text-size-adjust:100%;text-rendering:optimizeLegibility;}
 img{max-width:100%;height:auto;display:block;}
 a{color:inherit}
 
 /* Background */
 .engineering-bg{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none;}
 .f1-circuit,.space-dots{position:absolute;inset:0;}
-.circuit-line{
-  position:absolute;height:2px;
-  background:linear-gradient(90deg,transparent,var(--audi-red),var(--accent),transparent);
-  opacity:.4;filter:blur(.5px);
-  box-shadow:0 0 10px var(--audi-red);
-  animation:circuit-race 4s linear infinite;
-}
+.circuit-line{position:absolute;height:2px;background:linear-gradient(90deg,transparent,var(--audi-red),var(--accent),transparent);opacity:.4;filter:blur(.5px);box-shadow:0 0 10px var(--audi-red);animation:circuit-race 4s linear infinite;}
 .circuit-line-1{top:25%;width:80%;transform:rotate(-5deg);animation-delay:0s;}
 .circuit-line-2{top:60%;width:70%;right:0;transform:rotate(3deg);animation-delay:1s;}
 .circuit-line-3{bottom:30%;width:60%;left:10%;transform:rotate(8deg);animation-delay:2s;}
-@keyframes circuit-race{
-  0%{opacity:.2;transform:translateX(-100%) rotate(-5deg);}
-  50%{opacity:.6;}
-  100%{opacity:.2;transform:translateX(100%) rotate(-5deg);}
-}
-.space-dot{
-  position:absolute;width:8px;height:8px;background:var(--space-blue);
-  border-radius:50%;opacity:.5;box-shadow:0 0 20px var(--space-blue);
-  animation:space-float 20s linear infinite;
-}
-.space-dot-1{top:20%;left:15%;animation-delay:0s;}
-.space-dot-2{top:70%;right:20%;animation-delay:5s;}
-.space-dot-3{top:40%;left:30%;animation-delay:10s;}
-.space-dot-4{bottom:20%;left:50%;animation-delay:15s;}
-@keyframes space-float{
-  0%{transform:rotate(0deg) translateX(50px) rotate(0deg);}
-  100%{transform:rotate(360deg) translateX(50px) rotate(-360deg);}
-}
-.rocket-trail{
-  position:absolute;top:40%;left:-200px;width:400px;height:3px;
-  background:linear-gradient(90deg,var(--space-blue),var(--accent),transparent);
-  transform:rotate(15deg);opacity:0;
-  animation:rocket-launch 10s ease-in-out infinite;
-  filter:drop-shadow(0 0 10px var(--space-blue));
-}
-.rocket-trail::after{
-  content:"";position:absolute;top:-2px;right:0;width:30px;height:7px;
-  background:var(--accent);border-radius:50%;filter:blur(3px);
-}
-@keyframes rocket-launch{
-  0%{opacity:0;transform:translateX(-200px) rotate(15deg);}
-  20%,60%{opacity:.8;}
-  100%{opacity:0;transform:translateX(1800px) rotate(15deg);}
-}
-.blueprint-grid{
-  position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(0,173,181,.05) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,173,181,.05) 1px,transparent 1px);
-  background-size:40px 40px;opacity:.3;
-}
+@keyframes circuit-race{0%{opacity:.2;transform:translateX(-100%) rotate(-5deg);}50%{opacity:.6;}100%{opacity:.2;transform:translateX(100%) rotate(-5deg);}}
+.space-dot{position:absolute;width:8px;height:8px;background:var(--space-blue);border-radius:50%;opacity:.5;box-shadow:0 0 20px var(--space-blue);animation:space-float 20s linear infinite;}
+.space-dot-1{top:20%;left:15%;animation-delay:0s;}.space-dot-2{top:70%;right:20%;animation-delay:5s;}.space-dot-3{top:40%;left:30%;animation-delay:10s;}.space-dot-4{bottom:20%;left:50%;animation-delay:15s;}
+@keyframes space-float{0%{transform:rotate(0deg) translateX(50px) rotate(0deg);}100%{transform:rotate(360deg) translateX(50px) rotate(-360deg);}}
+.rocket-trail{position:absolute;top:40%;left:-200px;width:400px;height:3px;background:linear-gradient(90deg,var(--space-blue),var(--accent),transparent);transform:rotate(15deg);opacity:0;animation:rocket-launch 10s ease-in-out infinite;filter:drop-shadow(0 0 10px var(--space-blue));}
+.rocket-trail::after{content:"";position:absolute;top:-2px;right:0;width:30px;height:7px;background:var(--accent);border-radius:50%;filter:blur(3px);}
+@keyframes rocket-launch{0%{opacity:0;transform:translateX(-200px) rotate(15deg);}20%,60%{opacity:.8;}100%{opacity:0;transform:translateX(1800px) rotate(15deg);}}
+.blueprint-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,173,181,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,173,181,.05) 1px,transparent 1px);background-size:40px 40px;opacity:.3;}
 
 /* Header */
-header{
-  padding:16px var(--pad);
-  display:flex;justify-content:space-between;align-items:center;
-  position:fixed;top:0;left:0;width:100%;
-  background:var(--header-bg);backdrop-filter:blur(10px);
-  z-index:100;transition:var(--theme-transition);
-  border-bottom:1px solid rgba(255,255,255,.04);
-}
+header{padding:16px var(--pad);display:flex;justify-content:space-between;align-items:center;position:fixed;top:0;left:0;width:100%;background:var(--header-bg);backdrop-filter:blur(10px);z-index:100;transition:var(--theme-transition);border-bottom:1px solid rgba(255,255,255,.04);}
 .brand{display:flex;gap:12px;align-items:center;min-width:0;}
-.logo{
-  width:44px;height:44px;background:var(--gradient);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-family:"JetBrains Mono",monospace;font-weight:700;font-size:1.15rem;
-  color:var(--primary);position:relative;overflow:hidden;flex:0 0 auto;
-}
+.logo{width:44px;height:44px;background:var(--gradient);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:"JetBrains Mono",monospace;font-weight:700;font-size:1.15rem;color:var(--primary);flex:0 0 auto;}
 .brand-text{min-width:0;}
 .brand-text h1{font-size:1.1rem;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .brand-text p{font-size:.85rem;color:var(--accent);font-family:"JetBrains Mono",monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-
 nav{display:flex;gap:22px;align-items:center;}
-.nav-link{
-  color:var(--text-muted);text-decoration:none;font-weight:600;font-size:.95rem;
-  position:relative;padding:8px 0;transition:var(--theme-transition);
-}
+.nav-link{color:var(--text-muted);text-decoration:none;font-weight:600;font-size:.95rem;position:relative;padding:8px 0;transition:var(--theme-transition);}
 .nav-link::after{content:"";position:absolute;bottom:2px;left:0;width:0;height:2px;background:var(--gradient);transition:width .25s ease;}
-.nav-link:hover{color:var(--accent);}
-.nav-link:hover::after{width:100%;}
-.nav-link.active{color:var(--accent);}
-.nav-link.active::after{width:100%;}
-
-.nav-toggle{
-  display:none;
-  width:44px;height:44px;border-radius:12px;
-  border:1px solid var(--border);
-  background:var(--card-bg);
-  backdrop-filter:blur(10px);
-  align-items:center;justify-content:center;
-  cursor:pointer;
-}
+.nav-link:hover{color:var(--accent);}.nav-link:hover::after,.nav-link.active::after{width:100%;}.nav-link.active{color:var(--accent);}
+.nav-toggle{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--border);background:var(--card-bg);backdrop-filter:blur(10px);align-items:center;justify-content:center;cursor:pointer;}
 .nav-toggle i{color:var(--accent);font-size:1.1rem;}
-.mobile-nav{
-  display:none;
-  position:fixed;left:0;right:0;top:calc(env(safe-area-inset-top) + 64px);
-  margin:10px var(--gutter);
-  background:var(--card-bg);
-  border:1px solid var(--border);
-  border-radius:16px;
-  backdrop-filter:blur(12px);
-  padding:10px;
-  z-index:120;
-}
-.mobile-nav a{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:14px 14px;border-radius:12px;
-  text-decoration:none;color:var(--text);
-}
-.mobile-nav a span{color:var(--text-muted);font-weight:600;}
-.mobile-nav a:active{transform:scale(.99);}
-.mobile-nav a + a{margin-top:6px;}
+.mobile-nav{display:none;position:fixed;left:0;right:0;top:calc(env(safe-area-inset-top) + 64px);margin:10px var(--gutter);background:var(--card-bg);border:1px solid var(--border);border-radius:16px;backdrop-filter:blur(12px);padding:10px;z-index:120;}
+.mobile-nav a{display:flex;align-items:center;justify-content:space-between;padding:14px;border-radius:12px;text-decoration:none;color:var(--text);}
+.mobile-nav a span{color:var(--text-muted);font-weight:600;}.mobile-nav a+a{margin-top:6px;}
+.theme-toggle{position:fixed;top:calc(env(safe-area-inset-top) + 88px);right:calc(env(safe-area-inset-right) + 18px);z-index:140;width:44px;height:44px;background:var(--card-bg);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--theme-transition);}
+.theme-toggle i{color:var(--accent);font-size:1.1rem;}.theme-toggle:active{transform:scale(.96);}
 
-.theme-toggle{
-  position:fixed;
-  top:calc(env(safe-area-inset-top) + 88px);
-  right:calc(env(safe-area-inset-right) + 18px);
-  z-index:140;width:44px;height:44px;
-  background:var(--card-bg);
-  backdrop-filter:blur(10px);
-  border:1px solid var(--border);
-  border-radius:14px;
-  cursor:pointer;display:flex;align-items:center;justify-content:center;
-  transition:var(--theme-transition);
-}
-.theme-toggle i{color:var(--accent);font-size:1.1rem;transition:var(--theme-transition);}
-.theme-toggle:active{transform:scale(.96);}
-
-/* Sections */
+/* Hero */
 section{scroll-margin-top:calc(var(--header-h) + 18px);}
-#hero{
-  min-height:100svh;
-  display:flex;align-items:center;
-  padding:calc(var(--header-h) + 40px) var(--pad) 70px;
-  position:relative;overflow:hidden;
-}
-.hero-content{
-  width:100%;max-width:var(--container);margin:0 auto;
-  z-index:1;display:grid;grid-template-columns:3fr 2fr;
-  gap:70px;align-items:center;
-}
+#hero{min-height:100svh;display:flex;align-items:center;padding:calc(var(--header-h) + 40px) var(--pad) 70px;position:relative;overflow:hidden;}
+.hero-content{width:100%;max-width:var(--container);margin:0 auto;z-index:1;display:grid;grid-template-columns:3fr 2fr;gap:70px;align-items:center;}
 .hero-greeting{font-family:"JetBrains Mono",monospace;color:var(--accent);font-size:1rem;margin-bottom:12px;opacity:0;animation:slideInLeft .7s ease forwards;}
 .hero-title{font-size:3.6rem;font-weight:800;line-height:1.05;margin-bottom:18px;opacity:0;animation:slideInLeft .7s ease .15s forwards;}
-.hero-title span{color:var(--accent);display:inline-block;}
+.hero-title span{color:var(--accent);}
 .hero-subtitle{font-size:1.18rem;color:var(--text-muted);margin-bottom:26px;max-width:620px;line-height:1.65;opacity:0;animation:slideInLeft .7s ease .3s forwards;}
 @keyframes slideInLeft{from{opacity:0;transform:translateX(-26px);}to{opacity:1;transform:translateX(0);}}
-.typing-container{display:inline;position:relative;}
 .cursor{display:inline-block;width:3px;height:1.15em;background:var(--accent);margin-left:2px;animation:blink 1s infinite;vertical-align:text-bottom;}
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
-
-.hero-menu{
-  display:flex;flex-direction:column;gap:10px;
-  padding:16px;background:var(--card-bg);
-  border:1px solid var(--border);border-radius:16px;
-  backdrop-filter:blur(10px);
-  opacity:0;animation:slideInRight .7s ease .45s forwards;
-}
+.hero-menu{display:flex;flex-direction:column;gap:10px;padding:16px;background:var(--card-bg);border:1px solid var(--border);border-radius:16px;backdrop-filter:blur(10px);opacity:0;animation:slideInRight .7s ease .45s forwards;}
 @keyframes slideInRight{from{opacity:0;transform:translateX(26px);}to{opacity:1;transform:translateX(0);}}
-.menu-item{
-  display:flex;align-items:center;gap:12px;
-  color:var(--text);text-decoration:none;
-  padding:14px 14px;border-radius:14px;
-  transition:var(--theme-transition);
-  border:1px solid rgba(255,255,255,.04);
-  background:rgba(0,0,0,0);
-}
-.menu-item i{width:22px;text-align:center;font-size:1.05rem;color:var(--accent);}
-.menu-item span{font-weight:700;font-size:.98rem;}
+.menu-item{display:flex;align-items:center;gap:12px;color:var(--text);text-decoration:none;padding:14px;border-radius:14px;transition:var(--theme-transition);border:1px solid rgba(255,255,255,.04);}
+.menu-item i{width:22px;text-align:center;font-size:1.05rem;color:var(--accent);}.menu-item span{font-weight:700;font-size:.98rem;}
 .menu-item:hover{border-color:var(--border);transform:translateX(6px);}
-.menu-item:active{transform:translateX(2px) scale(.99);}
-
-.contact-info{
-  display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;
-  opacity:0;animation:fadeInUp .7s ease .6s forwards;
-}
+.contact-info{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;opacity:0;animation:fadeInUp .7s ease .6s forwards;}
 @keyframes fadeInUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
-.contact-item{
-  display:inline-flex;align-items:center;gap:10px;
-  color:var(--text);text-decoration:none;
-  padding:12px 14px;background:var(--card-bg);
-  border:1px solid var(--border);border-radius:14px;
-  transition:var(--theme-transition);
-}
+.contact-item{display:inline-flex;align-items:center;gap:10px;color:var(--text);text-decoration:none;padding:12px 14px;background:var(--card-bg);border:1px solid var(--border);border-radius:14px;transition:var(--theme-transition);}
 .contact-item i{color:var(--accent);font-size:1.1rem;}
-.contact-item:active{transform:scale(.99);}
 
+/* Sections */
 #about,#resume,footer{background:var(--secondary);}
 #about,#projects,#resume,#contact{padding:90px var(--pad);}
-
 .section-header{max-width:var(--container);margin:0 auto 46px;}
 .section-title{font-size:2.35rem;font-weight:800;color:var(--text);margin-bottom:12px;position:relative;display:inline-block;}
 .section-title::after{content:"";position:absolute;bottom:-10px;left:0;width:60px;height:3px;background:var(--gradient);}
 .section-subtitle{font-size:1.05rem;color:var(--text-muted);max-width:650px;line-height:1.65;}
 
-.about-content{
-  max-width:var(--container);margin:0 auto;
-  display:grid;grid-template-columns:1fr 2fr;
-  gap:44px;align-items:start;
-}
-.profile-image{
-  border-radius:16px;overflow:hidden;
-  box-shadow:0 20px 40px var(--shadow);
-  border:1px solid rgba(255,255,255,.05);
-}
+/* About */
+.about-content{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:44px;align-items:start;}
+.profile-image{border-radius:16px;overflow:hidden;box-shadow:0 20px 40px var(--shadow);border:1px solid rgba(255,255,255,.05);}
 .about-text p{margin-bottom:16px;line-height:1.8;font-size:1.05rem;color:var(--text-muted);}
+.skills-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:26px;}
+.skill-item{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:18px;text-align:center;transition:var(--theme-transition);}
+.skill-item i{font-size:1.6rem;color:var(--accent);margin-bottom:10px;}.skill-item h3{font-size:1rem;color:var(--text);margin-bottom:4px;}.skill-item p{font-size:.9rem;color:var(--text-muted);}
 
-.skills-container{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:14px;margin-top:26px;
-}
-.skill-item{
-  background:var(--card-bg);border:1px solid var(--border);
-  border-radius:14px;padding:18px;text-align:center;
-  transition:var(--theme-transition);
-}
-.skill-item i{font-size:1.6rem;color:var(--accent);margin-bottom:10px;}
-.skill-item h3{font-size:1rem;color:var(--text);margin-bottom:4px;}
-.skill-item p{font-size:.9rem;color:var(--text-muted);}
-
-.projects-grid{
-  max-width:var(--container);margin:0 auto;
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:18px;
-}
-.project-card{
-  background:var(--card-bg);border:1px solid var(--border);
-  border-radius:18px;overflow:hidden;
-  transition:var(--theme-transition);
-  position:relative;
-}
-.project-image{height:190px;overflow:hidden;}
-.project-image img{width:100%;height:100%;object-fit:cover;}
+/* Projects grid */
+.projects-grid{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;}
+.project-card{background:var(--card-bg);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:var(--theme-transition);}
+.project-image{height:190px;overflow:hidden;background:#0B1F33;display:flex;align-items:center;justify-content:center;}
+.project-image img{width:100%;height:100%;object-fit:cover;object-position:top;}
 .project-content{padding:18px;}
 .project-content h3{font-size:1.35rem;color:var(--text);margin-bottom:10px;}
 .project-content p{color:var(--text-muted);margin-bottom:14px;line-height:1.6;}
 .project-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
-.tag{
-  background:rgba(0,173,181,.15);
-  color:var(--accent);
-  padding:6px 12px;border-radius:999px;font-size:.82rem;
-  font-family:"JetBrains Mono",monospace;
-  border:1px solid rgba(0,173,181,.3);
-}
+.tag{background:rgba(0,173,181,.15);color:var(--accent);padding:6px 12px;border-radius:999px;font-size:.82rem;font-family:"JetBrains Mono",monospace;border:1px solid rgba(0,173,181,.3);}
 .project-actions{display:flex;gap:10px;flex-wrap:wrap;}
 
-.btn{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:12px 16px;background:var(--gradient);
-  color:var(--primary);text-decoration:none;border-radius:14px;
-  font-weight:800;font-size:.95rem;border:none;cursor:pointer;
-  transition:var(--theme-transition);
-  min-height:44px;
-}
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;background:var(--gradient);color:var(--primary);text-decoration:none;border-radius:14px;font-weight:800;font-size:.95rem;border:none;cursor:pointer;transition:var(--theme-transition);min-height:44px;}
 .btn:active{transform:scale(.99);}
 .btn-outline{background:transparent;border:1px solid var(--border);color:var(--accent);}
-.btn-outline:active{transform:scale(.99);}
 
-#resume{text-align:center;}
-.resume-container{max-width:900px;margin:0 auto;}
-.resume-preview{
-  background:var(--card-bg);border:1px solid var(--border);
-  border-radius:18px;padding:26px;margin-top:26px;
-}
-.resume-preview h3{font-size:1.8rem;color:var(--text);margin-bottom:10px;}
-.resume-preview p{color:var(--text-muted);margin-bottom:16px;line-height:1.6;}
-
-#contact{text-align:center;}
-.contact-container{max-width:900px;margin:0 auto;}
-.contact-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:16px;margin-top:26px;
-}
-.contact-card{
-  background:var(--card-bg);border:1px solid var(--border);
-  border-radius:18px;padding:22px;
-}
-.contact-card i{font-size:2rem;color:var(--accent);margin-bottom:14px;}
-.contact-card h3{font-size:1.15rem;color:var(--text);margin-bottom:8px;}
-.contact-card p{color:var(--text-muted);margin-bottom:14px;}
-
-footer{
-  padding:42px var(--pad);
-  text-align:center;border-top:1px solid var(--border);
-}
-.footer-logo{
-  width:56px;height:56px;background:var(--gradient);
-  border-radius:50%;margin:0 auto 18px;
-  display:flex;align-items:center;justify-content:center;
-  font-family:"JetBrains Mono",monospace;font-weight:800;font-size:1.35rem;
-  color:var(--primary);
-}
+/* Resume / Contact */
+#resume{text-align:center;}.resume-container{max-width:900px;margin:0 auto;}
+.resume-preview{background:var(--card-bg);border:1px solid var(--border);border-radius:18px;padding:26px;margin-top:26px;}
+.resume-preview h3{font-size:1.8rem;color:var(--text);margin-bottom:10px;}.resume-preview p{color:var(--text-muted);margin-bottom:16px;line-height:1.6;}
+#contact{text-align:center;}.contact-container{max-width:900px;margin:0 auto;}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:26px;}
+.contact-card{background:var(--card-bg);border:1px solid var(--border);border-radius:18px;padding:22px;}
+.contact-card i{font-size:2rem;color:var(--accent);margin-bottom:14px;}.contact-card h3{font-size:1.15rem;color:var(--text);margin-bottom:8px;}.contact-card p{color:var(--text-muted);margin-bottom:14px;}
+footer{padding:42px var(--pad);text-align:center;border-top:1px solid var(--border);}
+.footer-logo{width:56px;height:56px;background:var(--gradient);border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;font-family:"JetBrains Mono",monospace;font-weight:800;font-size:1.35rem;color:var(--primary);}
 .footer-links{display:flex;justify-content:center;gap:18px;margin:18px 0;flex-wrap:wrap;}
-.footer-link{color:var(--text-muted);text-decoration:none;font-weight:650;}
-.footer-link:hover{color:var(--accent);}
+.footer-link{color:var(--text-muted);text-decoration:none;font-weight:600;}.footer-link:hover{color:var(--accent);}
 .copyright{color:var(--text-muted);margin-top:12px;font-size:.9rem;}
 
-/* ── Project detail pages ── */
+/* ══════════════════════════════════════
+   UNIFIED PROJECT DETAIL PAGE SYSTEM
+   ══════════════════════════════════════ */
 .project-page{
-  display:none;
-  max-width:1000px;
-  margin:calc(var(--header-h) + 60px) auto 40px;
-  padding:22px;
-  background:var(--card-bg);
-  border:1px solid var(--border);
-  border-radius:18px;
-  box-shadow:0 8px 32px var(--shadow);
-  backdrop-filter:blur(10px);
+  display:none;max-width:1000px;
+  margin:calc(var(--header-h) + 60px) auto 60px;
+  padding:28px;background:var(--card-bg);
+  border:1px solid var(--border);border-radius:18px;
+  box-shadow:0 8px 32px var(--shadow);backdrop-filter:blur(10px);
   position:relative;z-index:1;
 }
-.project-header{text-align:center;margin-bottom:26px;}
-.project-overview,.project-section{
-  display:flex;gap:18px;align-items:flex-start;margin-bottom:26px;
-}
-.overview-box{
-  background:rgba(0,173,181,.08);
-  padding:16px;border-radius:14px;margin-bottom:14px;
-  border:1px solid var(--border);
-}
-.section-image img,.overview-image img{border-radius:14px;box-shadow:0 8px 25px var(--shadow);}
-.back-btn{background:var(--gradient);}
-.project-back-bottom{text-align:center;margin-top:26px;padding-top:18px;border-top:1px solid var(--border);}
 
-/* ── Flusso phone mockup layout ── */
-.flusso-phones{
-  display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
-  margin-bottom:26px;
-}
-.flusso-phone{
-  width:160px;flex:0 0 auto;
-  border-radius:28px;overflow:hidden;
-  box-shadow:0 12px 40px var(--shadow);
-  border:2px solid var(--border);
-}
-.flusso-phone img{width:100%;display:block;}
+/* Header */
+.pd-header{text-align:center;margin-bottom:28px;padding-bottom:22px;border-bottom:1px solid var(--border);}
+.pd-header h1{font-size:1.85rem;color:var(--text);margin-bottom:6px;}
+.pd-header p{color:var(--text-muted);font-size:.93rem;}
 
-/* two-column phone + text for flusso sections */
-.flusso-section{
-  display:grid;
-  grid-template-columns:180px 1fr;
-  gap:24px;align-items:start;
-  margin-bottom:32px;
-}
-.flusso-section.reverse{grid-template-columns:1fr 180px;}
-.flusso-section.reverse .flusso-phone{order:2;}
-.flusso-section.reverse .flusso-text{order:1;}
+/* Overview */
+.pd-overview{background:rgba(0,173,181,.07);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:28px;}
+.pd-overview h3{color:var(--accent);font-size:.85rem;font-family:"JetBrains Mono",monospace;margin-bottom:8px;text-transform:uppercase;letter-spacing:.08em;}
+.pd-overview p{color:var(--text-muted);line-height:1.75;font-size:.96rem;}
 
-.flusso-phone-wrap{
-  border-radius:28px;overflow:hidden;
-  box-shadow:0 12px 40px var(--shadow);
-  border:2px solid var(--border);
-}
-.flusso-phone-wrap img{width:100%;display:block;}
+/* Pills */
+.pd-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.pd-pill{background:rgba(0,173,181,.12);border:1px solid rgba(0,173,181,.35);color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.76rem;padding:4px 10px;border-radius:999px;}
 
-.flusso-text h2{font-size:1.3rem;color:var(--text);margin-bottom:10px;}
-.flusso-text p{color:var(--text-muted);line-height:1.75;font-size:1rem;margin-bottom:10px;}
-.flusso-text ul{list-style:none;padding:0;margin:0;}
-.flusso-text ul li{
-  color:var(--text-muted);font-size:.95rem;line-height:1.6;
-  padding:4px 0 4px 18px;position:relative;
-}
-.flusso-text ul li::before{
-  content:"→";position:absolute;left:0;color:var(--accent);font-size:.85rem;
-}
+/* Section label */
+.pd-label{font-family:"JetBrains Mono",monospace;font-size:.75rem;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;opacity:.7;}
 
-/* tech pill row */
-.tech-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
-.tech-pill{
-  background:rgba(0,173,181,.12);
-  border:1px solid rgba(0,173,181,.35);
-  color:var(--accent);
-  font-family:"JetBrains Mono",monospace;
-  font-size:.78rem;
-  padding:5px 11px;border-radius:999px;
-}
+/* Section row */
+.pd-section{display:grid;grid-template-columns:240px 1fr;gap:24px;align-items:start;margin-bottom:32px;}
+.pd-section.rev{grid-template-columns:1fr 240px;}
+.pd-section.rev .pd-img-col{order:2;}.pd-section.rev .pd-text{order:1;}
 
-/* stack overview grid */
-.stack-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:12px;
-  margin-top:18px;
-}
-.stack-card{
-  background:rgba(0,173,181,.06);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:14px 16px;
-}
-.stack-card h4{color:var(--accent);font-size:.9rem;margin-bottom:6px;font-family:"JetBrains Mono",monospace;}
-.stack-card p{color:var(--text-muted);font-size:.88rem;line-height:1.6;}
+/* Image column — landscape (default) */
+.pd-img-col{display:flex;flex-direction:column;gap:12px;}
+.pd-img{border-radius:14px;overflow:hidden;box-shadow:0 8px 24px var(--shadow);border:1px solid var(--border);}
+.pd-img img{width:100%;display:block;height:auto;max-height:280px;object-fit:cover;object-position:top;}
 
-@media (prefers-reduced-motion: reduce){
-  *{animation:none !important;transition:none !important;scroll-behavior:auto !important;}
-}
+/* Phone image variant — portrait, narrower */
+.pd-img-col.phone{max-width:180px;margin:0 auto;}
+.pd-img-col.phone .pd-img{border-radius:22px;}
+.pd-img-col.phone .pd-img img{max-height:360px;object-fit:cover;object-position:top;}
 
-@media (max-width: 1024px){
+/* Text column */
+.pd-text h2{font-size:1.2rem;color:var(--text);margin-bottom:10px;}
+.pd-text p{color:var(--text-muted);line-height:1.75;font-size:.95rem;margin-bottom:10px;}
+.pd-text ul{list-style:none;padding:0;margin:0;}
+.pd-text ul li{color:var(--text-muted);font-size:.92rem;line-height:1.65;padding:4px 0 4px 18px;position:relative;}
+.pd-text ul li::before{content:"→";position:absolute;left:0;color:var(--accent);font-size:.8rem;}
+.pd-text code{color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.84em;background:rgba(0,173,181,.1);padding:1px 5px;border-radius:4px;}
+.pd-text strong{color:var(--text);}
+
+/* Summary grid */
+.pd-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:6px;margin-bottom:28px;}
+.pd-card{background:rgba(0,173,181,.06);border:1px solid var(--border);border-radius:14px;padding:14px 16px;}
+.pd-card h4{color:var(--accent);font-size:.83rem;margin-bottom:6px;font-family:"JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.06em;}
+.pd-card p{color:var(--text-muted);font-size:.85rem;line-height:1.6;}
+
+/* Back */
+.pd-back{text-align:center;margin-top:28px;padding-top:20px;border-top:1px solid var(--border);}
+
+/* Responsive */
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important;}}
+@media (max-width:1024px){
   :root{--pad:22px;}
-  .hero-content{grid-template-columns:1fr;gap:22px;}
-  .hero-menu{order:2;}
-  .hero-title{font-size:3rem;}
-  .about-content{grid-template-columns:1fr;gap:22px;}
+  .hero-content{grid-template-columns:1fr;gap:22px;}.hero-menu{order:2;}
+  .hero-title{font-size:3rem;}.about-content{grid-template-columns:1fr;gap:22px;}
 }
-@media (max-width: 820px){
+@media (max-width:820px){
   :root{--pad:16px;--header-h:64px;}
-  header{padding:12px var(--pad);}
-  nav{display:none;}
-  .nav-toggle{display:flex;}
-  .theme-toggle{
-    top:calc(env(safe-area-inset-top) + 12px);
-    right:calc(env(safe-area-inset-right) + 12px);
-  }
-  #hero{padding:calc(var(--header-h) + 22px) var(--pad) 56px;}
+  header{padding:12px var(--pad);}nav{display:none;}.nav-toggle{display:flex;}
+  .theme-toggle{top:calc(env(safe-area-inset-top)+12px);right:calc(env(safe-area-inset-right)+12px);}
+  #hero{padding:calc(var(--header-h)+22px) var(--pad) 56px;}
   #about,#projects,#resume,#contact{padding:70px var(--pad);}
-  .hero-title{font-size:2.35rem;}
-  .hero-subtitle{font-size:1.05rem;}
-  .contact-info{flex-direction:column;align-items:stretch;}
-  .contact-item{width:100%;}
+  .hero-title{font-size:2.35rem;}.hero-subtitle{font-size:1.05rem;}
+  .contact-info{flex-direction:column;align-items:stretch;}.contact-item{width:100%;}
   .projects-grid{grid-template-columns:1fr;}
-  .project-overview,.project-section{flex-direction:column;}
-  .flusso-section,.flusso-section.reverse{grid-template-columns:1fr;}
-  .flusso-section.reverse .flusso-phone{order:0;}
-  .flusso-section.reverse .flusso-text{order:0;}
-  .flusso-phone-wrap{max-width:220px;margin:0 auto;}
-  .engineering-bg{opacity:.9;}
+  .pd-section,.pd-section.rev{grid-template-columns:1fr;}
+  .pd-section.rev .pd-img-col,.pd-section.rev .pd-text{order:unset;}
+  .pd-img-col.phone{max-width:200px;}
+  .project-page{padding:16px;margin-top:calc(var(--header-h)+20px);}
 }
-@media (max-width: 420px){
+@media (max-width:420px){
   .skills-container{grid-template-columns:repeat(2,1fr);}
-  .btn{width:100%;justify-content:center;}
-  .project-actions{flex-direction:column;}
+  .btn{width:100%;justify-content:center;}.project-actions{flex-direction:column;}
   .brand-text p{display:none;}
 }
 </style>
@@ -518,10 +243,8 @@ footer{
     <div class="circuit-line circuit-line-3"></div>
   </div>
   <div class="space-dots">
-    <div class="space-dot space-dot-1"></div>
-    <div class="space-dot space-dot-2"></div>
-    <div class="space-dot space-dot-3"></div>
-    <div class="space-dot space-dot-4"></div>
+    <div class="space-dot space-dot-1"></div><div class="space-dot space-dot-2"></div>
+    <div class="space-dot space-dot-3"></div><div class="space-dot space-dot-4"></div>
   </div>
   <div class="rocket-trail"></div>
 </div>
@@ -538,11 +261,7 @@ footer{
       <p>Mechanical Engineering Student</p>
     </div>
   </div>
-
-  <button class="nav-toggle" id="navToggle" aria-label="Open menu">
-    <i class="fas fa-bars"></i>
-  </button>
-
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu"><i class="fas fa-bars"></i></button>
   <nav>
     <a href="#hero" class="nav-link active">Home</a>
     <a href="#about" class="nav-link">About</a>
@@ -553,188 +272,117 @@ footer{
 </header>
 
 <div class="mobile-nav" id="mobileNav" aria-hidden="true">
-  <a href="#hero"><b>Home</b> <span>Top</span></a>
-  <a href="#about"><b>About</b> <span>Profile</span></a>
-  <a href="#projects"><b>Projects</b> <span>Work</span></a>
-  <a href="#resume"><b>Resume</b> <span>PDF</span></a>
-  <a href="#contact"><b>Contact</b> <span>Links</span></a>
+  <a href="#hero"><b>Home</b><span>Top</span></a>
+  <a href="#about"><b>About</b><span>Profile</span></a>
+  <a href="#projects"><b>Projects</b><span>Work</span></a>
+  <a href="#resume"><b>Resume</b><span>PDF</span></a>
+  <a href="#contact"><b>Contact</b><span>Links</span></a>
 </div>
 
+<!-- HERO -->
 <section id="hero">
   <div class="hero-content">
     <div class="hero-text">
       <p class="hero-greeting">Hi, I'm</p>
       <h1 class="hero-title">Chakib Belghait<span>.</span></h1>
       <p class="hero-subtitle">
-        <span class="typing-container">
-          <span class="typing-text">Mechanical Engineering student at the University of Waterloo</span>
-          <span class="cursor"></span>
-        </span>
+        <span class="typing-text">Mechanical Engineering student at the University of Waterloo</span><span class="cursor"></span>
       </p>
-
       <div class="contact-info">
-        <a href="tel:4385030688" class="contact-item">
-          <i class="fas fa-phone"></i><span>438-503-0688</span>
-        </a>
-        <a href="mailto:chakib.belghait@uwaterloo.ca" class="contact-item">
-          <i class="fas fa-envelope"></i><span>chakib.belghait@uwaterloo.ca</span>
-        </a>
-        <a href="https://www.linkedin.com/in/chakib-belghait-a58932376" target="_blank" class="contact-item" rel="noreferrer">
-          <i class="fab fa-linkedin"></i><span>LinkedIn</span>
-        </a>
+        <a href="tel:4385030688" class="contact-item"><i class="fas fa-phone"></i><span>438-503-0688</span></a>
+        <a href="mailto:chakib.belghait@uwaterloo.ca" class="contact-item"><i class="fas fa-envelope"></i><span>chakib.belghait@uwaterloo.ca</span></a>
+        <a href="https://www.linkedin.com/in/chakib-belghait-a58932376" target="_blank" class="contact-item" rel="noreferrer"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
       </div>
     </div>
-
     <div class="hero-menu">
       <a href="#about" class="menu-item"><i class="fas fa-user"></i><span>About Me</span></a>
       <a href="#projects" class="menu-item"><i class="fas fa-project-diagram"></i><span>Engineering Projects</span></a>
-      <a href="#resume" class="menu-item"><i class="fas fa-file-alt"></i><span>Resume & Skills</span></a>
+      <a href="#resume" class="menu-item"><i class="fas fa-file-alt"></i><span>Resume &amp; Skills</span></a>
       <a href="#contact" class="menu-item"><i class="fas fa-envelope"></i><span>Contact Me</span></a>
       <a href="Resume.pdf" target="_blank" class="menu-item" rel="noreferrer"><i class="fas fa-download"></i><span>Download Resume</span></a>
     </div>
   </div>
 </section>
 
+<!-- ABOUT -->
 <section id="about">
   <div class="section-header">
     <h2 class="section-title">About Me</h2>
     <p class="section-subtitle">Engineering student with a passion for Aerospace and automotive</p>
   </div>
-
   <div class="about-content">
-    <div class="profile-container">
-      <div class="profile-image">
-        <img src="Goat2.0.png" alt="Chakib Belghait">
-      </div>
-    </div>
-
+    <div class="profile-image"><img src="Goat2.0.png" alt="Chakib Belghait"></div>
     <div class="about-text">
-      <p>
-        I am a Mechanical Engineering student at the University of Waterloo passionate about robotics, aerospace, and the automobile industry. Throughout my academic journey, I've maintained a close connection with practical engineering, from participating in FIRST robotics competitions to conducting research at Concordia University.
-      </p>
-      <p>
-        I've worked extensively with mechanical, electrical, and software systems across various projects. I thrive on conceptualizing and realizing innovative solutions, whether through CAD design, FEA simulations, or hands-on manufacturing and assembly.
-      </p>
-      <p>
-        Beyond technical skills, I've developed discipline and strategic thinking through competitive chess (ranking 16th in Quebec U18 in 2024), provincial and national karate championships, and sports like soccer and fishing. These experiences have shaped my approach to engineering challenges.
-      </p>
-
+      <p>I am a Mechanical Engineering student at the University of Waterloo passionate about robotics, aerospace, and the automobile industry. Throughout my academic journey, I've maintained a close connection with practical engineering, from participating in FIRST robotics competitions to conducting research at Concordia University.</p>
+      <p>I've worked extensively with mechanical, electrical, and software systems across various projects. I thrive on conceptualizing and realizing innovative solutions, whether through CAD design, FEA simulations, or hands-on manufacturing and assembly.</p>
+      <p>Beyond technical skills, I've developed discipline and strategic thinking through competitive chess (ranking 16th in Quebec U18 in 2024), provincial and national karate championships, and sports like soccer and fishing. These experiences have shaped my approach to engineering challenges.</p>
       <div class="skills-container">
-        <div class="skill-item">
-          <i class="fas fa-cube"></i>
-          <h3>CAD & Design</h3>
-          <p>SolidWorks, AutoCAD</p>
-        </div>
-        <div class="skill-item">
-          <i class="fas fa-cogs"></i>
-          <h3>Analysis</h3>
-          <p>MATLAB, FEA</p>
-        </div>
-        <div class="skill-item">
-          <i class="fas fa-industry"></i>
-          <h3>Manufacturing</h3>
-          <p>3D Printing, Machining</p>
-        </div>
-        <div class="skill-item">
-          <i class="fas fa-tools"></i>
-          <h3>Prototyping</h3>
-          <p>Assembly, Testing</p>
-        </div>
+        <div class="skill-item"><i class="fas fa-cube"></i><h3>CAD &amp; Design</h3><p>SolidWorks, AutoCAD</p></div>
+        <div class="skill-item"><i class="fas fa-cogs"></i><h3>Analysis</h3><p>MATLAB, FEA</p></div>
+        <div class="skill-item"><i class="fas fa-industry"></i><h3>Manufacturing</h3><p>3D Printing, Machining</p></div>
+        <div class="skill-item"><i class="fas fa-tools"></i><h3>Prototyping</h3><p>Assembly, Testing</p></div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- PROJECTS GRID -->
 <section id="projects">
   <div class="section-header">
     <h2 class="section-title">Projects</h2>
     <p class="section-subtitle">Engineering solutions with practical applications</p>
   </div>
-
   <div class="projects-grid">
 
-    <!-- Cryogenics -->
     <div class="project-card">
-      <div class="project-image">
-        <img src="IMG_1421.jpg" alt="Cryogenic System">
-      </div>
+      <div class="project-image"><img src="IMG_1421.jpg" alt="Cryogenic System"></div>
       <div class="project-content">
         <h3>Closed-Cycle Cryogenic System</h3>
-        <p>Developed a helium-based cryocooler system reaching sub-4K temperatures with custom thermal links and vibration isolation for spectroscopic research applications.</p>
-        <div class="project-tags">
-          <span class="tag">Thermal Systems</span>
-          <span class="tag">Research</span>
-          <span class="tag">Prototyping</span>
-        </div>
+        <p>Helium-based cryocooler reaching sub-4K temperatures with custom thermal links and vibration isolation for spectroscopic research at Concordia University.</p>
+        <div class="project-tags"><span class="tag">Thermal Systems</span><span class="tag">Research</span><span class="tag">Prototyping</span></div>
         <div class="project-actions">
-          <a href="#" class="btn" onclick="showProject('cryogenics'); return false;">View Details</a>
+          <a href="#" class="btn" onclick="showProject('cryogenics');return false;">View Details</a>
           <a href="Design and Developpment of a Closed-Cycle cryogenic system.pdf" target="_blank" class="btn btn-outline" rel="noreferrer">Documentation</a>
         </div>
       </div>
     </div>
 
-    <!-- Carbon Fiber -->
     <div class="project-card">
-      <div class="project-image">
-        <img src="Goat car.jpg" alt="Carbon Fiber Research">
-      </div>
+      <div class="project-image"><img src="Goat car.jpg" alt="Carbon Fiber Research"></div>
       <div class="project-content">
         <h3>Composite Joining Methods</h3>
-        <p>Research on advanced techniques for bonding carbon fiber to metal components using 3D-printed prototypes and composite layups to optimize structural strength.</p>
-        <div class="project-tags">
-          <span class="tag">Materials</span>
-          <span class="tag">Composites</span>
-          <span class="tag">R&amp;D</span>
-        </div>
+        <p>R&amp;D on advanced bonding techniques between carbon fiber and aluminum for Formula electric car aerodynamic surfaces.</p>
+        <div class="project-tags"><span class="tag">Materials</span><span class="tag">Composites</span><span class="tag">R&amp;D</span></div>
         <div class="project-actions">
-          <a href="#" class="btn" onclick="showProject('carbonfiber'); return false;">View Details</a>
+          <a href="#" class="btn" onclick="showProject('carbonfiber');return false;">View Details</a>
         </div>
       </div>
     </div>
 
-    <!-- FinSight -->
     <div class="project-card">
-      <div class="project-image">
-        <img src="Screenshot 2025-11-07 213508.png" alt="FinSight Platform">
-      </div>
+      <div class="project-image"><img src="Screenshot 2025-11-07 213508.png" alt="FinSight"></div>
       <div class="project-content">
-        <h3>Financial Analytics Platform</h3>
-        <p>Developed a financial analytics platform providing real-time insights and predictive modeling using machine learning algorithms for investment decision support.</p>
-        <div class="project-tags">
-          <span class="tag">Software</span>
-          <span class="tag">Data Analysis</span>
-          <span class="tag">ML</span>
-        </div>
+        <h3>FinSight — Financial Analytics Platform</h3>
+        <p>AI-powered financial platform built in 36 hours at the Polytechnique Montréal &amp; AWS Datathon — document analysis, portfolio impact visualization, and risk forecasting.</p>
+        <div class="project-tags"><span class="tag">Python</span><span class="tag">ML</span><span class="tag">API Integration</span></div>
         <div class="project-actions">
-          <a href="#" class="btn" onclick="showProject('finsight'); return false;">View Details</a>
+          <a href="#" class="btn" onclick="showProject('finsight');return false;">View Details</a>
         </div>
       </div>
     </div>
 
-    <!-- Flusso -->
     <div class="project-card">
-      <div class="project-image" style="background:#0B1F33;display:flex;align-items:center;justify-content:center;gap:10px;padding:10px;">
-        <div style="width:80px;border-radius:18px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.5);flex:0 0 auto;">
-          <img src="flusso_dashboard.png" alt="Flusso Dashboard" style="width:100%;display:block;">
-        </div>
-        <div style="width:80px;border-radius:18px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.5);flex:0 0 auto;">
-          <img src="flusso_focus.png" alt="Flusso Focus Zone" style="width:100%;display:block;">
-        </div>
-        <div style="width:80px;border-radius:18px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.5);flex:0 0 auto;">
-          <img src="flusso_tasks.png" alt="Flusso Tasks" style="width:100%;display:block;">
-        </div>
+      <div class="project-image" style="gap:8px;padding:12px;">
+        <div style="width:70px;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.5);flex:0 0 auto;"><img src="flusso_dashboard.png" style="width:100%;display:block;" alt="Dashboard"></div>
+        <div style="width:70px;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.5);flex:0 0 auto;"><img src="flusso_focus.png" style="width:100%;display:block;" alt="Focus Zone"></div>
+        <div style="width:70px;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.5);flex:0 0 auto;"><img src="flusso_tasks.png" style="width:100%;display:block;" alt="Tasks"></div>
       </div>
       <div class="project-content">
-        <h3>Flusso — iOS & Android Productivity App</h3>
-        <p>Designed and built a full-stack mobile app from scratch as a solo developer — React Native, Firebase backend, Spotify integration, RevenueCat subscriptions, and custom native iOS modules.</p>
-        <div class="project-tags">
-          <span class="tag">React Native</span>
-          <span class="tag">TypeScript</span>
-          <span class="tag">Firebase</span>
-          <span class="tag">iOS / Android</span>
-        </div>
+        <h3>Flusso — iOS &amp; Android Productivity App</h3>
+        <p>Full-stack mobile app built solo — React Native, Firebase, Spotify integration, RevenueCat subscriptions, and custom native iOS modules. Published on the App Store.</p>
+        <div class="project-tags"><span class="tag">React Native</span><span class="tag">TypeScript</span><span class="tag">Firebase</span><span class="tag">iOS / Android</span></div>
         <div class="project-actions">
-          <a href="#" class="btn" onclick="showProject('flusso'); return false;">View Details</a>
+          <a href="#" class="btn" onclick="showProject('flusso');return false;">View Details</a>
         </div>
       </div>
     </div>
@@ -743,396 +391,403 @@ footer{
 </section>
 
 
-<!-- ═══════════════ PROJECT DETAIL PAGES ═══════════════ -->
-
-<!-- Cryogenics -->
+<!-- ══════════════════════════════════════
+     DETAIL: CRYOGENICS
+══════════════════════════════════════ -->
 <div id="project-cryogenics" class="project-page">
-  <div class="project-header"><h1>Closed-Cycle Cryogenic System (4 K)</h1></div>
+  <div class="pd-header">
+    <h1>Closed-Cycle Cryogenic System (4 K)</h1>
+    <p>Research Project · Concordia University · Physics Department</p>
+  </div>
 
-  <div class="project-overview">
-    <div class="overview-image">
-      <img src="IMG_1421.jpg" alt="Cryogenic System">
-    </div>
-    <div class="overview-content">
-      <div class="overview-box">
-        <h3>Project Overview</h3>
-        <p>This research project was conducted at Concordia University, under the supervision of the physics department chair: Valter Zazubovits. The goal was to design and develop a system that could reach 4K for long time ranges as an alternative for liquid helium. This project was part of a bigger research on Light-Harvesting complexes and their application in bio-solar technologies. The cryogenic system involved a Sumitomo RDK-415D cryocooler with gold-coated copper links, vacuum-sealed aluminum chambers, and G10 supports for stability.</p>
-        <h3 style="margin-top:12px;">Skills Used</h3>
-        <p>Material structures, Material Analysis, Thermodynamics, Machining, Gold plating, Wiring, Vacuum systems, Assembly, Documentation, Heat transfer, Schematic reading, Teamwork</p>
-      </div>
+  <div class="pd-overview">
+    <h3>Project Overview</h3>
+    <p>Conducted at Concordia University under the supervision of physics department chair Valter Zazubovits, this project aimed to design and build a system capable of sustaining sub-4K temperatures over extended periods — as a practical alternative to liquid helium — in support of broader research on light-harvesting complexes and bio-solar technologies.</p>
+    <div class="pd-pills">
+      <span class="pd-pill">Thermodynamics</span><span class="pd-pill">Heat Transfer</span>
+      <span class="pd-pill">Vacuum Systems</span><span class="pd-pill">Machining</span>
+      <span class="pd-pill">Gold Plating</span><span class="pd-pill">Assembly</span>
     </div>
   </div>
 
-  <div class="project-section">
-    <div class="section-content">
-      <h2>System Design &amp; Architecture</h2>
-      <p>The system architecture was developed around a modular closed-cycle cryogenic configuration integrating mechanical, thermal, and optical subsystems. A Sumitomo RDK-415D cold head serves as the central cooling unit, connected to a CSW-71C helium compressor through high-pressure lines operating in a sealed loop. The cold stages are thermally linked to the optical sample chamber via gold-coated OFHC copper links. The assembly is enclosed within a vacuum-sealed aluminum housing fitted with a low-emissivity radiation shield extending from the first stage of the cryocooler. The sample chamber is linked at the end of the system. Also two stainless-steel bellows isolate the cryostat from external vibrations. All components are mounted on a rigid optical table.</p>
+  <p class="pd-label">System Design</p>
+  <div class="pd-section">
+    <div class="pd-img-col">
+      <div class="pd-img"><img src="Arch.png" alt="System Architecture"></div>
     </div>
-    <div class="section-image">
-      <img src="Arch.png" alt="Thermal Design">
-    </div>
-  </div>
-
-  <div class="project-section">
-    <div class="section-image">
-      <img src="opt.png" alt="Vibration Isolation">
-    </div>
-    <div class="section-content">
-      <h2>Improvements and Optimization</h2>
-      <p>Several upgrades were introduced to improve the system's performance, stability, and control. A radiation shield was added to reduce radiative heat transfer and keep the cold stages stable at cryogenic temperatures. The thermal links and contact surfaces were gold-coated to improve thermal conductivity and area of contact. The entire setup was sealed inside a vacuum chamber to eliminate convective losses and maintain uniform temperature over time. Dual bellows and a revised mounting structure helped reduce mechanical vibration, while an integrated heater and temperature sensors provided finer control during operation. Together, these improvements improved the cooling efficiency, reliability, and overall performance of the closed-cycle cryogenic system by 21%.</p>
+    <div class="pd-text">
+      <h2>Architecture &amp; Design</h2>
+      <p>The system is built around a modular closed-cycle configuration integrating mechanical, thermal, and optical subsystems. A <strong>Sumitomo RDK-415D cold head</strong> serves as the central cooling unit, connected to a CSW-71C helium compressor through sealed high-pressure lines.</p>
+      <ul>
+        <li>Cold stages thermally linked to the sample chamber via <strong>gold-coated OFHC copper links</strong> for maximum conductivity at cryogenic temperatures.</li>
+        <li>Assembly enclosed in a <strong>vacuum-sealed aluminum housing</strong> fitted with a low-emissivity radiation shield extending from the first cold stage.</li>
+        <li>Two <strong>stainless-steel bellows</strong> isolate the cryostat from vibrations transmitted through the compressor lines.</li>
+        <li>All components mounted on a rigid optical table for long-term stability during measurement sessions.</li>
+      </ul>
     </div>
   </div>
 
-  <div class="project-section">
-    <div class="section-content">
-      <h2>Material</h2>
-      <p>The system design relied on three main materials, each chosen for its specific thermal and mechanical properties at cryogenic temperatures. Gold-coated high-purity OFHC copper was used for the thermal links due to its excellent heat conductivity, allowing efficient transfer from the cold head to the sample chamber. G10 fiberglass epoxy was selected for the chamber supports because of its very low thermal conductivity and minimal contraction when cooled, ensuring mechanical stability without introducing heat leaks. Aluminum 6061-T6 was used for the vacuum housing while Aluminum 6063-T5 was used for the radiation shield. This choice offered the structural strength for the vacuum housing while allowing high thermal conductivity around 40–50 K for the radiation shield which helped distribute and dissipate intercepted heat evenly. Together, these materials provided an optimal balance between thermal management, insulation, and mechanical reliability in the 4 K operating range.</p>
+  <p class="pd-label">Optimizations</p>
+  <div class="pd-section rev">
+    <div class="pd-img-col">
+      <div class="pd-img"><img src="opt.png" alt="Vibration Isolation"></div>
     </div>
-    <div class="section-image">
-      <img src="graph.png" alt="Experimental Results">
+    <div class="pd-text">
+      <h2>Improvements &amp; Performance Gains</h2>
+      <p>Several targeted upgrades were introduced iteratively across the design cycle to improve cooling efficiency, temperature stability, and control precision.</p>
+      <ul>
+        <li><strong>Radiation shield</strong> added to reduce the radiative heat load on the second cold stage.</li>
+        <li>All thermal contact surfaces <strong>gold-coated</strong> to minimize interfacial thermal resistance.</li>
+        <li>Full <strong>vacuum enclosure</strong> eliminates convective losses and stabilizes temperature over multi-hour runs.</li>
+        <li>Integrated <strong>heater and temperature sensors</strong> enable closed-loop temperature regulation.</li>
+        <li>Combined upgrades improved overall system performance by <strong>21%</strong>.</li>
+      </ul>
     </div>
   </div>
 
-  <div class="project-back-bottom">
-    <a href="#" class="btn back-btn" onclick="hideAllProjects(); return false;">← Back to Portfolio</a>
+  <p class="pd-label">Materials</p>
+  <div class="pd-section">
+    <div class="pd-img-col">
+      <div class="pd-img"><img src="graph.png" alt="Results Graph"></div>
+    </div>
+    <div class="pd-text">
+      <h2>Material Selection</h2>
+      <p>Each material was chosen based on specific behavior at cryogenic temperatures rather than room-temperature defaults — a non-trivial distinction where many material properties invert.</p>
+      <ul>
+        <li><strong>Gold-coated OFHC copper</strong> — thermal links. Exceptional conductivity at low temperatures; gold layer prevents oxidation and reduces contact resistance.</li>
+        <li><strong>G10 fiberglass epoxy</strong> — chamber supports. Near-zero thermal conductivity and minimal dimensional change when cooled, preventing structural heat leaks.</li>
+        <li><strong>Aluminum 6061-T6</strong> — vacuum housing. Structural strength and machinability for a hermetically sealed enclosure.</li>
+        <li><strong>Aluminum 6063-T5</strong> — radiation shield. Higher thermal conductivity at 40–50 K allows intercepted heat to spread and dissipate evenly across the shield surface.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pd-back">
+    <a href="#" class="btn" onclick="hideAllProjects();return false;">← Back to Portfolio</a>
   </div>
 </div>
 
-<!-- Carbon Fiber -->
+
+<!-- ══════════════════════════════════════
+     DETAIL: CARBON FIBER
+══════════════════════════════════════ -->
 <div id="project-carbonfiber" class="project-page">
-  <div class="project-header"><h1>R&amp;D - Joining Methods</h1></div>
+  <div class="pd-header">
+    <h1>R&amp;D — Composite Joining Methods</h1>
+    <p>Formula Electric · Aerodynamics Sub-Team</p>
+  </div>
 
-  <div class="project-overview">
-    <div class="overview-image">
-      <img src="IMG_3187.png" alt="Carbon Fiber Joining">
+  <div class="pd-overview">
+    <h3>Project Overview</h3>
+    <p>Carbon fiber is one of the most structurally demanding materials to work with, and the Formula electric car relies on it for most of its body and aerodynamic surfaces. This project focused on finding and validating new joining methods between aluminum hardware and carbon fiber composites — specifically in the airfoil assembly — to optimize structural strength without compromising aerodynamic integrity.</p>
+    <div class="pd-pills">
+      <span class="pd-pill">SolidWorks</span><span class="pd-pill">AutoCAD</span>
+      <span class="pd-pill">3D Printing</span><span class="pd-pill">Waterjet Cutting</span>
+      <span class="pd-pill">Composite Layup</span><span class="pd-pill">Structural Analysis</span>
     </div>
-    <div class="overview-content">
-      <div class="overview-box">
-        <h3>Project Overview</h3>
-        <p>Carbon Fiber is a unique material that is very hard to work with. Most of the parts of the Formula electric car are recovered by this composite. This project aimed at finding new ways to optimise the joining methods between aluminium and Carbon Fiber mainly in the airfoil. This project was done with the aerodynamics sub-team.</p>
-        <h3 style="margin-top:12px;">Skills Used</h3>
-        <p>Composite Manufacturing, Material Testing, SolidWorks, AutoCAD, Prototyping, 3D-printing, Structural Analysis</p>
+  </div>
+
+  <p class="pd-label">Prototype Development</p>
+  <div class="pd-section">
+    <div class="pd-img-col">
+      <div class="pd-img"><img src="Orientations.png" alt="Joining Orientations"></div>
+    </div>
+    <div class="pd-text">
+      <h2>Design &amp; Prototyping</h2>
+      <p>Three distinct joining configurations were designed and prototyped to allow direct structural comparison under identical loading conditions.</p>
+      <ul>
+        <li>Joining block geometry (airfoil imitations) modeled in <strong>SolidWorks</strong> and 3D printed on a BambuLab printer for rapid iteration and fitment checks.</li>
+        <li>1:1 aluminum replicas designed in <strong>AutoCAD</strong> and <strong>waterjet cut</strong> from ¼″ aluminum sheet for the actual structural test specimens.</li>
+        <li>Three orientation variants fabricated to identify which configuration maximizes bond strength while minimizing stress concentrations at the aluminum-composite interface.</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="pd-label">Manufacturing</p>
+  <div class="pd-section rev">
+    <div class="pd-img-col">
+      <div class="pd-img"><img src="IMG_1751.jpg" alt="Assembly process"></div>
+      <div class="pd-img"><img src="20251102_190453.jpg" alt="Carbon fiber layup"></div>
+    </div>
+    <div class="pd-text">
+      <h2>Manufacture &amp; Assembly</h2>
+      <p>The manufacturing process combined additive fabrication, subtractive machining, and wet composite layup techniques.</p>
+      <ul>
+        <li><strong>3D-printed cores</strong> used as airfoil shape formers for the carbon fiber layup process.</li>
+        <li>Cores wrapped in <strong>carbon fiber fabric and epoxy resin</strong>, then vacuum-bagged to consolidate the laminate and remove excess resin during cure.</li>
+        <li>Aluminum joining blocks <strong>waterjet cut</strong> to precise tolerances for consistent fit across all three test variants.</li>
+        <li>Final assemblies bonded and mechanically fastened depending on the joining variant being evaluated.</li>
+      </ul>
+      <div class="pd-img" style="margin-top:12px;border-radius:14px;overflow:hidden;box-shadow:0 8px 24px var(--shadow);border:1px solid var(--border);">
+        <img src="image.jpg" alt="Final assembly" style="width:100%;display:block;max-height:200px;object-fit:cover;">
       </div>
     </div>
   </div>
 
-  <div class="project-section">
-    <div class="section-content">
-      <h2>Prototype Development</h2>
-      <p>The mountings for the joining block (imitation of airfoils) were designed on SolidWorks and 3D printed using BambuLab. 1-1 replicas of these blocks were designed on AutoCAD and waterjetted. This was made to replicate 3 different joining options and perform strength and structural tests.</p>
+  <p class="pd-label">Testing</p>
+  <div class="pd-section">
+    <div class="pd-img-col">
+      <div class="pd-img"><img src="llllllll.jpg" alt="Testing setup"></div>
     </div>
-    <div class="section-image">
-      <img src="Orientations.png" alt="Prototype Development">
-    </div>
-  </div>
-
-  <div class="project-section">
-    <div class="section-image">
-      <img src="IMG_1751.jpg" alt="Joining Methods">
-      <div style="height:10px"></div>
-      <img src="20251102_190453.jpg" alt="Joining Methods">
-    </div>
-    <div class="section-content">
-      <h2>Manufacture and assembly</h2>
-      <p>For this project, a lot of manufacturing and assembling techniques and tools were used. We used 3D printing for the airfoil or other car part replicas. These pieces were then recovered in resin and carbon fiber (vacuum at the end to dry and remove the extra resin). The blocks were made out of a 1/4&quot; aluminium sheet that was waterjetted.</p>
-      <div style="height:12px"></div>
-      <img src="image.jpg" alt="Joining Methods">
-    </div>
-  </div>
-
-  <div class="project-section">
-    <div class="section-content">
+    <div class="pd-text">
       <h2>Testing &amp; Results</h2>
-      <p>This part is still on-going so there are no current results. However, after assembling the prototypes, various strength, aerodynamics and structural tests will be conducted. We will then compare the result and take a decision of potential future applications and implementations.</p>
-    </div>
-    <div class="section-image">
-      <img src="llllllll.jpg" alt="Implementation">
+      <p>Testing is still ongoing. Once all prototypes are fully assembled, the following evaluations will be conducted and compared across the three joining variants:</p>
+      <ul>
+        <li><strong>Structural strength tests</strong> — tensile and shear loading to failure to determine ultimate bond strength per joint geometry.</li>
+        <li><strong>Aerodynamic surface analysis</strong> — geometry and surface quality checks to ensure the joining method does not distort the airfoil profile.</li>
+        <li><strong>Comparative evaluation</strong> — results will determine which variant to recommend for integration into the car's aerodynamic package.</li>
+      </ul>
     </div>
   </div>
 
-  <div class="project-back-bottom">
-    <a href="#" class="btn back-btn" onclick="hideAllProjects(); return false;">← Back to Portfolio</a>
+  <div class="pd-back">
+    <a href="#" class="btn" onclick="hideAllProjects();return false;">← Back to Portfolio</a>
   </div>
 </div>
 
-<!-- FinSight -->
+
+<!-- ══════════════════════════════════════
+     DETAIL: FINSIGHT
+══════════════════════════════════════ -->
 <div id="project-finsight" class="project-page">
-  <div class="project-header"><h1>FinSight - Financial Analytics Platform</h1></div>
+  <div class="pd-header">
+    <h1>FinSight — Financial Analytics Platform</h1>
+    <p>2025 Datathon · Polytechnique Montréal &amp; AWS · 36 hours</p>
+  </div>
 
-  <div class="project-overview">
-    <div class="overview-image">
-      <img src="Screenshot 2025-11-07 212536.png" alt="FinSight Platform - Dashboard" style="border-radius: 14px;">
-    </div>
-    <div class="overview-content">
-      <div class="overview-box">
-        <h3>Project Overview</h3>
-        <p>This project was part of the 2025 Dathaton organised by Polytechnique Montréal and AWS. The goal was to create a platform that will aid investors to comprehend complex financial laws, texts and reports, and visualize the direct impacts on their Portfolio, using an AI agent. The software was expected to give simple and concise insight while also proposing forecasts and risk mitigation. The event lasted 36 hours in teams of 2-4.</p>
-        <h3 style="margin-top:12px;">Skills Used</h3>
-        <p>HTML, Machine Learning, Data Analysis, API Integration, Python, Algorithm Development, Teamwork</p>
-      </div>
+  <div class="pd-overview">
+    <h3>Project Overview</h3>
+    <p>Built in 36 hours at the Polytechnique Montréal and AWS Datathon, FinSight is an AI-powered platform that helps investors understand complex financial documents — laws, earnings reports, regulatory filings — and immediately see the impact on their portfolio. The system provides plain-language insight, risk mitigation recommendations, and short-term forecasting through an integrated AI agent.</p>
+    <div class="pd-pills">
+      <span class="pd-pill">Python / Flask</span><span class="pd-pill">Google Gemini API</span>
+      <span class="pd-pill">HTML / CSS / JS</span><span class="pd-pill">RESTful APIs</span><span class="pd-pill">Machine Learning</span>
     </div>
   </div>
 
-  <div class="project-section">
-    <div class="section-content">
-      <h2>Platform Architecture</h2>
-      <p>The platform architecture was designed around a scalable Python backend capable of integrating multiple financial data sources through RESTful APIs. This approach was selected as it allows seamless aggregation of heterogeneous market datasets while maintaining flexibility for future expansion. Data processing pipelines were implemented within this framework to automatically clean, normalize, and analyze real-time financial streams. This design enables the predictive modeling module to operate on consistent, high-quality inputs, ensuring reliable insights and faster adaptation to market fluctuations.</p>
+  <p class="pd-label">Backend Architecture</p>
+  <div class="pd-section">
+    <div class="pd-img-col">
+      <div class="pd-img"><img src="Screenshot 2025-11-07 223726.png" alt="Platform Architecture"></div>
     </div>
-    <div class="section-image">
-      <img src="Screenshot 2025-11-07 223726.png" alt="Platform Architecture">
-    </div>
-  </div>
-
-  <div class="project-section">
-    <div class="section-image">
-      <img src="Screenshot 2025-11-07 224613.png" alt="Machine Learning Models">
-    </div>
-    <div class="section-content">
-      <h2>AI and Python Implementation</h2>
-      <p>FinSight incorporates Google Gemini as the core of the Python backend. This AI agent was selected as it natively integrates multiple data types. The Flask library was imported to create a direct connection with the user inputs conducted through the HTML frontend. Finally, a memory system was added to allow the AI agent to keep long-term context of uploaded documents and optimize answers.</p>
+    <div class="pd-text">
+      <h2>System Architecture</h2>
+      <p>The backend is built around a <strong>Python / Flask</strong> server that acts as the bridge between the frontend and all data and AI services.</p>
+      <ul>
+        <li>Multiple financial data sources aggregated through <strong>RESTful APIs</strong> — raw market feeds, regulatory databases, portfolio data.</li>
+        <li>Data pipelines automatically <strong>clean, normalize, and structure</strong> incoming financial streams before passing them to the model layer.</li>
+        <li>Flask exposes endpoints that receive user inputs (uploaded documents, prompts) and route them to the appropriate processing module.</li>
+        <li>Architecture designed to be modular — new data sources or AI models can be swapped in without restructuring the pipeline.</li>
+      </ul>
     </div>
   </div>
 
-  <div class="project-section">
-    <div class="section-content">
-      <h2>User Interface &amp; Visualization</h2>
-      <p>The UI was made using a mix of HTML, CSS, and JavaScript. The platform launches with a home page that includes the name of the software and some background animation followed by a smooth transition made with JS. This transition leads to another interface where the user can upload documents which are sent to the Python backend. Another interface with the AI analysis and a text box opens to the user allowing prompts. The pages are linked in the HTML code allowing smooth transitions.</p>
-      <div style="height:12px"></div>
-      <img src="Screenshot 2025-11-07 223122.png" alt="User Interface">
+  <p class="pd-label">AI Integration</p>
+  <div class="pd-section rev">
+    <div class="pd-img-col">
+      <div class="pd-img"><img src="Screenshot 2025-11-07 224613.png" alt="AI Implementation"></div>
     </div>
-    <div class="section-image">
-      <img src="Screenshot 2025-11-07 212536.png" alt="User Interface">
-      <div style="height:10px"></div>
-      <img src="Screenshot 2025-11-07 222904.png" alt="User Interface">
+    <div class="pd-text">
+      <h2>AI &amp; Python Implementation</h2>
+      <p><strong>Google Gemini</strong> is the core AI engine, selected for its native multimodal capabilities — it can ingest text, tables, and structured financial data in a single context window.</p>
+      <ul>
+        <li>Gemini API called from Flask with the user's uploaded document as context and their natural language prompt appended.</li>
+        <li>A <strong>persistent memory layer</strong> maintains document context across multi-turn conversations — avoiding re-sending the full document on every request.</li>
+        <li>Model instructed to return structured outputs: a concise insight, a portfolio impact summary, and a risk flag when applicable.</li>
+        <li>Flask routes pass model responses back to the frontend as JSON, keeping the AI logic and UI cleanly decoupled.</li>
+      </ul>
     </div>
   </div>
 
-  <div class="project-back-bottom">
-    <a href="#" class="btn back-btn" onclick="hideAllProjects(); return false;">← Back to Portfolio</a>
+  <p class="pd-label">User Interface</p>
+  <div class="pd-section">
+    <div class="pd-img-col">
+      <div class="pd-img"><img src="Screenshot 2025-11-07 212536.png" alt="Home screen"></div>
+      <div class="pd-img"><img src="Screenshot 2025-11-07 223122.png" alt="Analysis screen"></div>
+    </div>
+    <div class="pd-text">
+      <h2>Frontend &amp; UX</h2>
+      <p>The UI is built in plain <strong>HTML, CSS, and JavaScript</strong> — chosen for development speed within the 36-hour constraint while still delivering a polished experience.</p>
+      <ul>
+        <li><strong>Landing page</strong> with animated background transitions to the document upload interface via a smooth JS-driven fade.</li>
+        <li>Upload interface sends the document to Flask via a POST request and shows a loading state while the AI processes it.</li>
+        <li><strong>Analysis interface</strong> displays the Gemini response alongside a text input for follow-up questions about the document.</li>
+        <li>All views linked in a single HTML file with JS-controlled section visibility — fast, dependency-free, and easy to deploy.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pd-back">
+    <a href="#" class="btn" onclick="hideAllProjects();return false;">← Back to Portfolio</a>
   </div>
 </div>
 
 
-<!-- ═══════════════ FLUSSO DETAIL PAGE ═══════════════ -->
+<!-- ══════════════════════════════════════
+     DETAIL: FLUSSO
+══════════════════════════════════════ -->
 <div id="project-flusso" class="project-page">
-  <div class="project-header">
+  <div class="pd-header">
     <h1>Flusso — iOS &amp; Android Productivity App</h1>
-    <p style="color:var(--text-muted);margin-top:8px;font-size:1rem;">Solo-developed · React Native · TypeScript · Firebase · App Store</p>
+    <p>Solo developer · BLG Group (Canada) · Published on the App Store &amp; Google Play</p>
   </div>
 
-  <!-- Overview -->
-  <div class="overview-box" style="margin-bottom:26px;">
+  <div class="pd-overview">
     <h3>What is Flusso?</h3>
-    <p style="color:var(--text-muted);margin-top:8px;line-height:1.75;">
-      Flusso is a full-featured deep-work and productivity app I designed and built from scratch as the sole developer, under my company BLG Group (Canada). The core idea is "Movement" — progress is not just checking boxes, but building intentional daily momentum. Users set high-level Objectives, break them into Tasks, commit to immersive Focus Sessions, and compete with friends on a live leaderboard. The app is published on the Apple App Store and Google Play.
-    </p>
-    <div class="tech-pills" style="margin-top:14px;">
-      <span class="tech-pill">React Native 0.83 / Expo SDK 55</span>
-      <span class="tech-pill">TypeScript 5.9</span>
-      <span class="tech-pill">Firebase Auth + Firestore</span>
-      <span class="tech-pill">RevenueCat</span>
-      <span class="tech-pill">Spotify Web API (OAuth2 PKCE)</span>
-      <span class="tech-pill">EAS CI/CD</span>
-      <span class="tech-pill">Custom Native iOS Modules</span>
+    <p>Flusso is a full-featured deep-work and productivity app I designed and built from scratch as the sole developer. The core concept is "Movement" — progress is not just checking boxes, but building intentional daily momentum. Users set high-level Objectives, break them into Tasks, commit to immersive Focus Sessions, and compete with friends on a live leaderboard.</p>
+    <div class="pd-pills">
+      <span class="pd-pill">React Native 0.83 / Expo SDK 55</span><span class="pd-pill">TypeScript 5.9</span>
+      <span class="pd-pill">Firebase Auth + Firestore</span><span class="pd-pill">Spotify Web API (PKCE)</span>
+      <span class="pd-pill">RevenueCat</span><span class="pd-pill">EAS CI/CD</span><span class="pd-pill">Custom Native iOS Modules</span>
     </div>
   </div>
 
-  <!-- Section 1: Architecture -->
-  <div class="flusso-section">
-    <div class="flusso-phone-wrap">
-      <img src="flusso_dashboard.png" alt="Flusso Dashboard">
+  <p class="pd-label">Data Architecture</p>
+  <div class="pd-section">
+    <div class="pd-img-col phone">
+      <div class="pd-img"><img src="flusso_dashboard.png" alt="Flusso Dashboard"></div>
     </div>
-    <div class="flusso-text">
-      <h2>Architecture &amp; Data Layer</h2>
-      <p>The app follows a <strong style="color:var(--text);">local-first architecture</strong>: all reads and writes hit AsyncStorage on-device first, so the UI is instant and works fully offline. A 3-layer cloud sync system then reconciles data with Firestore in the background:</p>
+    <div class="pd-text">
+      <h2>Local-First Architecture &amp; Cloud Sync</h2>
+      <p>All reads and writes go to <strong>AsyncStorage on-device first</strong> — the UI is instant and fully functional offline. A 3-layer sync system reconciles with Firestore silently in the background:</p>
       <ul>
-        <li><strong style="color:var(--text);">CloudBootstrap</strong> — runs on first login or new device, pulls the full user dataset from Firestore and hydrates local storage.</li>
-        <li><strong style="color:var(--text);">CloudSync</strong> — bi-directional pull/push on demand, handling conflicts between local and cloud state.</li>
-        <li><strong style="color:var(--text);">CloudAutoPush</strong> — silent background push triggered whenever the app moves from foreground to background, keeping cloud state fresh without user action.</li>
+        <li><strong>CloudBootstrap</strong> — runs on first login or new device; pulls the full user dataset from Firestore and hydrates local storage.</li>
+        <li><strong>CloudSync</strong> — bi-directional pull/push handling conflicts between local and cloud state on demand.</li>
+        <li><strong>CloudAutoPush</strong> — silent push triggered when the app moves foreground → background, keeping cloud state current without user action.</li>
+        <li><strong>Firestore Security Rules</strong> enforce per-user data isolation at the row level; a separate top-level structure handles social data (friendships, shared objectives, invites).</li>
       </ul>
-      <p style="margin-top:10px;">Firestore Security Rules enforce strict per-user data isolation — users can only read or write their own subcollections — while a separate top-level structure handles social data (friendships, shared objectives, invites).</p>
-      <div class="tech-pills">
-        <span class="tech-pill">AsyncStorage</span>
-        <span class="tech-pill">Cloud Firestore</span>
-        <span class="tech-pill">Firebase Auth</span>
-        <span class="tech-pill">Security Rules</span>
+      <div class="pd-pills">
+        <span class="pd-pill">AsyncStorage</span><span class="pd-pill">Cloud Firestore</span>
+        <span class="pd-pill">Firebase Auth</span><span class="pd-pill">Security Rules</span>
       </div>
     </div>
   </div>
 
-  <!-- Section 2: Focus Zone -->
-  <div class="flusso-section reverse">
-    <div class="flusso-text">
+  <p class="pd-label">Focus Zone</p>
+  <div class="pd-section rev">
+    <div class="pd-img-col phone">
+      <div class="pd-img"><img src="flusso_focus.png" alt="Flusso Focus Zone"></div>
+    </div>
+    <div class="pd-text">
       <h2>Focus Zone &amp; Audio Engine</h2>
-      <p>The Focus Zone is the core feature: an immersive full-screen environment with 5 room backgrounds (mountain, ocean, skyline, space, forest). The audio engine layers ambient sounds with music style selection (lofi, piano, classical). The timer keeps running when the app is backgrounded.</p>
+      <p>The Focus Zone is an immersive full-screen environment with 5 room backgrounds and a layered audio engine (ambient sounds + music style selection: lofi, piano, classical).</p>
       <ul>
-        <li>Spotify Web API integrated via <strong style="color:var(--text);">OAuth2 PKCE</strong> — no client secret exposed client-side. Refresh tokens persist across restarts via AsyncStorage so users never re-authenticate.</li>
-        <li>The in-app mini-player exposes playback control, seekable progress bar, shuffle/repeat, and playlist browsing — all through the Spotify Web API (not the SDK).</li>
-        <li>A custom native iOS module integrates with <strong style="color:var(--text);">iOS 17 Live Activity / Dynamic Island</strong> to keep the focus timer visible on the Lock Screen even when backgrounded.</li>
-        <li>Pomodoro mode and freeform timer modes both supported, with local notification scheduling for phase transitions.</li>
+        <li>Spotify integrated via <strong>OAuth2 PKCE</strong> — no client secret exposed client-side. Refresh tokens persist across restarts via AsyncStorage so users never re-authenticate.</li>
+        <li>In-app mini-player exposes full playback control: seekable progress bar, shuffle, repeat, playlist browsing — all via the <strong>Spotify Web API</strong> directly.</li>
+        <li>Custom native iOS module integrates with <strong>iOS 17 Live Activity / Dynamic Island</strong> to show the focus timer on the Lock Screen when backgrounded.</li>
+        <li>Pomodoro and freeform timer modes; local notifications handle phase transitions via a <strong>logical key deduplication system</strong> preventing duplicate alerts.</li>
       </ul>
-      <div class="tech-pills">
-        <span class="tech-pill">expo-audio</span>
-        <span class="tech-pill">expo-video</span>
-        <span class="tech-pill">Spotify Web API</span>
-        <span class="tech-pill">Live Activity (iOS 17)</span>
-        <span class="tech-pill">Expo Notifications</span>
+      <div class="pd-pills">
+        <span class="pd-pill">expo-audio</span><span class="pd-pill">Spotify Web API</span>
+        <span class="pd-pill">Live Activity (iOS 17)</span><span class="pd-pill">Expo Notifications</span>
       </div>
-    </div>
-    <div class="flusso-phone-wrap">
-      <img src="flusso_focus.png" alt="Flusso Focus Zone">
     </div>
   </div>
 
-  <!-- Section 3: Task & Goal System -->
-  <div class="flusso-section">
-    <div class="flusso-phone-wrap">
-      <img src="flusso_tasks.png" alt="Flusso Tasks">
+  <p class="pd-label">Task System</p>
+  <div class="pd-section">
+    <div class="pd-img-col phone">
+      <div class="pd-img"><img src="flusso_tasks.png" alt="Flusso Tasks"></div>
     </div>
-    <div class="flusso-text">
+    <div class="pd-text">
       <h2>Goal &amp; Task System</h2>
       <p>Tasks and Objectives form a two-level hierarchy. Tasks carry 4 importance levels, deadlines, and status tracking. Objectives are high-level goals with 7 categories, 8 color labels, and optional Training Plans.</p>
       <ul>
-        <li><strong style="color:var(--text);">Training Plans</strong> come in two types: cycle-based (rotation with missed-day logic — keep-order or shift-forward) and week-based (fixed day-of-week schedule).</li>
-        <li>4 sort/filter modes: My Day, Important, Planned, Objectives — with the Important filter strictly showing only starred tasks.</li>
-        <li>Deadline notifications are deduplicated using a logical key system: a stable <code style="color:var(--accent);font-family:'JetBrains Mono',monospace;">logicalKey → notificationId</code> map prevents duplicate alerts across sessions.</li>
-        <li>Device contacts are scanned (with permission) for birthdays and anniversaries — stored locally only, never synced to the cloud. iOS 0-based month normalization and Feb 29 edge cases handled explicitly.</li>
+        <li><strong>Training Plans</strong> — cycle-based (rotation with missed-day logic: keep-order or shift-forward) and week-based (fixed day-of-week schedule).</li>
+        <li>4 sort/filter modes: My Day, Important, Planned, Objectives — each with its own Firestore query logic.</li>
+        <li>Device contacts scanned for birthdays/anniversaries — <strong>stored locally only</strong>, never synced to cloud. iOS 0-based month normalization and Feb 29 edge cases handled explicitly in code.</li>
+        <li>Notification deduplication via a stable <code>logicalKey → notificationId</code> map prevents duplicate alerts across sessions.</li>
       </ul>
-      <div class="tech-pills">
-        <span class="tech-pill">React Context API</span>
-        <span class="tech-pill">expo-contacts</span>
-        <span class="tech-pill">Notification deduplication</span>
-        <span class="tech-pill">AsyncStorage</span>
+      <div class="pd-pills">
+        <span class="pd-pill">React Context API</span><span class="pd-pill">expo-contacts</span><span class="pd-pill">AsyncStorage</span>
       </div>
     </div>
   </div>
 
-  <!-- Section 4: Objectives screen -->
-  <div class="flusso-section reverse">
-    <div class="flusso-text">
+  <p class="pd-label">Social &amp; Subscriptions</p>
+  <div class="pd-section rev">
+    <div class="pd-img-col phone">
+      <div class="pd-img"><img src="flusso_objectives.png" alt="Flusso Objectives"></div>
+    </div>
+    <div class="pd-text">
       <h2>Social, Gamification &amp; Subscriptions</h2>
-      <p>Friends connect via a 6-character Friend Tag. The friend system supports pending / accepted / blocked states with notification badges for incoming requests. A live leaderboard tracks focus minutes, tasks completed, and login streak across daily, weekly, monthly, and yearly ranges.</p>
+      <p>Friends connect via a 6-character Friend Tag with pending / accepted / blocked states and notification badges for incoming requests.</p>
       <ul>
-        <li><strong style="color:var(--text);">Shared Objectives</strong> — collaborative goals with member assignment and per-member completion tracking stored in Firestore.</li>
-        <li><strong style="color:var(--text);">35-badge Achievement system</strong> across 5 trophy tiers, tracking task completion, streaks, focus sessions, time-of-day patterns, and social activity. Modal celebration on unlock with Lottie animation + confetti.</li>
-        <li>Subscriptions handled by <strong style="color:var(--text);">RevenueCat</strong>, wrapping Apple StoreKit and Google Play Billing. Custom paywall UI with monthly/annual toggle. Entitlement linked to Firebase UID for cross-device state.</li>
-        <li>Auth supports Apple Sign-In (native iOS module via expo-apple-authentication, with a platform stub for Android), Google Sign-In, and email/password.</li>
+        <li><strong>Live leaderboard</strong> tracks focus minutes, tasks completed, and login streak — daily, weekly, monthly, and yearly ranges.</li>
+        <li><strong>Shared Objectives</strong> — collaborative goals with member assignment and per-member completion tracking stored in Firestore top-level collections.</li>
+        <li><strong>35-badge Achievement system</strong> across 5 trophy tiers — tasks, streaks, focus, social activity, time-of-day patterns. Lottie animation + confetti on unlock.</li>
+        <li><strong>RevenueCat</strong> wraps Apple StoreKit and Google Play Billing. Custom paywall with monthly/annual toggle. Entitlement linked to Firebase UID for cross-device state.</li>
+        <li>Auth: <strong>Apple Sign-In</strong> (native iOS module with Android platform stub), <strong>Google Sign-In</strong>, and email/password.</li>
       </ul>
-      <div class="tech-pills">
-        <span class="tech-pill">RevenueCat</span>
-        <span class="tech-pill">Apple StoreKit</span>
-        <span class="tech-pill">expo-apple-authentication</span>
-        <span class="tech-pill">Firestore social collections</span>
-        <span class="tech-pill">Lottie</span>
+      <div class="pd-pills">
+        <span class="pd-pill">RevenueCat</span><span class="pd-pill">Apple StoreKit</span>
+        <span class="pd-pill">Lottie</span><span class="pd-pill">Firestore social collections</span>
       </div>
-    </div>
-    <div class="flusso-phone-wrap">
-      <img src="flusso_objectives.png" alt="Flusso Objectives">
     </div>
   </div>
 
-  <!-- Section 5: Account & Stats -->
-  <div class="flusso-section">
-    <div class="flusso-phone-wrap">
-      <img src="flusso_account.png" alt="Flusso Account">
+  <p class="pd-label">Build Pipeline</p>
+  <div class="pd-section">
+    <div class="pd-img-col phone">
+      <div class="pd-img"><img src="flusso_account.png" alt="Flusso Account"></div>
     </div>
-    <div class="flusso-text">
+    <div class="pd-text">
       <h2>UI System &amp; Build Pipeline</h2>
-      <p>The design system uses a custom <code style="color:var(--accent);font-family:'JetBrains Mono',monospace;">s()</code> responsive scaling function capped on tablets, safe-area-aware layouts for notches and home indicators, and a floating pill-shaped custom tab bar with animated auto-hide and notification badges built from scratch in React Native.</p>
+      <p>The design system uses a custom <code>s()</code> responsive scaling function capped on tablets, safe-area-aware layouts across all device types, and a floating pill-shaped tab bar with animated auto-hide — all built from scratch in React Native.</p>
       <ul>
-        <li>Dark mode (default) and light mode, with 8 user-selectable accent colors persisted via AsyncStorage.</li>
-        <li>TypeScript strict mode enforced throughout the entire codebase.</li>
-        <li>Platform-specific module resolution via Metro bundler: <code style="color:var(--accent);font-family:'JetBrains Mono',monospace;">.ios.ts / .ts</code> file strategy for native-only modules.</li>
-        <li><strong style="color:var(--text);">EAS (Expo Application Services)</strong> handles cloud-based iOS and Android builds, OTA updates, and App Store / Google Play submissions. Build profiles: development, preview, and production (auto-increment).</li>
-        <li>Custom Expo Config Plugins inject native code into managed workflow builds without ejecting.</li>
-        <li><code style="color:var(--accent);font-family:'JetBrains Mono',monospace;">patch-package</code> used for upstream node_modules fixes without forking dependencies.</li>
+        <li>Dark/light mode with <strong>8 user-selectable accent colors</strong> persisted via AsyncStorage.</li>
+        <li><strong>TypeScript strict mode</strong> enforced throughout the entire codebase.</li>
+        <li>Platform-specific module resolution via Metro bundler: <code>.ios.ts / .ts</code> file strategy for native-only modules like Apple Sign-In.</li>
+        <li><strong>EAS (Expo Application Services)</strong> — cloud-based iOS and Android builds, OTA updates, App Store / Google Play submissions. Profiles: development, preview, production (auto-increment).</li>
+        <li>Custom <strong>Expo Config Plugins</strong> inject the Live Activity and Smart Location native modules into managed workflow builds without ejecting.</li>
+        <li><code>patch-package</code> for upstream node_modules fixes without forking dependencies.</li>
       </ul>
-      <div class="tech-pills">
-        <span class="tech-pill">EAS Build / OTA</span>
-        <span class="tech-pill">Expo Config Plugins</span>
-        <span class="tech-pill">Metro bundler</span>
-        <span class="tech-pill">patch-package</span>
-        <span class="tech-pill">TypeScript strict</span>
+      <div class="pd-pills">
+        <span class="pd-pill">EAS Build / OTA</span><span class="pd-pill">Expo Config Plugins</span>
+        <span class="pd-pill">Metro bundler</span><span class="pd-pill">patch-package</span><span class="pd-pill">TypeScript strict</span>
       </div>
     </div>
   </div>
 
-  <!-- Stack summary -->
-  <div style="margin-bottom:26px;">
-    <h2 style="color:var(--text);font-size:1.3rem;margin-bottom:14px;">Full Stack at a Glance</h2>
-    <div class="stack-grid">
-      <div class="stack-card">
-        <h4>Frontend</h4>
-        <p>React Native 0.83 · Expo SDK 55 · TypeScript 5.9 · React Navigation 7 · expo-linear-gradient · lucide-react-native · react-native-svg</p>
-      </div>
-      <div class="stack-card">
-        <h4>Backend / Cloud</h4>
-        <p>Firebase Auth · Cloud Firestore (NoSQL) · Firestore Security Rules · Firebase CLI · 3-layer sync (Bootstrap / Sync / AutoPush)</p>
-      </div>
-      <div class="stack-card">
-        <h4>Integrations</h4>
-        <p>Spotify Web API (PKCE OAuth2) · RevenueCat (StoreKit + Play Billing) · Apple Sign-In · Google Sign-In · Expo Notifications · expo-contacts</p>
-      </div>
-      <div class="stack-card">
-        <h4>Native / Build</h4>
-        <p>Custom Live Activity module (iOS 17 Dynamic Island) · Smart Location (MapKit) · EAS Build &amp; Submit · Expo Config Plugins · patch-package</p>
-      </div>
-    </div>
+  <p class="pd-label">Stack Summary</p>
+  <div class="pd-grid">
+    <div class="pd-card"><h4>Frontend</h4><p>React Native 0.83 · Expo SDK 55 · TypeScript 5.9 · React Navigation 7 · expo-linear-gradient · lucide-react-native · react-native-svg · Lottie</p></div>
+    <div class="pd-card"><h4>Backend / Cloud</h4><p>Firebase Auth · Cloud Firestore · Firestore Security Rules · Firebase CLI · 3-layer sync (Bootstrap / Sync / AutoPush)</p></div>
+    <div class="pd-card"><h4>Integrations</h4><p>Spotify Web API (PKCE OAuth2) · RevenueCat · Apple Sign-In · Google Sign-In · Expo Notifications · expo-contacts</p></div>
+    <div class="pd-card"><h4>Native / Build</h4><p>Live Activity module (iOS 17) · Smart Location (MapKit) · EAS Build &amp; Submit · Expo Config Plugins · patch-package</p></div>
   </div>
 
-  <div class="project-back-bottom">
-    <a href="#" class="btn back-btn" onclick="hideAllProjects(); return false;">← Back to Portfolio</a>
+  <div class="pd-back">
+    <a href="#" class="btn" onclick="hideAllProjects();return false;">← Back to Portfolio</a>
   </div>
 </div>
 
 
-<!-- Resume -->
+<!-- RESUME -->
 <section id="resume">
   <div class="section-header">
     <h2 class="section-title">Resume</h2>
     <p class="section-subtitle">Academic and professional experience</p>
   </div>
-
   <div class="resume-container">
     <div class="resume-preview">
       <h3>View My Resume</h3>
       <p>Download my complete resume to see detailed information about my education, projects, and technical skills in mechanical engineering.</p>
-      <a href="Chakib Belghait - Résumé.pdf" target="_blank" class="btn" rel="noreferrer">
-        <i class="fas fa-download"></i> Download Resume
-      </a>
+      <a href="Chakib Belghait - Résumé.pdf" target="_blank" class="btn" rel="noreferrer"><i class="fas fa-download"></i> Download Resume</a>
     </div>
   </div>
 </section>
 
-<!-- Contact -->
+<!-- CONTACT -->
 <section id="contact">
   <div class="section-header">
     <h2 class="section-title">Get In Touch</h2>
     <p class="section-subtitle">Feel free to reach out for collaboration or opportunities</p>
   </div>
-
   <div class="contact-container">
     <div class="contact-grid">
-      <div class="contact-card">
-        <i class="fas fa-envelope"></i>
-        <h3>Email</h3>
-        <p>chakib.belghait@uwaterloo.ca</p>
-        <a href="mailto:chakib.belghait@uwaterloo.ca" class="btn btn-outline">Send Message</a>
-      </div>
-
-      <div class="contact-card">
-        <i class="fas fa-phone"></i>
-        <h3>Phone</h3>
-        <p>438-503-0688</p>
-        <a href="tel:4385030688" class="btn btn-outline">Call Now</a>
-      </div>
-
-      <div class="contact-card">
-        <i class="fab fa-linkedin"></i>
-        <h3>LinkedIn</h3>
-        <p>Professional Profile</p>
-        <a href="https://www.linkedin.com/in/chakib-belghait-a58932376" target="_blank" class="btn btn-outline" rel="noreferrer">Connect</a>
-      </div>
+      <div class="contact-card"><i class="fas fa-envelope"></i><h3>Email</h3><p>chakib.belghait@uwaterloo.ca</p><a href="mailto:chakib.belghait@uwaterloo.ca" class="btn btn-outline">Send Message</a></div>
+      <div class="contact-card"><i class="fas fa-phone"></i><h3>Phone</h3><p>438-503-0688</p><a href="tel:4385030688" class="btn btn-outline">Call Now</a></div>
+      <div class="contact-card"><i class="fab fa-linkedin"></i><h3>LinkedIn</h3><p>Professional Profile</p><a href="https://www.linkedin.com/in/chakib-belghait-a58932376" target="_blank" class="btn btn-outline" rel="noreferrer">Connect</a></div>
     </div>
   </div>
 </section>
@@ -1140,168 +795,78 @@ footer{
 <footer>
   <div class="footer-content">
     <div class="footer-logo">CB</div>
-
     <div class="footer-links">
-      <a href="#hero" class="footer-link">Home</a>
-      <a href="#about" class="footer-link">About</a>
-      <a href="#projects" class="footer-link">Projects</a>
-      <a href="#resume" class="footer-link">Resume</a>
+      <a href="#hero" class="footer-link">Home</a><a href="#about" class="footer-link">About</a>
+      <a href="#projects" class="footer-link">Projects</a><a href="#resume" class="footer-link">Resume</a>
       <a href="#contact" class="footer-link">Contact</a>
     </div>
-
     <p class="copyright">© 2026 Chakib Belghait. University of Waterloo Mechanical Engineering.</p>
   </div>
 </footer>
 
 <script>
-/* Theme toggle */
-const themeToggle = document.getElementById('themeToggle');
-const body = document.body;
-
-const savedTheme = localStorage.getItem('theme') || 'dark';
-body.setAttribute('data-theme', savedTheme);
-updateThemeIcon(savedTheme);
-
-function updateThemeIcon(theme) {
-  const icon = themeToggle.querySelector('i');
-  icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
-}
-
+/* Theme */
+const themeToggle=document.getElementById('themeToggle'),body=document.body;
+const savedTheme=localStorage.getItem('theme')||'dark';
+body.setAttribute('data-theme',savedTheme);updateThemeIcon(savedTheme);
+function updateThemeIcon(t){themeToggle.querySelector('i').className=t==='light'?'fas fa-moon':'fas fa-sun';}
 function toggleTheme(){
-  const currentTheme = body.getAttribute('data-theme');
-  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-  body.setAttribute('data-theme', newTheme);
-  localStorage.setItem('theme', newTheme);
-  updateThemeIcon(newTheme);
-  themeToggle.style.transform = 'scale(0.92)';
-  setTimeout(() => (themeToggle.style.transform = ''), 140);
+  const n=body.getAttribute('data-theme')==='light'?'dark':'light';
+  body.setAttribute('data-theme',n);localStorage.setItem('theme',n);updateThemeIcon(n);
+  themeToggle.style.transform='scale(0.92)';setTimeout(()=>themeToggle.style.transform='',140);
 }
-
-themeToggle.addEventListener('click', toggleTheme);
-themeToggle.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleTheme(); }
-});
+themeToggle.addEventListener('click',toggleTheme);
+themeToggle.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleTheme();}});
 
 /* Mobile nav */
-const navToggle = document.getElementById('navToggle');
-const mobileNav = document.getElementById('mobileNav');
+const navToggle=document.getElementById('navToggle'),mobileNav=document.getElementById('mobileNav');
+function closeMobileNav(){mobileNav.style.display='none';mobileNav.setAttribute('aria-hidden','true');navToggle.querySelector('i').className='fas fa-bars';}
+function openMobileNav(){mobileNav.style.display='block';mobileNav.setAttribute('aria-hidden','false');navToggle.querySelector('i').className='fas fa-xmark';}
+navToggle.addEventListener('click',()=>mobileNav.style.display==='block'?closeMobileNav():openMobileNav());
+mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMobileNav));
+document.addEventListener('click',e=>{if(!mobileNav.contains(e.target)&&!navToggle.contains(e.target))closeMobileNav();});
 
-function closeMobileNav(){
-  mobileNav.style.display = 'none';
-  mobileNav.setAttribute('aria-hidden','true');
-  navToggle.setAttribute('aria-label','Open menu');
-  navToggle.querySelector('i').className = 'fas fa-bars';
-}
-function openMobileNav(){
-  mobileNav.style.display = 'block';
-  mobileNav.setAttribute('aria-hidden','false');
-  navToggle.setAttribute('aria-label','Close menu');
-  navToggle.querySelector('i').className = 'fas fa-xmark';
-}
-
-navToggle.addEventListener('click', () => {
-  const isOpen = mobileNav.style.display === 'block';
-  isOpen ? closeMobileNav() : openMobileNav();
-});
-
-mobileNav.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => closeMobileNav());
-});
-
-document.addEventListener('click', (e) => {
-  const within = mobileNav.contains(e.target) || navToggle.contains(e.target);
-  if (!within) closeMobileNav();
-});
-
-/* Smooth scrolling */
-document.querySelectorAll('nav a, .footer-link, .menu-item, #mobileNav a').forEach(link => {
-  link.addEventListener('click', function(e) {
-    const href = this.getAttribute('href');
-    if (href && href.startsWith('#')) {
-      e.preventDefault();
-      const target = document.querySelector(href);
-      if (target) {
-        window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
-      }
-    }
+/* Smooth scroll */
+document.querySelectorAll('nav a,.footer-link,.menu-item,#mobileNav a').forEach(link=>{
+  link.addEventListener('click',function(e){
+    const href=this.getAttribute('href');
+    if(href&&href.startsWith('#')){e.preventDefault();const t=document.querySelector(href);if(t)window.scrollTo({top:t.offsetTop-70,behavior:'smooth'});}
   });
 });
 
-/* Active nav link on scroll */
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('.nav-link');
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(section => {
-    if (scrollY >= section.offsetTop - 110) current = section.id;
-  });
-  navLinks.forEach(link => {
-    link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
-  });
+/* Active nav */
+const sections=document.querySelectorAll('section'),navLinks=document.querySelectorAll('.nav-link');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{if(scrollY>=s.offsetTop-110)cur=s.id;});
+  navLinks.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur));
 });
 
-/* Typing animation */
-function initTypingAnimation() {
-  const texts = [
-    "Mechanical Engineering student at the University of Waterloo",
-    "Passionate about Aerospace and Automotive",
-    "Developing innovative solutions in all way possible",
-    "Bridging theory and practice in mechanical engineering"
-  ];
-  let textIndex = 0;
-  let charIndex = 0;
-  const typingText = document.querySelector('.typing-text');
-  const cursor = document.querySelector('.cursor');
-  if (!typingText || !cursor) return;
-
-  function typeWriter() {
-    if (charIndex < texts[textIndex].length) {
-      typingText.textContent = texts[textIndex].substring(0, charIndex + 1);
-      charIndex++;
-      setTimeout(typeWriter, 45);
-    } else {
-      setTimeout(eraseText, 1600);
-    }
-  }
-  function eraseText() {
-    if (charIndex > 0) {
-      typingText.textContent = texts[textIndex].substring(0, charIndex - 1);
-      charIndex--;
-      setTimeout(eraseText, 25);
-    } else {
-      textIndex = (textIndex + 1) % texts.length;
-      setTimeout(typeWriter, 380);
-    }
-  }
-  setTimeout(typeWriter, 800);
+/* Typing */
+function initTypingAnimation(){
+  const texts=["Mechanical Engineering student at the University of Waterloo","Passionate about Aerospace and Automotive","Developing innovative solutions in all ways possible","Bridging theory and practice in mechanical engineering"];
+  let ti=0,ci=0;const el=document.querySelector('.typing-text');if(!el)return;
+  function type(){if(ci<texts[ti].length){el.textContent=texts[ti].substring(0,++ci);setTimeout(type,45);}else setTimeout(erase,1600);}
+  function erase(){if(ci>0){el.textContent=texts[ti].substring(0,--ci);setTimeout(erase,25);}else{ti=(ti+1)%texts.length;setTimeout(type,380);}}
+  setTimeout(type,800);
 }
 
-function initializeAnimations() {
-  document.querySelectorAll('.space-dot').forEach((dot, i) => {
-    dot.style.animation = `space-float 20s linear infinite ${i * 5}s`;
-  });
+function showProject(id){
+  document.querySelectorAll('.project-page').forEach(p=>p.style.display='none');
+  document.querySelectorAll('section,footer').forEach(s=>s.style.display='none');
+  const page=document.getElementById('project-'+id);
+  if(page)page.style.display='block';
+  window.scrollTo(0,0);closeMobileNav();
 }
+function hideAllProjects(){
+  document.querySelectorAll('.project-page').forEach(p=>p.style.display='none');
+  document.querySelectorAll('section,footer').forEach(s=>s.style.display='block');
+  document.getElementById('projects').scrollIntoView({behavior:'smooth'});closeMobileNav();
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')hideAllProjects();});
 
-function showProject(projectId) {
-  document.querySelectorAll('.project-page').forEach(page => page.style.display = 'none');
-  document.querySelectorAll('section, footer').forEach(section => section.style.display = 'none');
-  const projectPage = document.getElementById('project-' + projectId);
-  if (projectPage) projectPage.style.display = 'block';
-  window.scrollTo(0, 0);
-  closeMobileNav();
-}
-function hideAllProjects() {
-  document.querySelectorAll('.project-page').forEach(page => page.style.display = 'none');
-  document.querySelectorAll('section, footer').forEach(section => section.style.display = 'block');
-  document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
-  closeMobileNav();
-}
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') hideAllProjects();
-});
-
-window.addEventListener('load', () => {
-  initializeAnimations();
+window.addEventListener('load',()=>{
+  document.querySelectorAll('.space-dot').forEach((d,i)=>d.style.animation=`space-float 20s linear infinite ${i*5}s`);
   initTypingAnimation();
 });
 </script>
